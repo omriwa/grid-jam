@@ -1,1898 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grid-Jam | EPI — Electronic Protection of Infrastructure</title>
-<meta name="description" content="Grid-Jam's EPI system is a last-line-of-defense GNSS jamming array that protects critical national infrastructure against precision drone and missile attacks.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-deep: #070b10;
-    --bg-mid: #0d1520;
-    --bg-card: #111c2b;
-    --bg-card-hover: #152236;
-    --border: rgba(0,200,120,0.15);
-    --border-bright: rgba(0,200,120,0.4);
-    --accent: #00c878;
-    --accent-dim: rgba(0,200,120,0.08);
-    --danger: #e85d3a;
-    --danger-dim: rgba(232,93,58,0.1);
-    --amber: #f0a500;
-    --text-primary: #dce8f0;
-    --text-secondary: #7a9ab5;
-    --text-muted: #4a6880;
-    --font-head: 'Rajdhani', sans-serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg-deep);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: var(--bg-deep); }
-  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: rgba(7,11,16,0.93);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 clamp(1rem, 4vw, 3rem);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 62px;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-
-  .nav-logo-mark {
-    width: 34px; height: 34px;
-    border: 1.5px solid var(--accent);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    padding: 5px;
-  }
-
-  .nav-logo-mark span { display: block; background: var(--accent); opacity: 0.85; }
-
-  .nav-logo-text {
-    font-family: var(--font-head);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: clamp(0.8rem, 2vw, 2rem);
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-family: var(--font-head);
-    font-weight: 500;
-    font-size: 0.88rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--accent); }
-
-  .nav-cta {
-    background: var(--accent);
-    color: #000 !important;
-    padding: 7px 18px;
-    font-weight: 700 !important;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    transition: background 0.2s, box-shadow 0.2s !important;
-  }
-
-  .nav-cta:hover {
-    background: #00e890 !important;
-    box-shadow: 0 0 20px rgba(0,200,120,0.4) !important;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px; height: 2px;
-    background: var(--accent);
-    transition: all 0.3s;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 100px clamp(1.5rem, 6vw, 8rem) 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,200,120,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,200,120,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-
-  .hero-radial {
-    position: absolute;
-    top: 20%; right: -15%;
-    width: 75vw; height: 75vw;
-    max-width: 1000px; max-height: 1000px;
-    background: radial-gradient(circle, rgba(0,200,120,0.055) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .hero-content { position: relative; z-index: 1; }
-
-  .hero-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    background: var(--accent-dim);
-    border: 1px solid var(--border-bright);
-    padding: 5px 14px;
-    margin-bottom: 1.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .hero-status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,200,120,0.4); }
-    50% { opacity: 0.5; box-shadow: 0 0 0 5px rgba(0,200,120,0); }
-  }
-
-  .hero-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
-
-  h1 {
-    font-family: var(--font-head);
-    font-size: clamp(3rem, 7.5vw, 7rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 1.4rem;
-    max-width: 920px;
-  }
-
-  h1 em { color: var(--accent); font-style: normal; }
-
-  .hero-sub {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    color: var(--text-secondary);
-    font-weight: 300;
-    max-width: 580px;
-    margin-bottom: 2.8rem;
-    line-height: 1.75;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 4rem;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 14px 34px;
-    text-decoration: none;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: all 0.25s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    background: #00e890;
-    box-shadow: 0 0 32px rgba(0,200,120,0.45);
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    border: 1px solid var(--border-bright);
-    color: var(--text-primary);
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 14px 34px;
-    text-decoration: none;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: all 0.25s;
-    display: inline-block;
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-dim);
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 2.5rem;
-    max-width: 680px;
-  }
-
-  .hero-stat {
-    flex: 1;
-    padding-right: 2rem;
-    border-right: 1px solid var(--border);
-  }
-
-  .hero-stat:last-child { border-right: none; padding-left: 2rem; padding-right: 0; }
-  .hero-stat:nth-child(2) { padding-left: 2rem; }
-
-  .hero-stat-val {
-    font-family: var(--font-head);
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .hero-stat-label {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-family: var(--font-mono);
-  }
-
-  /* SECTIONS */
-  section {
-    padding: clamp(4rem, 9vw, 8rem) clamp(1.5rem, 6vw, 8rem);
-    position: relative;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.8rem;
-  }
-
-  .section-label::after {
-    content: '';
-    width: 60px; height: 1px;
-    background: var(--border);
-  }
-
-  h2 {
-    font-family: var(--font-head);
-    font-size: clamp(2rem, 4.5vw, 3.8rem);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.05;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 1rem;
-  }
-
-  h2 em { color: var(--accent); font-style: normal; }
-
-  h3 {
-    font-family: var(--font-head);
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-  }
-
-  .section-intro {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin-bottom: 3.5rem;
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  /* ALERT BANNER */
-  .alert-banner {
-    background: var(--danger-dim);
-    border: 1px solid rgba(232,93,58,0.25);
-    border-left: 3px solid var(--danger);
-    padding: 16px 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 3.5rem;
-    max-width: 920px;
-  }
-
-  .alert-icon { font-size: 1.1rem; color: var(--danger); flex-shrink: 0; margin-top: 2px; }
-
-  .alert-text { font-size: 0.93rem; color: var(--text-primary); line-height: 1.65; }
-
-  .alert-text strong {
-    color: var(--danger);
-    font-family: var(--font-head);
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  /* THREAT CARDS */
-  .threat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .threat-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .threat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--danger);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .threat-card:hover { background: var(--bg-card-hover); }
-  .threat-card:hover::before { opacity: 1; }
-
-  .threat-year {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--danger);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.8rem;
-  }
-
-  .threat-title {
-    font-family: var(--font-head);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .threat-desc {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
-  .threat-damage {
-    margin-top: 1rem;
-    padding: 8px 12px;
-    background: var(--danger-dim);
-    border-left: 2px solid var(--danger);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--danger);
-    letter-spacing: 0.05em;
-  }
-
-  /* SIMPLE EXPLAINER */
-  .explain-section { background: var(--bg-mid); }
-
-  .explain-intro {
-    max-width: 760px;
-    margin-bottom: 3rem;
-  }
-
-  .explain-intro p {
-    font-size: 1.08rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  .explain-intro p + p { margin-top: 1rem; }
-
-  .explain-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    border: 1px solid var(--border);
-  }
-
-  .explain-step {
-    padding: 2.5rem 2rem;
-    border-right: 1px solid var(--border);
-    position: relative;
-  }
-
-  .explain-step:last-child { border-right: none; }
-
-  .step-num {
-    font-family: var(--font-mono);
-    font-size: 3.5rem;
-    font-weight: 500;
-    color: rgba(0,200,120,0.08);
-    line-height: 1;
-    margin-bottom: 0.6rem;
-    user-select: none;
-  }
-
-  .step-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
-
-  .step-title {
-    font-family: var(--font-head);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.6rem;
-  }
-
-  .step-desc {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* EPI SYSTEM */
-  .epi-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .epi-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .epi-points li {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.2rem 1.4rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-left: 2px solid var(--accent);
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .epi-points li:hover { background: var(--bg-card-hover); border-color: var(--border-bright); border-left-color: var(--accent); }
-
-  .li-icon { color: var(--accent); font-size: 1rem; flex-shrink: 0; margin-top: 3px; }
-
-  .li-text { font-size: 0.92rem; color: var(--text-primary); line-height: 1.6; }
-  .li-text strong { color: #fff; font-family: var(--font-head); font-size: 1rem; display: block; margin-bottom: 3px; }
-
-  .diagram-wrap {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    position: sticky;
-    top: 80px;
-  }
-
-  .diagram-label {
-    font-family: var(--font-mono);
-    font-size: 0.63rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .diagram-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
-
-  /* HOW IT WORKS */
-  .hiw-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .hiw-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    transition: border-color 0.25s, background 0.25s, transform 0.25s;
-  }
-
-  .hiw-card:hover {
-    border-color: var(--border-bright);
-    background: var(--bg-card-hover);
-    transform: translateY(-3px);
-  }
-
-  .hiw-tag {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .hiw-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; }
-
-  .hiw-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
-
-  .spec-list { list-style: none; margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
-
-  .spec-list li {
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .spec-list li::before { content: '▸'; color: var(--accent); }
-
-  /* PRODUCTS */
-  .products-section { background: var(--bg-mid); }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .product-card {
-    background: var(--bg-deep);
-    border: 1px solid var(--border);
-    transition: border-color 0.25s, transform 0.25s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-card:hover { border-color: var(--border-bright); transform: translateY(-4px); }
-
-  .product-head {
-    padding: 1.5rem 1.8rem 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .product-type {
-    font-family: var(--font-mono);
-    font-size: 0.63rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .product-name {
-    font-family: var(--font-head);
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .product-power {
-    font-family: var(--font-head);
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    margin-top: 0.5rem;
-  }
-
-  .product-power span {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    font-family: var(--font-mono);
-  }
-
-  .product-body { padding: 1.5rem 1.8rem; flex: 1; }
-
-  .spec-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .spec-row:last-child { border-bottom: none; }
-
-  .spec-key {
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .spec-val {
-    color: var(--text-primary);
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.88rem;
-    text-align: right;
-  }
-
-  /* CASE STUDIES TIMELINE */
-  .cases-section { background: var(--bg-deep); }
-
-  .cases-timeline {
-    position: relative;
-    margin-top: 3rem;
-    padding-left: 2.5rem;
-  }
-
-  .cases-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 8px; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--danger), var(--border), transparent);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding: 0 0 3.5rem 2.5rem;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -5px; top: 8px;
-    width: 10px; height: 10px;
-    border: 2px solid var(--danger);
-    background: var(--bg-deep);
-    transform: rotate(45deg);
-    transition: background 0.2s;
-  }
-
-  .timeline-item:hover::before { background: var(--danger); }
-
-  .timeline-year {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--danger);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.4rem;
-  }
-
-  .timeline-title {
-    font-family: var(--font-head);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.6rem;
-  }
-
-  .timeline-body {
-    font-size: 0.93rem;
-    color: var(--text-secondary);
-    max-width: 680px;
-    line-height: 1.75;
-  }
-
-  .timeline-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--danger-dim);
-    border: 1px solid rgba(232,93,58,0.3);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--danger);
-    padding: 4px 12px;
-    margin-top: 0.8rem;
-    letter-spacing: 0.08em;
-  }
-
-  /* FAQ */
-  .faq-section { background: var(--bg-mid); }
-
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
-    margin-top: 2.5rem;
-    max-width: 880px;
-  }
-
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-item:last-child { border-bottom: none; }
-
-  .faq-question {
-    padding: 1.4rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    gap: 1rem;
-    background: var(--bg-card);
-    transition: background 0.2s;
-    user-select: none;
-  }
-
-  .faq-question:hover { background: var(--bg-card-hover); }
-
-  .faq-q-text {
-    font-family: var(--font-head);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: 0.02em;
-  }
-
-  .faq-toggle {
-    width: 24px; height: 24px;
-    border: 1px solid var(--border-bright);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    flex-shrink: 0;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: all 0.25s;
-  }
-
-  .faq-item.open .faq-toggle {
-    background: var(--accent);
-    color: #000;
-    transform: rotate(45deg);
-  }
-
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-    background: var(--bg-deep);
-  }
-
-  .faq-answer p {
-    font-size: 0.93rem;
-    color: var(--text-secondary);
-    line-height: 1.75;
-    padding: 1.4rem 2rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .faq-item.open .faq-answer { max-height: 500px; }
-
-  /* CONTACT */
-  .contact-section { background: var(--bg-deep); }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    margin-top: 3rem;
-  }
-
-  .contact-info p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-
-  .contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 1.2rem;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    transition: border-color 0.2s;
-  }
-
-  .contact-item:hover { border-color: var(--border-bright); }
-
-  .contact-item-icon { font-size: 1.1rem; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
-  .contact-item-body { font-size: 0.88rem; color: var(--text-secondary); }
-  .contact-item-body strong { color: var(--text-primary); display: block; font-family: var(--font-head); font-size: 0.95rem; margin-bottom: 2px; }
-
-  .contact-note {
-    margin-top: 1.5rem;
-    padding: 1rem 1.2rem;
-    background: var(--accent-dim);
-    border: 1px solid var(--border-bright);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-  }
-
-  .contact-form {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .form-title {
-    font-family: var(--font-head);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.5rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-
-  .form-group label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--bg-deep);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    padding: 12px 14px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: vertical;
-    width: 100%;
-    -webkit-appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--accent); }
-
-  .form-group select option { background: var(--bg-card); }
-
-  .form-submit {
-    background: var(--accent);
-    color: #000;
-    border: none;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    cursor: pointer;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: all 0.25s;
-    align-self: flex-start;
-  }
-
-  .form-submit:hover {
-    background: #00e890;
-    box-shadow: 0 0 24px rgba(0,200,120,0.4);
-  }
-
-  .form-note {
-    font-size: 0.76rem;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    line-height: 1.55;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg-mid);
-    border-top: 1px solid var(--border);
-    padding: 2.5rem clamp(1.5rem, 6vw, 8rem);
-  }
-
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-
-  .footer-logo-mark {
-    width: 28px; height: 28px;
-    border: 1px solid var(--accent);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    padding: 4px;
-  }
-
-  .footer-logo-mark span { background: var(--accent); opacity: 0.7; }
-
-  .footer-logo-text {
-    font-family: var(--font-head);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--accent); }
-
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-copy {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-  }
-
-  .footer-badge {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: rgba(232,93,58,0.4);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border: 1px solid rgba(232,93,58,0.2);
-    padding: 3px 10px;
-  }
-
-  /* UTILITY */
-  .bg-mid-section { background: var(--bg-mid); }
-
-  /* RESPONSIVE */
-  @media (max-width: 960px) {
-    .epi-layout, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .diagram-wrap { position: static; }
-    .hero-stats { flex-direction: column; gap: 1.5rem; max-width: 100%; }
-    .hero-stat { border-right: none; padding: 0 0 1.5rem; border-bottom: 1px solid var(--border); }
-    .hero-stat:last-child { border-bottom: none; padding: 0; }
-    .hero-stat:nth-child(2) { padding: 0 0 1.5rem; }
-  }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-links.open {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 62px; left: 0; right: 0;
-      background: rgba(7,11,16,0.98);
-      backdrop-filter: blur(14px);
-      padding: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      gap: 0.8rem;
-      z-index: 999;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grid-Jam | EPI — Electronic Protection of Infrastructure</title>
+  <meta name="description" content="Grid-Jam's EPI system deploys a distributed GNSS jamming grid to neutralize precision drone and missile attacks on critical infrastructure. Approved for Shahed-136 class threats." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #090c10;
+      --bg2:     #0e1219;
+      --bg3:     #131824;
+      --accent:  #c8a84b;
+      --green:   #4fb06d;
+      --red:     #c84b4b;
+      --text:    #d0d6e4;
+      --muted:   #6a738a;
+      --border:  rgba(200,168,75,0.16);
+      --fh:      'Barlow Condensed', sans-serif;
+      --fb:      'Barlow', sans-serif;
+      --max:     1200px;
     }
-    .hamburger { display: flex; }
-    .form-row { grid-template-columns: 1fr; }
-    .explain-step { border-right: none; border-bottom: 1px solid var(--border); }
-    .explain-step:last-child { border-bottom: none; }
-  }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--fb); font-size:16px; line-height:1.65; overflow-x:hidden; }
+    img { max-width:100%; display:block; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .container { max-width:var(--max); margin:0 auto; padding:0 28px; }
+    section { padding:88px 0; }
+    section:nth-child(even) { background:var(--bg2); }
 
-  @media (max-width: 480px) {
-    h1 { font-size: 2.6rem; }
-    .hero-actions { flex-direction: column; align-items: flex-start; }
-    .btn-primary, .btn-outline { width: 100%; text-align: center; }
-  }
+    /* UTILITIES */
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:var(--fh); font-size:11px; font-weight:700;
+      letter-spacing:.22em; text-transform:uppercase; color:var(--accent);
+      margin-bottom:18px;
+    }
+    .eyebrow::before { content:''; width:28px; height:2px; background:var(--accent); }
+    .section-title {
+      font-family:var(--fh); font-size:clamp(28px,4vw,48px);
+      font-weight:800; text-transform:uppercase; letter-spacing:.03em;
+      color:#fff; line-height:1.08; margin-bottom:16px;
+    }
+    .divider { width:56px; height:3px; background:var(--accent); margin-bottom:20px; }
+    .lead { font-size:17px; color:var(--muted); max-width:680px; margin-bottom:48px; line-height:1.75; }
+    .btn {
+      display:inline-block; font-family:var(--fh); font-weight:700;
+      font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+      padding:13px 30px; cursor:pointer; transition:all .2s; border:2px solid transparent;
+    }
+    .btn-primary { background:var(--accent); color:#090c10; border-color:var(--accent); }
+    .btn-primary:hover { background:transparent; color:var(--accent); text-decoration:none; }
+    .btn-ghost { background:transparent; color:var(--text); border-color:rgba(200,168,75,0.35); }
+    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); text-decoration:none; }
+    @keyframes fadein { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:.45} }
+    @keyframes scan   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-  /* SCROLL ANIMATION */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: none; }
+    /* ── NAV ── */
+    .topbar {
+      position:sticky; top:0; z-index:900;
+      background:rgba(9,12,16,0.94); backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:66px; }
+    .logo { display:flex; align-items:center; gap:10px; color:#fff; font-family:var(--fh); font-size:22px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .logo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; width:30px; height:30px; }
+    .logo-grid span { background:var(--accent); border-radius:1px; }
+    .logo-grid span:nth-child(5) { background:var(--green); }
+    nav { display:flex; align-items:center; gap:2px; }
+    nav a { font-family:var(--fh); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:7px 11px; transition:color .2s; }
+    nav a:hover { color:var(--accent); text-decoration:none; }
+    .nav-cta { background:var(--accent); color:#090c10 !important; padding:8px 18px; margin-left:10px; }
+    .nav-cta:hover { background:transparent !important; color:var(--accent) !important; border:1px solid var(--accent); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text); transition:all .3s; }
+    .mob-nav { display:none; flex-direction:column; background:var(--bg2); border-top:1px solid var(--border); padding:12px 28px 20px; }
+    .mob-nav a { font-family:var(--fh); font-size:16px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .mob-nav a:hover { color:var(--accent); text-decoration:none; }
+    .mob-nav.open { display:flex; }
 
-  .fade-in:nth-child(2) { transition-delay: 0.1s; }
-  .fade-in:nth-child(3) { transition-delay: 0.2s; }
-  .fade-in:nth-child(4) { transition-delay: 0.3s; }
-</style>
+    /* ── HERO ── */
+    #hero {
+      position:relative; min-height:100vh; display:flex; align-items:center;
+      padding:0; overflow:hidden; background:var(--bg);
+    }
+    .hero-grid-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(200,168,75,0.055) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(200,168,75,0.055) 1px,transparent 1px);
+      background-size:52px 52px;
+    }
+    .hero-glow { position:absolute; top:-180px; right:-180px; width:750px; height:750px; background:radial-gradient(circle,rgba(200,168,75,0.07) 0%,transparent 68%); pointer-events:none; }
+    .hero-content {
+      position:relative; z-index:2;
+      display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+      padding:120px 0 80px;
+      animation:fadein .7s ease both;
+    }
+    .hero-sup { font-family:var(--fh); font-size:11px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+    .hero-sup::before { content:''; width:28px; height:2px; background:var(--accent); }
+    .hero-h1 { font-family:var(--fh); font-size:clamp(40px,5.5vw,74px); font-weight:800; text-transform:uppercase; line-height:1.0; color:#fff; margin-bottom:22px; }
+    .hero-h1 .hl { color:var(--accent); }
+    .hero-sub { font-size:17px; color:var(--muted); max-width:500px; margin-bottom:34px; line-height:1.75; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:52px; }
+    .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+    .stat { background:var(--bg); padding:18px 16px; }
+    .stat-v { font-family:var(--fh); font-size:30px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:4px; }
+    .stat-l { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.13em; color:var(--muted); }
+
+    /* radar SVG */
+    .hero-vis { display:flex; align-items:center; justify-content:center; }
+    .radar-wrap { position:relative; width:360px; height:360px; }
+    .radar-wrap svg { position:absolute; inset:0; width:100%; height:100%; }
+    .radar-lbl { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+    .radar-lbl-main { font-family:var(--fh); font-size:13px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--green); }
+    .radar-lbl-sub  { font-size:10px; color:var(--muted); margin-top:3px; letter-spacing:.08em; }
+
+    /* ── ALERT STRIP ── */
+    .alert-strip { background:rgba(200,75,75,0.08); border-top:2px solid var(--red); border-bottom:1px solid rgba(200,75,75,0.18); padding:18px 0; }
+    .alert-strip .container { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .alert-strip .icon { font-size:20px; flex-shrink:0; }
+    .alert-strip p { font-family:var(--fh); font-size:15px; font-weight:600; letter-spacing:.02em; color:#ddbcbc; }
+    .alert-strip p strong { color:#fff; }
+
+    /* ── THREATS ── */
+    .threat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:52px; }
+    .tc { background:var(--bg3); padding:30px 26px; transition:background .2s; }
+    .tc:hover { background:rgba(200,168,75,0.04); }
+    .tc-num { font-family:var(--fh); font-size:44px; font-weight:800; color:rgba(200,168,75,0.15); line-height:1; margin-bottom:8px; }
+    .tc-name { font-family:var(--fh); font-size:17px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:10px; }
+    .tc-desc { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+    /* ── WHAT IS EPI ── */
+    .epi-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+    .check-list { list-style:none; display:flex; flex-direction:column; gap:13px; margin-top:8px; }
+    .check-list li { display:flex; align-items:flex-start; gap:12px; font-size:14px; color:var(--muted); line-height:1.55; }
+    .check-list li span.ck { color:var(--green); flex-shrink:0; margin-top:1px; font-weight:700; }
+    .check-list li strong { color:var(--text); }
+    .infobox { background:var(--bg3); border:1px solid var(--border); padding:36px; }
+    .infobox-hd { font-family:var(--fh); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin-bottom:28px; display:flex; align-items:center; gap:8px; }
+    .infobox-hd::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+    .steps { list-style:none; display:flex; flex-direction:column; }
+    .step { display:grid; grid-template-columns:52px 1fr; gap:18px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.055); align-items:start; }
+    .step:last-child { border-bottom:none; }
+    .step-n { width:38px; height:38px; background:var(--bg3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:var(--fh); font-size:16px; font-weight:800; color:var(--accent); flex-shrink:0; }
+    .step-t { font-family:var(--fh); font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:6px; }
+    .step-b { font-size:14px; color:var(--muted); line-height:1.6; }
+    .patent-link { margin-top:24px; font-size:13px; color:var(--muted); }
+    .patent-link a { color:var(--accent); }
+
+    /* ── ADVANTAGES ── */
+    .adv-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:52px; }
+    .adv { background:var(--bg3); border:1px solid var(--border); border-left:3px solid var(--accent); padding:28px 26px; transition:border-color .2s, background .2s; }
+    .adv:hover { background:rgba(200,168,75,0.03); border-color:var(--accent); }
+    .adv-icon { font-size:26px; margin-bottom:14px; }
+    .adv-t { font-family:var(--fh); font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:8px; }
+    .adv-b { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+    /* ── VS TABLE ── */
+    .vs-wrap { overflow-x:auto; margin-top:48px; }
+    .vs { width:100%; border-collapse:collapse; }
+    .vs th { font-family:var(--fh); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; padding:14px 18px; text-align:left; border-bottom:2px solid var(--border); }
+    .vs th:first-child { color:var(--muted); }
+    .vs th:nth-child(2) { color:var(--accent); }
+    .vs th:nth-child(3) { color:var(--muted); }
+    .vs th:nth-child(4) { color:var(--muted); }
+    .vs td { padding:13px 18px; font-size:13.5px; color:var(--muted); border-bottom:1px solid rgba(255,255,255,0.04); }
+    .vs td:first-child { color:var(--text); font-weight:500; }
+    .vs tr:hover td { background:rgba(255,255,255,0.02); }
+    .ok { color:var(--green); font-weight:700; }
+    .no { color:var(--red); font-weight:700; }
+    .pa { color:var(--accent); font-weight:700; }
+
+    /* ── CASE STUDIES ── */
+    .cases { display:flex; flex-direction:column; gap:0; margin-top:48px; }
+    .case { display:grid; grid-template-columns:100px 1fr; gap:0; border-bottom:1px solid rgba(255,255,255,0.05); padding:26px 0; align-items:start; }
+    .case:last-child { border-bottom:none; }
+    .case-yr { font-family:var(--fh); font-size:34px; font-weight:800; color:var(--accent); opacity:.35; line-height:1; }
+    .case-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); background:rgba(200,75,75,0.12); padding:2px 8px; margin-bottom:8px; }
+    .case-title { font-family:var(--fh); font-size:17px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#fff; margin-bottom:7px; }
+    .case-body { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+    /* ── FAQ ── */
+    .faq-wrap { max-width:800px; margin-top:44px; }
+    .faq-item { border-bottom:1px solid rgba(255,255,255,0.055); }
+    .faq-q { width:100%; background:none; border:none; color:var(--text); font-family:var(--fh); font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; text-align:left; padding:20px 0; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .faq-q:hover { color:var(--accent); }
+    .faq-arrow { color:var(--accent); font-size:20px; flex-shrink:0; transition:transform .25s; }
+    .faq-a { display:none; font-size:14.5px; color:var(--muted); padding-bottom:20px; line-height:1.72; }
+    .faq-item.open .faq-a { display:block; }
+    .faq-item.open .faq-arrow { transform:rotate(45deg); }
+
+    /* ── CONTACT ── */
+    #contact { background:var(--bg3); border-top:1px solid var(--border); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+    .cf { display:flex; flex-direction:column; gap:15px; }
+    .fg { display:flex; flex-direction:column; gap:5px; }
+    .fl { font-family:var(--fh); font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    .fi, .fs, .fta {
+      background:var(--bg); border:1px solid rgba(255,255,255,0.09); color:var(--text);
+      font-family:var(--fb); font-size:14px; padding:11px 15px; outline:none; transition:border-color .2s; width:100%;
+    }
+    .fi:focus, .fs:focus, .fta:focus { border-color:var(--accent); }
+    .fs { appearance:none; cursor:pointer; }
+    .fta { min-height:110px; resize:vertical; }
+    .fr { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .contact-info { display:flex; flex-direction:column; gap:28px; }
+    .ci-block {}
+    .ci-label { font-family:var(--fh); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--accent); margin-bottom:8px; }
+    .ci-block p { font-size:13.5px; color:var(--muted); line-height:1.65; }
+    .compliance { background:rgba(200,168,75,0.045); border:1px solid var(--border); padding:18px 22px; margin-top:28px; }
+    .compliance p { font-size:12.5px; color:var(--muted); line-height:1.65; }
+    .compliance strong { color:var(--accent); }
+
+    /* ── FOOTER ── */
+    footer { background:#060810; border-top:1px solid rgba(255,255,255,0.04); padding:44px 0 28px; }
+    .footer-inner { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:44px; margin-bottom:40px; }
+    .footer-brand p { font-size:12.5px; color:var(--muted); margin-top:14px; max-width:270px; line-height:1.65; }
+    .fcol-t { font-family:var(--fh); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    .fcol a { display:block; font-size:12.5px; color:#404860; padding:4px 0; transition:color .2s; }
+    .fcol a:hover { color:var(--accent); text-decoration:none; }
+    .footer-bot { border-top:1px solid rgba(255,255,255,0.04); padding-top:22px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+    .footer-bot p { font-size:11.5px; color:#2e3448; }
+    .badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--fh); font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); border:1px solid var(--border); padding:4px 10px; }
+    .badge-dot { width:5px; height:5px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .hero-content { grid-template-columns:1fr; gap:44px; }
+      .radar-wrap { width:280px; height:280px; }
+      .how-grid, .epi-grid { grid-template-columns:1fr; }
+      .footer-inner { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:768px) {
+      section { padding:60px 0; }
+      nav { display:none; }
+      .hamburger { display:flex; }
+      .threat-grid { grid-template-columns:1fr; }
+      .adv-grid { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; gap:44px; }
+      .fr { grid-template-columns:1fr; }
+      .hero-stats { grid-template-columns:1fr 1fr; }
+      .footer-inner { grid-template-columns:1fr; gap:28px; }
+      .footer-bot { flex-direction:column; align-items:flex-start; }
+      .vs { font-size:12px; }
+      .vs td, .vs th { padding:10px 10px; }
+    }
+    @media(max-width:480px) {
+      .hero-btns { flex-direction:column; }
+      .hero-stats { grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="top">
-  <a href="#top" class="nav-logo">
-    <div class="nav-logo-mark">
-      <span></span><span></span><span></span><span></span>
+<header class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <a href="#hero" class="logo">
+        <div class="logo-grid">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+        GRID-JAM
+      </a>
+      <nav>
+        <a href="#threats">Threats</a>
+        <a href="#epi">What Is EPI</a>
+        <a href="#how">How It Works</a>
+        <a href="#advantages">Advantages</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Request Briefing</a>
+      </nav>
+      <div class="hamburger" id="hbg" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <span class="nav-logo-text">Grid-Jam</span>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#threats">Threats</a></li>
-    <li><a href="#explained">How It Works</a></li>
-    <li><a href="#epi">EPI System</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#cases">Case Studies</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Request Briefing</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  </div>
+  <div class="mob-nav" id="mobnav">
+    <a href="#threats"    onclick="toggleMenu()">Threats</a>
+    <a href="#epi"        onclick="toggleMenu()">What Is EPI?</a>
+    <a href="#how"        onclick="toggleMenu()">How It Works</a>
+    <a href="#advantages" onclick="toggleMenu()">Advantages</a>
+    <a href="#cases"      onclick="toggleMenu()">Case Studies</a>
+    <a href="#faq"        onclick="toggleMenu()">FAQ</a>
+    <a href="#contact"    onclick="toggleMenu()">Request Briefing</a>
+  </div>
+</header>
 
 <!-- HERO -->
-<section class="hero">
+<section id="hero">
   <div class="hero-grid-bg"></div>
-  <div class="hero-radial"></div>
-  <div class="hero-content">
-    <div class="hero-status">
-      <span class="hero-status-dot"></span>
-      System Active — Patent Pending — Defense Export Regulated
-    </div>
-    <div class="hero-label">Electronic Protection of Infrastructure</div>
-    <h1>Deny GPS.<br><em>Deny Precision.</em><br>Protect What Matters.</h1>
-    <p class="hero-sub">
-      Grid-Jam's EPI system deploys a distributed array of GNSS jammers around critical national infrastructure — neutralizing the guidance systems of incoming drones, cruise missiles, and ballistic munitions before they can hit their targets.
-    </p>
-    <div class="hero-actions">
-      <a href="#explained" class="btn-primary">See How It Works</a>
-      <a href="#contact" class="btn-outline">Request Briefing</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-val">50km</div>
-        <div class="hero-stat-label">Vertical Jamming Range</div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <!-- Text -->
+      <div>
+        <div class="hero-sup">Defense Technology &nbsp;·&nbsp; Patent Pending</div>
+        <h1 class="hero-h1">
+          Protect Critical<br/>
+          Infrastructure<br/>
+          From <span class="hl">Drone &amp; Missile</span><br/>
+          Precision Attacks
+        </h1>
+        <p class="hero-sub">
+          Grid-Jam's <strong>EPI System</strong> surrounds strategic assets with a distributed grid of GNSS jammers — forcing precision-guided munitions to miss their target. A surgical strike becomes a statistical miss.
+        </p>
+        <div class="hero-btns">
+          <a href="#how"     class="btn btn-primary">How It Works</a>
+          <a href="#contact" class="btn btn-ghost">Request Briefing</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-v">~5 km</div><div class="stat-l">Denial Zone Radius</div></div>
+          <div class="stat"><div class="stat-v">50 km</div><div class="stat-l">Ballistic Coverage</div></div>
+          <div class="stat"><div class="stat-v">4+</div><div class="stat-l">CRPA Elements Defeated</div></div>
+        </div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">4+</div>
-        <div class="hero-stat-label">CRPA Elements Defeated</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">6</div>
-        <div class="hero-stat-label">GNSS Frequency Bands</div>
+      <!-- Radar -->
+      <div class="hero-vis">
+        <div class="radar-wrap">
+          <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="rg" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4fb06d" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#4fb06d" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="180" cy="180" r="160" fill="none" stroke="rgba(200,168,75,0.10)" stroke-width="1"/>
+            <circle cx="180" cy="180" r="120" fill="none" stroke="rgba(200,168,75,0.14)" stroke-width="1"/>
+            <circle cx="180" cy="180" r="80"  fill="none" stroke="rgba(200,168,75,0.19)" stroke-width="1"/>
+            <circle cx="180" cy="180" r="40"  fill="none" stroke="rgba(200,168,75,0.26)" stroke-width="1"/>
+            <line x1="180" y1="20" x2="180" y2="340" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
+            <line x1="20"  y1="180" x2="340" y2="180" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
+            <line x1="67"  y1="67"  x2="293" y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
+            <line x1="293" y1="67"  x2="67"  y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
+            <!-- scan sweep -->
+            <g style="transform-origin:180px 180px; animation:scan 4s linear infinite">
+              <path d="M180,180 L180,22" stroke="rgba(79,176,109,0.55)" stroke-width="1.5"/>
+              <path d="M180,180 L180,22" stroke="rgba(79,176,109,0.18)" stroke-width="20"/>
+            </g>
+            <!-- jammer nodes -->
+            <circle cx="180" cy="24"  r="6" fill="#c8a84b"/>
+            <circle cx="318" cy="102" r="6" fill="#c8a84b"/>
+            <circle cx="318" cy="258" r="6" fill="#c8a84b"/>
+            <circle cx="180" cy="336" r="6" fill="#c8a84b"/>
+            <circle cx="42"  cy="258" r="6" fill="#c8a84b"/>
+            <circle cx="42"  cy="102" r="6" fill="#c8a84b"/>
+            <circle cx="258" cy="58"  r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="304" cy="180" r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="258" cy="302" r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="102" cy="302" r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="56"  cy="180" r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="102" cy="58"  r="5" fill="#c8a84b" opacity="0.6"/>
+            <!-- protected asset -->
+            <rect x="165" y="165" width="30" height="30" fill="rgba(79,176,109,0.18)" stroke="#4fb06d" stroke-width="1.5"/>
+            <rect x="172" y="172" width="16" height="16" fill="rgba(79,176,109,0.5)"/>
+            <!-- threat blips -->
+            <circle cx="272" cy="74" r="4" fill="#c84b4b" opacity="0.85"><animate attributeName="opacity" values="0.85;0.2;0.85" dur="1.7s" repeatCount="indefinite"/></circle>
+            <circle cx="110" cy="280" r="3" fill="#c84b4b" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.3s" repeatCount="indefinite"/></circle>
+          </svg>
+          <div class="radar-lbl">
+            <div class="radar-lbl-main">EPI ACTIVE</div>
+            <div class="radar-lbl-sub">GNSS Denial Zone</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THREAT LANDSCAPE -->
-<section id="threats" class="bg-mid-section">
-  <div class="section-label">Threat Landscape</div>
-  <h2>The Infrastructure <em>Is Already</em> Under Attack</h2>
-  <p class="section-intro">
-    Modern conflicts have proven that low-cost, GPS-guided weapons can destroy critical national infrastructure with near-surgical precision. These are not future threats — they are happening now, at scale, with catastrophic results.
-  </p>
-
-  <div class="alert-banner fade-in">
-    <div class="alert-icon">⚠</div>
-    <div class="alert-text">
-      <strong>Strategic Conclusion</strong>
-      Without effective GNSS denial, any nation's critical infrastructure — power plants, oil refineries, ports, government facilities — can be destroyed by adversaries deploying mass quantities of cheap GPS-guided munitions. Kinetic air defense alone cannot keep pace.
-    </div>
-  </div>
-
-  <div class="threat-grid">
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ CONFLICT / 2019</div>
-      <div class="threat-title">Houthi Attacks on ARAMCO</div>
-      <p class="threat-desc">Iranian-designed drones struck Saudi Arabia's largest oil processing facilities with precision. The attack demonstrated that civilian energy infrastructure is a viable, high-value target for state-sponsored drone strikes.</p>
-      <div class="threat-damage">💸 ESTIMATED DAMAGE: $5 BILLION USD</div>
-    </div>
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ CONFLICT / 2020</div>
-      <div class="threat-title">Azerbaijan–Armenia War</div>
-      <p class="threat-desc">Israeli-supplied Bayraktar drones systematically dismantled Armenia's radar network and anti-air infrastructure. Legacy air defense was rendered ineffective against coordinated drone swarms in days.</p>
-      <div class="threat-damage">▲ ENTIRE AIR DEFENSE NETWORK DESTROYED</div>
-    </div>
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ ONGOING / 2022–PRESENT</div>
-      <div class="threat-title">Russia–Ukraine Drone War</div>
-      <p class="threat-desc">Russia deploys hundreds of Iranian Shahed-136 / Geran-2 kamikaze drones per single attack wave. Ukraine lost the majority of its energy infrastructure to these strikes. Iron Dome-type systems cannot intercept low-flying drones.</p>
-      <div class="threat-damage">⚡ MOST OF UKRAINE'S ENERGY GRID DESTROYED</div>
-    </div>
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ CONFLICT / 2023–PRESENT</div>
-      <div class="threat-title">Iran vs. Israel / Hezbollah</div>
-      <p class="threat-desc">Hezbollah drones penetrated Israel's multi-layered air defense and hit military targets, including near the Prime Minister's residence. Iran's Shahed-136 uses GPS navigation with 4-element CRPA anti-jam antennas — defeating single-point jammers.</p>
-      <div class="threat-damage">🎯 CRPA-EQUIPPED DRONES BYPASSED AIR DEFENSE</div>
-    </div>
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ KEY LESSON LEARNED</div>
-      <div class="threat-title">The Economic Asymmetry</div>
-      <p class="threat-desc">Attacking with GPS-guided drones costs a fraction of defending against them kinetically. A $20,000 drone can destroy a $500M facility. An interceptor missile costs $1–3M. At scale, defenders always run out of interceptors first.</p>
-      <div class="threat-damage">⚖ OFFENSE IS 100x CHEAPER THAN KINETIC DEFENSE</div>
-    </div>
-    <div class="threat-card fade-in">
-      <div class="threat-year">▸ THREAT CATEGORIES</div>
-      <div class="threat-title">What GNSS Guides Today</div>
-      <p class="threat-desc">Kamikaze UAVs, smart glide bombs, cruise missiles, ballistic rockets, and hypersonic weapons all rely on GPS/GNSS for terminal guidance. Swarms of mixed munitions with warheads from 10kg to hundreds of kg are the new reality.</p>
-      <div class="threat-damage">🛰 ALL MAJOR GNSS CONSTELLATIONS: GPS, GLONASS, GALILEO, BEIDOU</div>
-    </div>
-  </div>
-</section>
-
-<!-- SIMPLE EXPLANATION -->
-<section id="explained" class="explain-section">
-  <div class="section-label">Plain Language Explanation</div>
-  <h2>How EPI Works — <em>Simply</em></h2>
-
-  <div class="explain-intro">
+<!-- ALERT STRIP -->
+<div class="alert-strip">
+  <div class="container">
+    <span class="icon">⚠</span>
     <p>
-      Drones and missiles use GPS to know exactly where they are and where they're going. Without GPS, they're flying blind in the final kilometers — and instead of hitting a precise target, they miss by tens or hundreds of meters.
-    </p>
-    <p>
-      Grid-Jam's EPI system places a network of powerful jammers around the infrastructure you want to protect. When a threat approaches, those jammers flood the area with interference signals — corrupting the GPS signal the weapon relies on. The result: a precision weapon becomes a statistical one.
+      <strong>Strategic Reality:</strong>
+      Drone &amp; missile attacks cost a fraction of hard-kill defenses.
+      Without effective GNSS jamming, attackers with unlimited low-cost GPS-guided munitions hold a decisive asymmetric advantage.
     </p>
   </div>
+</div>
 
-  <div class="explain-steps">
-    <div class="explain-step">
-      <div class="step-num">01</div>
-      <span class="step-icon">🛰</span>
-      <div class="step-title">Threat Approaches Using GPS</div>
-      <p class="step-desc">A drone or missile locks onto your power plant, port, or military base using GPS/GNSS satellite signals. It knows its location to within a few meters.</p>
-    </div>
-    <div class="explain-step">
-      <div class="step-num">02</div>
-      <span class="step-icon">📡</span>
-      <div class="step-title">EPI Grid Activates</div>
-      <p class="step-desc">Upon alert — automatically or manually — the surrounding grid of EPI jammer units switches on, flooding all GPS/GNSS frequencies with interference signals from multiple directions simultaneously.</p>
-    </div>
-    <div class="explain-step">
-      <div class="step-num">03</div>
-      <span class="step-icon">🔇</span>
-      <div class="step-title">CRPA Antennas Are Overwhelmed</div>
-      <p class="step-desc">Modern drones carry CRPA (anti-jam) antennas that can defeat 1–3 jammers. EPI deploys 4+ jammers from different angles simultaneously, overwhelming even the most advanced CRPA systems.</p>
-    </div>
-    <div class="explain-step">
-      <div class="step-num">04</div>
-      <span class="step-icon">❌</span>
-      <div class="step-title">Precision Lost — Target Missed</div>
-      <p class="step-desc">Without reliable GPS for the last 5–50km, the weapon's accuracy degrades from a few meters to tens or hundreds of meters off target. A surgical strike becomes a statistical miss.</p>
+<!-- THREATS -->
+<section id="threats">
+  <div class="container">
+    <div class="eyebrow">Threat Landscape</div>
+    <h2 class="section-title">Precision Threats to<br/>Critical Infrastructure</h2>
+    <div class="divider"></div>
+    <p class="lead">
+      Adversaries now deploy GPS-guided munitions at industrial scale — making traditional hard-kill interception unsustainable in cost and inventory. These are the six primary threat vectors EPI is engineered to defeat.
+    </p>
+    <div class="threat-grid">
+      <div class="tc">
+        <div class="tc-num">01</div>
+        <div class="tc-name">Kamikaze Drones</div>
+        <div class="tc-desc">Loitering munitions such as the Shahed-136 use GPS navigation with 4-element CRPA antennas to strike targets within meters — flying low and slow, beneath conventional air-defense radar coverage.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-num">02</div>
+        <div class="tc-name">Cruise Missiles</div>
+        <div class="tc-desc">Long-range cruise missiles combine inertial navigation with GNSS terminal guidance, enabling pinpoint strikes on energy facilities, seaports, and command centers. Swarm launches exhaust interceptor stockpiles.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-num">03</div>
+        <div class="tc-name">Ballistic &amp; Hypersonic</div>
+        <div class="tc-desc">GNSS-guided maneuvering warheads on ballistic missiles and hypersonic glide vehicles represent the most advanced precision tier. EPI's high-power vertical arrays cover the final 50 km of terminal trajectory.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-num">04</div>
+        <div class="tc-name">Smart Glide Bombs</div>
+        <div class="tc-desc">GPS/INS-guided wing kits convert conventional bombs into stand-off precision weapons, deployable from safe distances with warheads ranging from tens to hundreds of kilograms of TNT.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-num">05</div>
+        <div class="tc-name">Swarm Attacks</div>
+        <div class="tc-desc">Coordinated launches of hundreds of drones and missiles simultaneously saturate C2 systems and deplete interceptor inventories — as demonstrated repeatedly in the Russia–Ukraine conflict since 2022.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-num">06</div>
+        <div class="tc-name">CRPA-Protected Guidance</div>
+        <div class="tc-desc">Controlled Reception Pattern Antennas (CRPA) allow guided weapons to reject signals from up to 3 simultaneous jammers. Standard jamming systems fail against them. Grid-Jam's multi-node array is built to defeat CRPA protection.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EPI SYSTEM DETAILS -->
+<!-- WHAT IS EPI -->
 <section id="epi">
-  <div class="section-label">EPI System</div>
-  <h2>Electronic Protection <em>of Infrastructure</em></h2>
-  <p class="section-intro">
-    EPI (Electronic Protection of Infrastructure) is a patent-pending, grid-based GNSS denial system. It operates as a last line of defense — independently or integrated into existing air defense networks.
-  </p>
-
-  <div class="epi-layout">
-    <ul class="epi-points">
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Distributed Jammer Array</strong>
-          Multiple GNSS jammer units are geographically dispersed around the protected site, forming a grid that creates a "dense electronic minefield" with no coverage gaps.
+  <div class="container">
+    <div class="eyebrow">Solution Overview</div>
+    <h2 class="section-title">What Is EPI?<br/>Electronic Protection of Infrastructure</h2>
+    <div class="divider"></div>
+    <div class="epi-grid">
+      <div>
+        <p style="font-size:16px;color:var(--text);margin-bottom:22px;line-height:1.8">
+          <strong style="color:#fff">EPI</strong> is a geographically distributed array of RF jamming units that work together as a synchronized grid. Think of it as an <strong style="color:var(--accent)">electronic minefield</strong> — invisible, continuously active, covering all approach vectors around a protected asset.
+        </p>
+        <p style="font-size:14.5px;color:var(--muted);margin-bottom:30px;line-height:1.8">
+          When a GPS-guided weapon enters the EPI zone, it loses precise positioning. A strike that would have landed within 2–5 meters of a target is deflected by tens to hundreds of meters — turning a surgical blow into a statistical miss that spares the critical infrastructure.
+        </p>
+        <ul class="check-list">
+          <li><span class="ck">✓</span><span><strong>Last Line of Defense</strong> — operates independently or integrated with existing national air-defense systems</span></li>
+          <li><span class="ck">✓</span><span><strong>Non-Kinetic &amp; Passive</strong> — no interceptor missiles, no airspace deconfliction, no collateral detonation risk</span></li>
+          <li><span class="ck">✓</span><span><strong>Scalable</strong> — from a single facility to city-wide or country-wide grid deployment</span></li>
+          <li><span class="ck">✓</span><span><strong>Evaluated &amp; Approved</strong> — tested effective against Shahed-136 class GNSS-guided platforms</span></li>
+          <li><span class="ck">✓</span><span><strong>Integrates With Air-Defense Warnings</strong> — activates automatically on alert or manually on demand</span></li>
+          <li><span class="ck">✓</span><span><strong>Rapid Deployment</strong> — installation operational within days; jammer units mobile-mountable on vehicles</span></li>
+          <li><span class="ck">✓</span><span><strong>Patent Pending</strong> — proprietary array topology defeats 4-element CRPA guidance systems</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="infobox">
+          <div class="infobox-hd">EPI Denial Zone — Concept Diagram</div>
+          <svg viewBox="0 0 400 340" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="200" cy="185" rx="178" ry="138" fill="rgba(200,168,75,0.04)" stroke="rgba(200,168,75,0.18)" stroke-width="1" stroke-dasharray="6,4"/>
+            <ellipse cx="200" cy="185" rx="92"  ry="72"  fill="rgba(79,176,109,0.06)"  stroke="rgba(79,176,109,0.28)"  stroke-width="1"/>
+            <!-- jammer units -->
+            <g fill="#c8a84b" opacity="0.9">
+              <rect x="192" y="40"  width="16" height="16" rx="2"/>
+              <rect x="350" y="104" width="16" height="16" rx="2"/>
+              <rect x="354" y="248" width="16" height="16" rx="2"/>
+              <rect x="192" y="300" width="16" height="16" rx="2"/>
+              <rect x="30"  y="248" width="16" height="16" rx="2"/>
+              <rect x="32"  y="104" width="16" height="16" rx="2"/>
+            </g>
+            <!-- lines from jammers to zone -->
+            <g stroke="rgba(200,168,75,0.12)" stroke-width="1" fill="none">
+              <line x1="200" y1="56"  x2="200" y2="113"/>
+              <line x1="358" y1="112" x2="284" y2="145"/>
+              <line x1="362" y1="256" x2="284" y2="225"/>
+              <line x1="200" y1="300" x2="200" y2="257"/>
+              <line x1="38"  y1="256" x2="118" y2="225"/>
+              <line x1="40"  y1="112" x2="118" y2="145"/>
+            </g>
+            <!-- asset -->
+            <rect x="180" y="165" width="40" height="40" fill="rgba(79,176,109,0.14)" stroke="#4fb06d" stroke-width="1.5"/>
+            <rect x="188" y="173" width="24" height="24" fill="rgba(79,176,109,0.4)"/>
+            <text x="200" y="222" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="#4fb06d" font-weight="700" letter-spacing="1">PROTECTED ASSET</text>
+            <!-- labels -->
+            <text x="200" y="34"  text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="#c8a84b" font-weight="700" letter-spacing="1">JAMMER UNIT</text>
+            <text x="200" y="240" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(79,176,109,0.55)">POWER PLANT / OIL REFINERY / MILITARY BASE</text>
+            <!-- threat arrow -->
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
+              </marker>
+            </defs>
+            <path d="M340 50 L255 108" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+            <text x="348" y="46" font-family="Barlow Condensed" font-size="9" fill="#c84b4b" font-weight="700">THREAT</text>
+            <!-- deflection -->
+            <path d="M255 108 L224 155" stroke="#c84b4b" stroke-width="1" stroke-dasharray="3,3"/>
+            <circle cx="220" cy="162" r="5" fill="none" stroke="#c84b4b" stroke-width="1" opacity="0.65"/>
+            <text x="232" y="160" font-family="Barlow Condensed" font-size="8" fill="#c84b4b">DEFLECTED</text>
+          </svg>
         </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Defeats Advanced CRPA Antennas</strong>
-          EPI's omnidirectional grid ensures full jamming of 4 or more CRPA antenna elements simultaneously — covering the minimum last 5km final approach phase to the target.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Ballistic & Hypersonic Coverage</strong>
-          Vertical high-power directional jammers provide continuous coverage for ballistic and hypersonic missiles across approximately 50km of atmospheric descent — the full terminal phase.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Precision → Statistical Weapon</strong>
-          Guided munitions are forced to navigate without accurate GNSS during their final flight segment. Hit accuracy degrades from meters to tens or hundreds of meters from the target.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Integrates with Existing Air Defense</strong>
-          EPI can be switched on/off manually or automatically upon alert, and integrates into any customer air-defense command-and-control system.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Rapid National Deployment</strong>
-          Correct deployment of many jammer nodes covering an entire country can be installed in days. Systems are designed for wartime readiness with pre-planned deployment maps.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Low Cost, High Impact</strong>
-          EPI offers a cost-effective extra layer of protection compared to kinetic air defense systems. Evaluated and approved as effective against GNSS-guided platforms including the Shahed-136.
-        </div>
-      </li>
-      <li>
-        <span class="li-icon">▸</span>
-        <div class="li-text">
-          <strong>Export Regulated — Wassenaar ML11.b</strong>
-          GNSS jamming equipment is included in the Wassenaar Munitions List (item ML 11.b) as "Satellite navigation system jamming equipment." Defense export license required from exporting country.
-        </div>
-      </li>
-    </ul>
-
-    <div class="diagram-wrap">
-      <div class="diagram-label">EPI Grid — Conceptual Deployment Diagram</div>
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
-        <defs>
-          <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#00c878" stop-opacity="0.15"/>
-            <stop offset="100%" stop-color="#00c878" stop-opacity="0"/>
-          </radialGradient>
-          <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#e85d3a" stop-opacity="0.12"/>
-            <stop offset="100%" stop-color="#e85d3a" stop-opacity="0"/>
-          </radialGradient>
-          <marker id="arrowRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#e85d3a"/>
-          </marker>
-        </defs>
-
-        <!-- Background grid -->
-        <rect width="400" height="400" fill="#0d1520"/>
-        <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="0" y1="160" x2="400" y2="160" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="0" y1="240" x2="400" y2="240" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="0" y1="320" x2="400" y2="320" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="80" y1="0" x2="80" y2="400" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="160" y1="0" x2="160" y2="400" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="240" y1="0" x2="240" y2="400" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-        <line x1="320" y1="0" x2="320" y2="400" stroke="rgba(0,200,120,0.06)" stroke-width="1"/>
-
-        <!-- Jamming zones (outer) -->
-        <circle cx="200" cy="200" r="160" fill="url(#glow1)" stroke="rgba(0,200,120,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-        <circle cx="200" cy="200" r="110" fill="none" stroke="rgba(0,200,120,0.15)" stroke-width="1" stroke-dasharray="3 6"/>
-
-        <!-- Protected infrastructure center -->
-        <rect x="170" y="170" width="60" height="60" fill="rgba(0,200,120,0.12)" stroke="#00c878" stroke-width="1.5"/>
-        <text x="200" y="195" text-anchor="middle" fill="#00c878" font-family="IBM Plex Mono, monospace" font-size="7" letter-spacing="0.5">PROTECTED</text>
-        <text x="200" y="207" text-anchor="middle" fill="#00c878" font-family="IBM Plex Mono, monospace" font-size="7" letter-spacing="0.5">INFRA</text>
-        <text x="200" y="219" text-anchor="middle" fill="rgba(0,200,120,0.6)" font-family="IBM Plex Mono, monospace" font-size="6">TARGET</text>
-
-        <!-- Jammer nodes (8 positions on ring ~R=140) -->
-        <!-- Top -->
-        <rect x="193" y="52" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,200,59)"/>
-        <circle cx="200" cy="59" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Top-right -->
-        <rect x="270" y="87" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,277,94)"/>
-        <circle cx="277" cy="94" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Right -->
-        <rect x="327" y="193" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,334,200)"/>
-        <circle cx="334" cy="200" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Bottom-right -->
-        <rect x="270" y="299" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,277,306)"/>
-        <circle cx="277" cy="306" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Bottom -->
-        <rect x="193" y="327" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,200,334)"/>
-        <circle cx="200" cy="334" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Bottom-left -->
-        <rect x="116" y="299" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,123,306)"/>
-        <circle cx="123" cy="306" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Left -->
-        <rect x="59" y="193" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,66,200)"/>
-        <circle cx="66" cy="200" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Top-left -->
-        <rect x="116" y="87" width="14" height="14" fill="rgba(0,200,120,0.2)" stroke="#00c878" stroke-width="1.5" transform="rotate(45,123,94)"/>
-        <circle cx="123" cy="94" r="22" fill="none" stroke="rgba(0,200,120,0.25)" stroke-width="1" stroke-dasharray="2 3"/>
-
-        <!-- Drone threat approaching from top-right -->
-        <polygon points="355,30 365,50 345,50" fill="rgba(232,93,58,0.8)" stroke="#e85d3a" stroke-width="1"/>
-        <line x1="355" y1="50" x2="290" y2="110" stroke="#e85d3a" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowRed)" opacity="0.7"/>
-        <text x="365" y="28" fill="#e85d3a" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="0.5">THREAT</text>
-
-        <!-- Labels -->
-        <text x="200" y="392" text-anchor="middle" fill="rgba(0,200,120,0.4)" font-family="IBM Plex Mono, monospace" font-size="7" letter-spacing="1">EPI JAMMING GRID — COVERAGE ZONE</text>
-
-        <!-- Connection lines from jammers to center (faint) -->
-        <line x1="200" y1="59" x2="200" y2="170" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="277" y1="94" x2="230" y2="170" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="334" y1="200" x2="230" y2="200" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="277" y1="306" x2="230" y2="230" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="200" y1="334" x2="200" y2="230" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="123" y1="306" x2="170" y2="230" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="66" y1="200" x2="170" y2="200" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-        <line x1="123" y1="94" x2="170" y2="170" stroke="rgba(0,200,120,0.1)" stroke-width="1"/>
-      </svg>
-
-      <div style="margin-top:1.2rem; font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); display:flex; flex-direction:column; gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border:1.5px solid #00c878;background:rgba(0,200,120,0.15);display:inline-block;transform:rotate(45deg);flex-shrink:0;"></span> EPI Jammer Unit</div>
-        <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:2px;background:rgba(0,200,120,0.4);display:inline-block;flex-shrink:0;"></span> Jamming Coverage Zone</div>
-        <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:2px;background:#e85d3a;display:inline-block;flex-shrink:0;"></span> Incoming Threat Vector</div>
-        <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border:1.5px solid #00c878;background:rgba(0,200,120,0.12);display:inline-block;flex-shrink:0;"></span> Protected Infrastructure</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS TECHNICAL -->
-<section id="how-works" class="bg-mid-section">
-  <div class="section-label">Technical Operation</div>
-  <h2>System <em>Architecture</em></h2>
-  <p class="section-intro">EPI uses two classes of jamming units — omnidirectional for drone/swarm threats in the final approach phase, and vertical directional for ballistic and hypersonic missiles during atmospheric descent.</p>
-
-  <div class="hiw-grid">
-    <div class="hiw-card">
-      <div class="hiw-tag">▸ Mode 01 / Short-Range</div>
-      <h3>Omnidirectional Grid</h3>
-      <p>A ring of omnidirectional jammers ensures complete angular coverage, defeating 4+ element CRPA antennas for at least the last 5km of the threat's flight path to the target.</p>
-      <ul class="spec-list">
-        <li>Defeats CRPA antennas (4+ elements)</li>
-        <li>360° jamming coverage, no null zones</li>
-        <li>Effective against drone swarms</li>
-        <li>Minimum 5km continuous jamming</li>
-        <li>Activates on alert or manually</li>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="eyebrow">Technical Overview</div>
+    <h2 class="section-title">How Grid-Jam Works</h2>
+    <div class="divider"></div>
+    <p class="lead">A plain-language explanation of the technology — from the threat to the solution.</p>
+    <div class="how-grid">
+      <ul class="steps">
+        <li class="step">
+          <div class="step-n">1</div>
+          <div>
+            <div class="step-t">GPS is the Weapon's Brain</div>
+            <div class="step-b">Modern drones and missiles use GPS (a type of GNSS) to know exactly where they are and navigate to their target with meter-level precision. Disrupt that GPS signal and the weapon loses its ability to hit a specific building, tank, or facility.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-n">2</div>
+          <div>
+            <div class="step-t">The Problem: CRPA Antennas Resist Simple Jamming</div>
+            <div class="step-b">Military-grade drones and missiles carry CRPA (Controlled Reception Pattern Antennas) with 4 or more elements. These smart antennas identify and cancel out jamming signals from up to 3 directions simultaneously — rendering single or triple jammer deployments ineffective against modern guided munitions.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-n">3</div>
+          <div>
+            <div class="step-t">The Solution: A Grid That Overwhelms CRPA</div>
+            <div class="step-b">Grid-Jam deploys many jammer units arranged in a geometric array surrounding the protected site. Because jammers attack from more directions than the CRPA can nullify simultaneously, the weapon's guidance system is overwhelmed and loses lock on GPS satellites.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-n">4</div>
+          <div>
+            <div class="step-t">From Precision to Statistics</div>
+            <div class="step-b">Once inside the EPI zone, the weapon's position error grows from meters to tens or hundreds of meters. A strike that would have destroyed an oil pipeline or power transformer now misses entirely. The attack shifts from surgical to statistical — and the infrastructure survives.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-n">5</div>
+          <div>
+            <div class="step-t">Coverage for All Threat Types</div>
+            <div class="step-b">Omnidirectional low-altitude jammers cover drones and cruise missiles for the last 5+ km of approach. High-power vertical long-range directional arrays cover ballistic missile trajectories over ~50 km — including hypersonic glide vehicles during atmospheric re-entry.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-n">6</div>
+          <div>
+            <div class="step-t">Integrated Into Your Defense Ecosystem</div>
+            <div class="step-b">EPI can be switched on/off manually or triggered automatically by integration with national air-defense warning systems. It adds a zero-interceptor-cost defensive layer alongside existing radar, Iron Dome-class systems, or as a standalone last line of defense.</div>
+          </div>
+        </li>
       </ul>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-tag">▸ Mode 02 / Long-Range</div>
-      <h3>Vertical Directional Array</h3>
-      <p>High-power vertical directional jammers deployed in a grouped array provide continuous GNSS disruption across approximately 50km of atmospheric entry — covering the entire terminal descent phase of ballistic and hypersonic weapons.</p>
-      <ul class="spec-list">
-        <li>~50km vertical jamming range</li>
-        <li>Covers full ballistic descent phase</li>
-        <li>Effective against hypersonic threats</li>
-        <li>Yagi antenna configuration</li>
-        <li>Remote activation capability</li>
-      </ul>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-tag">▸ Mode 03 / Integration</div>
-      <h3>Command &amp; Control Integration</h3>
-      <p>EPI integrates seamlessly with national air defense warning systems. It can be triggered automatically upon radar alert, remotely by operators, or manually at the local unit level — providing flexible response across all threat scenarios.</p>
-      <ul class="spec-list">
-        <li>Integrates with existing C2 systems</li>
-        <li>Auto-activation on air defense alert</li>
-        <li>Remote on/off via UHF radio link</li>
-        <li>Adjustable jamming duration (5–30 min)</li>
-        <li>Country-wide scalable deployment</li>
-      </ul>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-tag">▸ Mode 04 / Deployment</div>
-      <h3>Rapid Field Deployment</h3>
-      <p>EPI units are designed for pre-planned rapid deployment in days. Units can be mounted on vehicles for mobility, solving energy supply and security challenges in open terrain. Planning and testing occur in advance; units are stored until operational need.</p>
-      <ul class="spec-list">
-        <li>Country-wide deployment in days</li>
-        <li>Vehicle-mounted option available</li>
-        <li>12–28V DC power (portable)</li>
-        <li>Weather-resistant outdoor casing</li>
-        <li>~5–8kg per unit for portability</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products" class="products-section">
-  <div class="section-label">Hardware Systems</div>
-  <h2>EPI Jamming <em>Units</em></h2>
-  <p class="section-intro">Four field-tested jamming unit configurations covering all threat profiles — from drone swarms at 2.5km to ballistic missiles at 50km. All units cover six GNSS frequency spots across the 1.1–1.6 GHz range.</p>
-
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-type">▸ Unit Type 01 / Omnidirectional</div>
-        <div class="product-name">Omni-25W Jamming Unit</div>
-        <div class="product-power">25<span> Watts</span></div>
-      </div>
-      <div class="product-body">
-        <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">6 bands, 1.1–1.6 GHz</span></div>
-        <div class="spec-row"><span class="spec-key">Range (LoS)</span><span class="spec-val">≥ 2.5 km</span></div>
-        <div class="spec-row"><span class="spec-key">Activation</span><span class="spec-val">Manual / Remote</span></div>
-        <div class="spec-row"><span class="spec-key">Jamming Time</span><span class="spec-val">5–30 min (adj.)</span></div>
-        <div class="spec-row"><span class="spec-key">Size</span><span class="spec-val">20×30×40 cm</span></div>
-        <div class="spec-row"><span class="spec-key">Weight</span><span class="spec-val">~5 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">12–28V DC</span></div>
-        <div class="spec-row"><span class="spec-key">Housing</span><span class="spec-val">Weather-resistant outdoor</span></div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-type">▸ Unit Type 02 / Directional</div>
-        <div class="product-name">Horizontal Dir-25W Unit</div>
-        <div class="product-power">25<span> Watts</span></div>
-      </div>
-      <div class="product-body">
-        <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">6 bands, 1.1–1.6 GHz</span></div>
-        <div class="spec-row"><span class="spec-key">Range (LoS)</span><span class="spec-val">≥ 5 km</span></div>
-        <div class="spec-row"><span class="spec-key">Activation</span><span class="spec-val">Manual / Remote</span></div>
-        <div class="spec-row"><span class="spec-key">Jamming Time</span><span class="spec-val">5–30 min (adj.)</span></div>
-        <div class="spec-row"><span class="spec-key">Size</span><span class="spec-val">20×30×40 cm</span></div>
-        <div class="spec-row"><span class="spec-key">Weight</span><span class="spec-val">~6 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">12–28V DC</span></div>
-        <div class="spec-row"><span class="spec-key">Housing</span><span class="spec-val">Weather-resistant outdoor</span></div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-type">▸ Unit Type 03 / High Power</div>
-        <div class="product-name">Omni-500W Jamming Unit</div>
-        <div class="product-power">300–500<span> W</span></div>
-      </div>
-      <div class="product-body">
-        <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">6 bands, 1.1–1.6 GHz</span></div>
-        <div class="spec-row"><span class="spec-key">Range (LoS)</span><span class="spec-val">≥ 10 km</span></div>
-        <div class="spec-row"><span class="spec-key">Activation</span><span class="spec-val">Manual / Remote</span></div>
-        <div class="spec-row"><span class="spec-key">Jamming Time</span><span class="spec-val">5–30 min (adj.)</span></div>
-        <div class="spec-row"><span class="spec-key">Size</span><span class="spec-val">20×30×40 cm</span></div>
-        <div class="spec-row"><span class="spec-key">Weight</span><span class="spec-val">~7 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">28V DC</span></div>
-        <div class="spec-row"><span class="spec-key">Housing</span><span class="spec-val">Weather-resistant outdoor</span></div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-type">▸ Unit Type 04 / Ballistic</div>
-        <div class="product-name">Vertical Dir-500W Unit</div>
-        <div class="product-power">300–500<span> W</span></div>
-      </div>
-      <div class="product-body">
-        <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">6 bands, 1.1–1.6 GHz</span></div>
-        <div class="spec-row"><span class="spec-key">Range (LoS)</span><span class="spec-val">~50 km vertical</span></div>
-        <div class="spec-row"><span class="spec-key">Activation</span><span class="spec-val">Remote</span></div>
-        <div class="spec-row"><span class="spec-key">Jamming Time</span><span class="spec-val">5–30 min (adj.)</span></div>
-        <div class="spec-row"><span class="spec-key">Size</span><span class="spec-val">20×30×40 cm + Yagi</span></div>
-        <div class="spec-row"><span class="spec-key">Weight</span><span class="spec-val">~8 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">28V DC</span></div>
-        <div class="spec-row"><span class="spec-key">Housing</span><span class="spec-val">Weather-resistant outdoor</span></div>
+      <div>
+        <!-- How-it-works diagram -->
+        <div class="infobox" style="margin-bottom:22px">
+          <div class="infobox-hd">Drone / Cruise Missile Coverage</div>
+          <svg viewBox="0 0 380 260" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- ground line -->
+            <line x1="20" y1="220" x2="360" y2="220" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- 5km zone circle -->
+            <ellipse cx="190" cy="220" rx="155" ry="90" fill="rgba(200,168,75,0.04)" stroke="rgba(200,168,75,0.2)" stroke-width="1" stroke-dasharray="5,4"/>
+            <!-- jammer nodes on ground -->
+            <rect x="26"  y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="90"  y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="182" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="274" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="340" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <!-- protected asset -->
+            <rect x="174" y="196" width="24" height="24" fill="rgba(79,176,109,0.15)" stroke="#4fb06d" stroke-width="1.2"/>
+            <rect x="180" y="202" width="12" height="12" fill="rgba(79,176,109,0.4)"/>
+            <!-- Drone flight path -->
+            <path d="M30,60 Q100,40 150,100 Q170,140 180,190" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr2)"/>
+            <text x="28" y="55" font-family="Barlow Condensed" font-size="9" fill="#c84b4b" font-weight="700">DRONE / CRUISE MISSILE</text>
+            <defs>
+              <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
+              </marker>
+            </defs>
+            <!-- Deviation mark -->
+            <circle cx="180" cy="192" r="12" fill="none" stroke="#c84b4b" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+            <text x="196" y="190" font-family="Barlow Condensed" font-size="8" fill="#c84b4b">±100m MISS</text>
+            <!-- range label -->
+            <line x1="35" y1="230" x2="344" y2="230" stroke="rgba(200,168,75,0.25)" stroke-width="1"/>
+            <text x="190" y="244" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.6)" letter-spacing="1">~ 5 KM GNSS DENIAL ZONE</text>
+          </svg>
+        </div>
+        <div class="infobox">
+          <div class="infobox-hd">Ballistic Missile Coverage</div>
+          <svg viewBox="0 0 380 220" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- ground -->
+            <line x1="20" y1="200" x2="360" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- 50 km corridor -->
+            <rect x="40" y="20" width="300" height="180" fill="rgba(200,168,75,0.03)" stroke="rgba(200,168,75,0.15)" stroke-width="1" stroke-dasharray="6,4"/>
+            <!-- directional jammers -->
+            <g fill="#c8a84b">
+              <polygon points="56,200 64,180 72,200"/>
+              <polygon points="124,200 132,180 140,200"/>
+              <polygon points="192,200 200,180 208,200"/>
+              <polygon points="260,200 268,180 276,200"/>
+              <polygon points="328,200 336,180 344,200"/>
+            </g>
+            <!-- missile trajectory -->
+            <path d="M370,10 L190,190" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr3)"/>
+            <defs>
+              <marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
+              </marker>
+            </defs>
+            <text x="348" y="10" font-family="Barlow Condensed" font-size="8" fill="#c84b4b" font-weight="700" text-anchor="end">BALLISTIC / HYPERSONIC</text>
+            <!-- labels -->
+            <text x="40"  y="14" font-family="Barlow Condensed" font-size="8" fill="rgba(200,168,75,0.6)" letter-spacing="1">VERTICAL HIGH-POWER JAMMING CORRIDOR</text>
+            <text x="190" y="215" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.55)" letter-spacing="1">~ 50 KM COVERAGE</text>
+          </svg>
+        </div>
+        <div class="patent-link">
+          See patent application: <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">patents.justia.com/patent/20230273324</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDIES TIMELINE -->
-<section id="cases" class="cases-section">
-  <div class="section-label">Case Studies</div>
-  <h2>Proven Threat — <em>Documented Attacks</em></h2>
-  <p class="section-intro">Every engagement below represents an attack that EPI-type GNSS denial could have mitigated — by stripping precision from the incoming weapons during their terminal phase.</p>
-
-  <div class="cases-timeline">
-    <div class="timeline-item">
-      <div class="timeline-year">▸ SEPTEMBER 14, 2019</div>
-      <div class="timeline-title">Saudi Arabia — Abqaiq & Khurais Oil Facilities</div>
-      <p class="timeline-body">Houthi rebels using Iranian-designed drones and cruise missiles struck the world's largest crude oil processing facility. The attack was GPS-guided with precision that evaded Saudi air defense. Aramco's output was cut by half. Estimated damages exceeded $5 billion USD. This single event accelerated global interest in GNSS-based infrastructure defense.</p>
-      <div class="timeline-badge">📍 ARAMCO — $5B DAMAGE — GPS-GUIDED ATTACK</div>
+<!-- ADVANTAGES -->
+<section id="advantages">
+  <div class="container">
+    <div class="eyebrow">Why EPI</div>
+    <h2 class="section-title">Strategic &amp; Operational<br/>Advantages</h2>
+    <div class="divider"></div>
+    <p class="lead">EPI solves the cost and scalability problem that traditional hard-kill systems cannot. Here is why defense planners and infrastructure operators choose Grid-Jam.</p>
+    <div class="adv-grid">
+      <div class="adv">
+        <div class="adv-icon">🛡</div>
+        <div class="adv-t">Asymmetric Cost Advantage</div>
+        <div class="adv-b">A single interceptor missile costs $50,000–$3M+. A low-cost GPS-guided drone costs $500–$20,000. EPI neutralizes this imbalance — one jammer node defends against unlimited incoming threats at zero per-engagement cost.</div>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">⚡</div>
+        <div class="adv-t">Rapid Deployment</div>
+        <div class="adv-b">EPI units are pre-planned and stored until needed. Full deployment across a protected site is achievable in days. Units can be vehicle-mounted for rapid repositioning, providing flexible coverage without permanent infrastructure.</div>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">🌐</div>
+        <div class="adv-t">National-Scale Coverage</div>
+        <div class="adv-b">EPI scales from protecting a single refinery to covering an entire country's critical infrastructure grid — power plants, airports, seaports, command centers, and military installations — within a reasonable budget and timeline.</div>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">🔗</div>
+        <div class="adv-t">Seamless Integration</div>
+        <div class="adv-b">EPI integrates with existing national air-defense warning systems. Automatic activation on RADAR alert or manual activation on threat intelligence reduces operator burden and ensures zero-latency response.</div>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">🎯</div>
+        <div class="adv-t">Defeats CRPA — the Hard Problem</div>
+        <div class="adv-b">Unlike conventional single-jammer solutions, Grid-Jam's coordinated array geometry overwhelms 4-element CRPA antennas used in Shahed-136 and equivalent platforms. This is the core technological differentiator that makes EPI effective where others fail.</div>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">📋</div>
+        <div class="adv-t">Export-Controlled &amp; Compliant</div>
+        <div class="adv-b">EPI systems are listed under Wassenaar Munitions List item ML 11b — ensuring regulated, government-to-government transfer processes with full end-use accountability. Grid-Jam works within established defense export frameworks.</div>
+      </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-year">▸ SEPTEMBER–NOVEMBER 2020</div>
-      <div class="timeline-title">Nagorno-Karabakh — Armenia's Air Defense Eliminated</div>
-      <p class="timeline-body">Azerbaijan deployed Israeli-supplied Bayraktar TB2 drones and Israeli Harop loitering munitions to systematically destroy Armenia's entire radar and air defense network within weeks. Armenia's Soviet-era defenses were powerless against GNSS-guided precision strikes. The war ended in Azerbaijan's decisive victory — a model now studied by every major military.</p>
-      <div class="timeline-badge">📍 ENTIRE RADAR NETWORK — DRONE WAR DOCTRINE ESTABLISHED</div>
+    <!-- Comparison table -->
+    <h3 style="font-family:var(--fh);font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-top:64px;margin-bottom:4px">EPI vs. Traditional Defense Layers</h3>
+    <div class="vs-wrap">
+      <table class="vs">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>EPI (Grid-Jam)</th>
+            <th>Interceptor Missiles</th>
+            <th>Radar / EW Detection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Defeats CRPA-equipped drones</td><td class="ok">✓ Yes</td><td class="pa">~ Limited</td><td class="no">✗ No</td></tr>
+          <tr><td>Per-engagement cost</td><td class="ok">✓ Near zero</td><td class="no">✗ $50K–$3M+</td><td class="ok">✓ Near zero</td></tr>
+          <tr><td>Covers swarm attacks</td><td class="ok">✓ Yes</td><td class="no">✗ Stock-limited</td><td class="pa">~ Alert only</td></tr>
+          <tr><td>Effective vs. low-altitude threats</td><td class="ok">✓ Yes</td><td class="no">✗ Radar shadow</td><td class="no">✗ Limited</td></tr>
+          <tr><td>Effective vs. ballistic missiles</td><td class="ok">✓ 50 km corridor</td><td class="ok">✓ Yes</td><td class="ok">✓ Detection</td></tr>
+          <tr><td>Non-kinetic / no collateral risk</td><td class="ok">✓ Yes</td><td class="no">✗ Debris risk</td><td class="ok">✓ Yes</td></tr>
+          <tr><td>Deployment timeline</td><td class="ok">✓ Days</td><td class="no">✗ Months–years</td><td class="pa">~ Weeks</td></tr>
+          <tr><td>Scalable to national coverage</td><td class="ok">✓ Yes</td><td class="no">✗ Cost-prohibitive</td><td class="pa">~ Partial</td></tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</section>
 
-    <div class="timeline-item">
-      <div class="timeline-year">▸ 2022–PRESENT</div>
-      <div class="timeline-title">Ukraine — Infrastructure Systematically Destroyed by Drone Swarms</div>
-      <p class="timeline-body">Russia deployed Iranian Shahed-136 (and locally-built Geran-2) kamikaze drones in waves of hundreds per attack against Ukrainian energy infrastructure. Ukraine lost most of its power generation capacity to these strikes. The Shahed-136 uses GPS navigation combined with 4-element CRPA anti-jam antennas — bypassing standard countermeasures. Iron Dome-class systems cannot intercept low-flying drones at scale.</p>
-      <div class="timeline-badge">📍 UKRAINE ENERGY GRID — SHAHED-136 CRPA ANTENNA BYPASSED AIR DEFENSE</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-year">▸ 2023–PRESENT</div>
-      <div class="timeline-title">Israel — Hezbollah Drones Penetrate Multi-Layer Air Defense</div>
-      <p class="timeline-body">Hezbollah drones successfully penetrated Israel's celebrated multi-tier air defense (Iron Dome, David's Sling, Arrow) and struck military targets. Iranian Shahed variants hit Israel's oil refinery in Haifa and caused damage near the Prime Minister's residence. Israel and Ukraine both ran critically low on interceptor missiles — confirming that kinetic-only defense is unsustainable against mass drone warfare.</p>
-      <div class="timeline-badge">📍 ISRAEL OIL REFINERY HIT — MULTI-LAYER AIR DEFENSE INSUFFICIENT</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-year">▸ KEY LESSON / 2026</div>
-      <div class="timeline-title">The Strategic Conclusion — GNSS Denial Is Essential</div>
-      <p class="timeline-body">The lesson from every major conflict since 2019 is the same: without effective mitigation of GPS navigation, wars will be won by attackers wielding infinite quantities of long-range, low-cost GPS-guided drones and missiles. Grid-Jam was founded precisely to address this gap — providing a cost-effective, rapidly deployable, last line of defense that kinetic systems cannot replace.</p>
-      <div class="timeline-badge">📍 GRID-JAM — FOUNDED 2019 — EVALUATED AGAINST SHAHED-136 PLATFORM</div>
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="container">
+    <div class="eyebrow">Historical Evidence</div>
+    <h2 class="section-title">Drone &amp; Missile Attack<br/>Case Studies</h2>
+    <div class="divider"></div>
+    <p class="lead">Every major conflict since 2019 has validated the threat. These are the real-world events that shaped Grid-Jam's mission and demonstrate the urgency of GNSS-denial defense.</p>
+    <div class="cases">
+      <div class="case">
+        <div class="case-yr">2019</div>
+        <div>
+          <div class="case-tag">Energy Infrastructure</div>
+          <div class="case-title">Houthi Drone Strike on Saudi ARAMCO</div>
+          <div class="case-body">Iranian-supplied drones and cruise missiles struck Saudi Arabia's Abqaiq and Khurais oil processing facilities, temporarily cutting 5% of global oil supply and causing estimated damages exceeding $5 billion USD. The attack demonstrated that GNSS-guided drones could precisely target the soft spots of hardened industrial infrastructure at scale.</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-yr">2020</div>
+        <div>
+          <div class="case-tag">Military Infrastructure</div>
+          <div class="case-title">Azerbaijan–Armenia: Israeli Drones Defeat Air Defense</div>
+          <div class="case-body">Azerbaijan deployed Harop and Bayraktar TB2 drones guided by GPS to systematically destroy Armenia's entire radar network and anti-air infrastructure. The conflict proved that relatively low-cost precision drones could eliminate conventional air-defense systems — rendering expensive ground-based radar networks obsolete without GNSS-denial capability.</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-yr">2022–</div>
+        <div>
+          <div class="case-tag">Energy &amp; National Infrastructure</div>
+          <div class="case-title">Russia–Ukraine: Industrial-Scale Drone and Missile Campaign</div>
+          <div class="case-body">Russia deployed the Iranian Shahed-136 (later produced domestically as Geran-2) in swarms of hundreds per attack, targeting Ukrainian power plants, substations, water treatment facilities, and railway infrastructure. Ukraine lost the majority of its energy infrastructure to these attacks. Iron Dome and equivalent systems proved insufficient to intercept low, slow-flying drones at scale, and Ukraine rapidly depleted its interceptor stockpiles.</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-yr">2023–</div>
+        <div>
+          <div class="case-tag">Military &amp; Civilian Targets</div>
+          <div class="case-title">Hezbollah Drones Penetrate Israeli Air Defense</div>
+          <div class="case-body">Hezbollah drones flew low-altitude profiles that evaded Iron Dome detection, striking military installations and civilian targets including a documented hit near the Israeli Prime Minister's residence. Israel's oil refinery and a major hospital were struck by precise Iranian ballistic missiles. The conflict demonstrated that even the world's most advanced multi-layer air-defense architecture has gaps that GPS-guided low-altitude munitions can exploit.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="faq-section">
-  <div class="section-label">Frequently Asked Questions</div>
-  <h2>Technical &amp; <em>Operational FAQ</em></h2>
-  <p class="section-intro">Key questions from government procurement officers, defense program managers, and military planners.</p>
-
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Does EPI shoot down drones and missiles, or does it work differently?</span>
-        <span class="faq-toggle">+</span>
+<section id="faq">
+  <div class="container">
+    <div class="eyebrow">Frequently Asked Questions</div>
+    <h2 class="section-title">Operational &amp; Technical<br/>Questions Answered</h2>
+    <div class="divider"></div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does EPI intercept or shoot down threats?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">No. EPI is non-kinetic. It does not intercept or physically destroy threats. Instead, it continuously jams GNSS signals over wide areas around strategic infrastructure, causing guided munitions to lose their final-approach precision. The weapon still travels to the general area but misses the critical target by tens to hundreds of meters — effectively neutralizing the threat without any interceptor cost or collateral debris risk.</div>
       </div>
-      <div class="faq-answer">
-        <p>EPI does not physically intercept any threat. Instead, it continuously jams GNSS signals across wide areas, particularly around strategic infrastructure. GNSS-guided munitions, drones and missiles lose their last-kilometer precision and effectively miss the target's critical points. The hit becomes statistical rather than surgical — often a few tens or hundreds of meters off, which can mean the difference between destruction and survival of the asset.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why not just use a single high-power GPS jammer?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Because modern military drones and missiles are equipped with CRPA (Controlled Reception Pattern Antennas) with 4 or more elements. A 4-element CRPA can automatically identify and filter out jamming signals arriving from up to 3 different directions simultaneously. Grid-Jam's distributed array places jammers in more directions than the CRPA can handle at once — overwhelming its filtering capacity and achieving effective denial that a single powerful jammer cannot.</div>
       </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Why can't a single high-power jammer protect a site?</span>
-        <span class="faq-toggle">+</span>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do you know when and where to activate EPI?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Every country operates an air-defense early warning system. EPI integrates directly with these national warning networks for automatic activation upon radar or sensor alert. EPI can also be activated manually at specific sites on local threat intelligence, imminent attack indicators, or upon first confirmed explosions nearby. Country-wide activation and sector-specific activation are both supported.</div>
       </div>
-      <div class="faq-answer">
-        <p>Modern military drones like the Shahed-136 carry CRPA (Controlled Reception Pattern Antennas) with 4 or more elements. A 4-element CRPA can defeat up to 3 jammers from different directions by electronically steering nulls toward interference sources. EPI deploys 4 or more jammer units surrounding the protected area — overwhelming even advanced CRPA systems by flooding all incoming angles simultaneously. This is why the grid/array architecture is the core innovation.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How quickly can EPI be deployed across a country?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Deployment is pre-planned in peacetime — jammer unit positions are engineered and surveyed in advance, with equipment stored until needed. Actual field deployment across a critical site can be completed in days. For the most flexible and rapid option, units can be mounted on standard low-cost vehicles, which simultaneously solves positioning, power, and anti-theft concerns. Full national deployment across multiple infrastructure types is achievable within weeks.</div>
       </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">How does EPI integrate with existing national air defense?</span>
-        <span class="faq-toggle">+</span>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can EPI protect civilians and entire cities?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">EPI is specifically engineered to protect discrete critical infrastructure assets — power plants, oil facilities, military bases, airports, seaports, and government buildings — not general urban areas. Protecting entire cities from every incoming round is beyond the scope of any single system, including conventional air defense. EPI excels as a high-value asset protection layer that significantly reduces the probability of successful precision strikes on nationally critical sites.</div>
       </div>
-      <div class="faq-answer">
-        <p>Every country has an air defense warning and command system. EPI units can be integrated with these systems for automatic activation upon air defense alert — locally and country-wide. They can also be manually activated locally when there is information of imminent attacks or upon first explosions. The system is designed to operate as a seamless additional layer to existing kinetic air defense, not as a replacement for it.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does EPI disrupt civilian GPS in the area?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Because EPI is intended for wartime activation, civilian GNSS disruption in the protected zone is an accepted operational trade-off during active threat periods. Systems are designed to be activated only when needed and deactivated immediately after. Integration with national air-defense warning systems allows precise timing of activation to minimize unnecessary disruption during peacetime conditions.</div>
       </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">How quickly can EPI be deployed across an entire country?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>EPI jamming units are designed for wartime deployment. They are typically not deployed before immediate need. The deployment plan and site positions are mapped and tested in advance, with equipment stored until needed. Full deployment — including many jammer nodes covering an entire country's critical infrastructure sites — can be accomplished in several days. Vehicle-mounted options solve energy supply and security challenges for open-terrain sites. A country-wide network is achievable within a reasonable budget.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Can EPI protect civilian populations and entire cities?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>EPI is designed specifically to protect critical national infrastructure assets — power generation, oil &amp; gas, seaports, airports, military installations, and government facilities. It is not intended to create a blanket shield over entire cities or protect individual structures. In wartime, prioritization of strategic assets is essential. EPI's value is in protecting the infrastructure whose loss would be catastrophic to state function and national resilience.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">What are the export regulations for EPI systems?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>GNSS jamming equipment is included in the Wassenaar Arrangement Munitions List as item ML 11.b: "Satellite navigation system jamming equipment and specially designed components." As such, export is regulated by the exporting country and requires a defense equipment export license. Grid-Jam works with customers through the appropriate government-to-government and commercial licensing channels. Please contact us directly to discuss procurement pathways for your country or organization.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="faq-q-text">Has EPI been evaluated against real-world threats like the Shahed-136?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Yes. Grid-Jam systems were evaluated and approved as effective against GNSS-guided drones including the Shahed-136 platform — one of the most widely deployed and combat-proven GPS-guided kamikaze drones in current use. The Shahed-136 features a 4-element CRPA anti-jam antenna, making it resistant to standard single-point jamming. EPI's grid architecture was specifically designed to defeat this class of target.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What regulatory framework covers EPI export?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">GNSS jamming equipment is classified under the Wassenaar Arrangement Munitions List, item ML 11b: "Satellite navigation system jamming equipment and specially designed components." Export requires a defense export license from the exporting country. Grid-Jam operates fully within this framework, supplying EPI systems through government-to-government channels and approved defense export pathways.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-label">Government & Defense Inquiries</div>
-  <h2>Request a <em>Briefing</em></h2>
-
-  <div class="contact-grid">
-    <div class="contact-info">
-      <p>
-        Grid-Jam works with governments, national defense ministries, military commands, and defense contractors to deploy EPI systems for critical infrastructure protection. All inquiries are handled with appropriate confidentiality.
-      </p>
-
-      <div class="contact-items">
-        <div class="contact-item">
-          <span class="contact-item-icon">🏢</span>
-          <div class="contact-item-body">
-            <strong>Organization</strong>
-            Grid-Jam — In collaboration with Apollo Cloud (Bulgaria)
+<section id="contact">
+  <div class="container">
+    <div class="eyebrow">Get In Touch</div>
+    <h2 class="section-title">Request a Briefing or<br/>Deployment Consultation</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div>
+        <form class="cf" onsubmit="handleForm(event)">
+          <div class="fr">
+            <div class="fg">
+              <label class="fl">First Name</label>
+              <input type="text" class="fi" placeholder="First name" required/>
+            </div>
+            <div class="fg">
+              <label class="fl">Last Name</label>
+              <input type="text" class="fi" placeholder="Last name" required/>
+            </div>
           </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-icon">🌐</span>
-          <div class="contact-item-body">
-            <strong>Website</strong>
-            grid-jam.com
+          <div class="fg">
+            <label class="fl">Organization</label>
+            <input type="text" class="fi" placeholder="Ministry / Agency / Company" required/>
           </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-icon">📋</span>
-          <div class="contact-item-body">
-            <strong>Patent</strong>
-            US Patent Application 20230273324 — View at patents.justia.com
+          <div class="fg">
+            <label class="fl">Official Email</label>
+            <input type="email" class="fi" placeholder="name@organization.gov" required/>
           </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-icon">⚖</span>
-          <div class="contact-item-body">
-            <strong>Export Classification</strong>
-            Wassenaar Munitions List ML 11.b — Defense export license required
+          <div class="fg">
+            <label class="fl">Inquiry Type</label>
+            <select class="fs">
+              <option value="">Select inquiry type</option>
+              <option>Government / National Defense Briefing</option>
+              <option>Defense Industry Partnership</option>
+              <option>Critical Infrastructure Protection</option>
+              <option>System Evaluation / Demonstration</option>
+              <option>Export / Licensing Inquiry</option>
+              <option>Technical Consultation</option>
+            </select>
           </div>
+          <div class="fg">
+            <label class="fl">Message</label>
+            <textarea class="fta" placeholder="Describe your infrastructure protection requirements or inquiry..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Inquiry</button>
+          <p id="form-msg" style="font-size:13px;color:var(--green);display:none;margin-top:4px">✓ Message sent. We will respond to your official contact within 2 business days.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="ci-block">
+          <div class="ci-label">About Grid-Jam</div>
+          <p>Founded in 2019 in direct response to the Houthi drone strikes on Saudi oil infrastructure, Grid-Jam was established by Electronic Warfare veterans with one objective: deny GNSS precision to attacking munitions over protected areas.</p>
+        </div>
+        <div class="ci-block">
+          <div class="ci-label">Operational Status</div>
+          <p>EPI systems have been evaluated and approved as effective against GNSS-guided drone platforms including the Shahed-136 class. Grid-Jam provides scalable solutions from single-facility to national-grid deployments.</p>
+        </div>
+        <div class="ci-block">
+          <div class="ci-label">Technology Partner</div>
+          <p>In collaboration with <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>, Bulgaria.</p>
+        </div>
+        <div class="compliance">
+          <p><strong>Export Compliance Notice:</strong> Grid-Jam EPI systems are classified under the Wassenaar Munitions List (ML 11b). All transactions are subject to defense export licensing by the exporting country. Grid-Jam operates exclusively through approved government and defense industry procurement channels.</p>
         </div>
       </div>
-
-      <div class="contact-note">
-        ▸ NOTE: Grid-Jam systems are defense equipment subject to export control regulations. Inquiries from qualified government entities, licensed defense contractors, and authorized procurement agencies only.
-      </div>
-    </div>
-
-    <div class="contact-form">
-      <div class="form-title">Secure Inquiry Form</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="Col. / Dr. / Mr.">
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Smith">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Organization / Ministry / Command</label>
-        <input type="text" placeholder="Ministry of Defense — [Country]">
-      </div>
-      <div class="form-group">
-        <label>Official Email</label>
-        <input type="email" placeholder="name@mod.gov">
-      </div>
-      <div class="form-group">
-        <label>Inquiry Type</label>
-        <select>
-          <option value="">— Select —</option>
-          <option>Government Procurement Inquiry</option>
-          <option>Defense Contractor Partnership</option>
-          <option>Technical Briefing Request</option>
-          <option>Site Assessment / Deployment Planning</option>
-          <option>Export Licensing Inquiry</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message / Requirements</label>
-        <textarea rows="4" placeholder="Describe your infrastructure protection requirements, deployment scale, and timeline..."></textarea>
-      </div>
-      <button class="form-submit" type="button">Submit Inquiry</button>
-      <p class="form-note">
-        ▸ All submissions are reviewed by Grid-Jam's defense team. Responses are provided to verified government and defense organization contacts only. Expected response time: 2–5 business days.
-      </p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <a href="#top" class="footer-logo">
-      <div class="footer-logo-mark">
-        <span></span><span></span><span></span><span></span>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-grid">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+          GRID-JAM
+        </div>
+        <p>Electronic Protection of Infrastructure — a distributed GNSS jamming solution that defeats precision drone and missile attacks on critical national assets.</p>
       </div>
-      <span class="footer-logo-text">Grid-Jam</span>
-    </a>
-    <ul class="footer-links">
-      <li><a href="#threats">Threats</a></li>
-      <li><a href="#explained">How It Works</a></li>
-      <li><a href="#epi">EPI System</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#cases">Case Studies</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Grid-Jam · In collaboration with Apollo Cloud (Bulgaria) · Patent Pending US 20230273324</div>
-    <div class="footer-badge">Export Controlled — ML 11.b</div>
+      <div class="fcol">
+        <div class="fcol-t">Solution</div>
+        <a href="#epi">What Is EPI?</a>
+        <a href="#how">How It Works</a>
+        <a href="#advantages">Advantages</a>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Intelligence</div>
+        <a href="#threats">Threat Landscape</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Engagement</div>
+        <a href="#contact">Request Briefing</a>
+        <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">Patent Application</a>
+        <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud Partner</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <p>© 2026 Grid-Jam. All rights reserved. GNSS jamming equipment is export-controlled under Wassenaar ML 11b.</p>
+      <div class="badge"><span class="badge-dot"></span> EPI SYSTEM ACTIVE</div>
+    </div>
   </div>
 </footer>
 
 <script>
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+  function toggleMenu() {
+    document.getElementById('mobnav').classList.toggle('open');
+  }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+  function handleForm(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    e.target.reset();
+  }
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobnav');
+    const hbg = document.getElementById('hbg');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !hbg.contains(e.target)) {
+      nav.classList.remove('open');
+    }
   });
-
-  // Close nav on link click (mobile)
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement;
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!wasOpen) item.classList.add('open');
-    });
-  });
-
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
   // Active nav highlight on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinksList = document.querySelectorAll('.nav-links a');
-
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav a');
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
     });
-    navLinksList.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
-  }, { passive: true });
+  });
 </script>
 </body>
 </html>
