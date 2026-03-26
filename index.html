@@ -1,366 +1,508 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grid-Jam | EPI — Electronic Protection of Infrastructure</title>
-  <meta name="description" content="Grid-Jam's EPI system deploys a distributed GNSS jamming grid to neutralize precision drone and missile attacks on critical infrastructure. Approved for Shahed-136 class threats." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+  <!-- ═══ SEO: PRIMARY META ═══ -->
+  <title>Anti-Drone & Missile Defense: GNSS Jamming Grid for Critical Infrastructure | Grid-Jam EPI</title>
+  <meta name="description" content="Grid-Jam EPI deploys a distributed GNSS jamming array to neutralize GPS-guided drones, cruise missiles & ballistic missiles. Ukraine tested & approved. Protects power plants, airports, seaports & military bases worldwide. Patent pending."/>
+  <meta name="keywords" content="anti-drone jamming system, counter-UAV GPS jamming, GNSS jamming defense, drone defense critical infrastructure, Shahed-136 countermeasure, CRPA antenna defeat, ballistic missile GPS jamming, kamikaze drone defense, counter-UAS power plant, C-UAS airport seaport, drone swarm countermeasure, GPS denial zone, EPI electronic protection infrastructure, RF jammer array"/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+  <meta name="author" content="Alon Wallach"/>
+  <link rel="canonical" href="https://grid-jam.com/"/>
+
+  <!-- ═══ SEO: OPEN GRAPH (Facebook/LinkedIn) ═══ -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://grid-jam.com/"/>
+  <meta property="og:title" content="Grid-Jam EPI — Anti-Drone GNSS Jamming Grid for Critical Infrastructure"/>
+  <meta property="og:description" content="Distributed GNSS jammer array that defeats GPS-guided drones, cruise missiles & ballistic missiles. Ukraine tested. Protects power plants, airports & military bases."/>
+  <meta property="og:image" content="https://grid-jam.com/wp-content/uploads/2025/10/cropped-grid-logo.png"/>
+  <meta property="og:site_name" content="Grid-Jam"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!-- ═══ SEO: TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Grid-Jam EPI — Anti-Drone GNSS Jamming Grid"/>
+  <meta name="twitter:description" content="Distributed GNSS jammer array defeating GPS-guided drones & missiles. Ukraine tested. Protects critical infrastructure worldwide."/>
+  <meta name="twitter:image" content="https://grid-jam.com/wp-content/uploads/2025/10/cropped-grid-logo.png"/>
+
+  <!-- ═══ SEO: JSON-LD STRUCTURED DATA ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Grid-Jam",
+    "alternateName": "Grid-Jam EPI",
+    "url": "https://grid-jam.com",
+    "logo": "https://grid-jam.com/wp-content/uploads/2025/10/cropped-grid-logo.png",
+    "description": "Grid-Jam develops and deploys the EPI (Electronic Protection of Infrastructure) system — a distributed GNSS jamming array that neutralizes GPS-guided drones, cruise missiles, and ballistic missiles targeting critical infrastructure.",
+    "foundingDate": "2019",
+    "founder": {
+      "@type": "Person",
+      "name": "Alon Wallach",
+      "sameAs": "https://www.linkedin.com/in/alon-wallach-6625b310/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Sales",
+      "url": "https://grid-jam.com/#contact",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/alon-wallach-6625b310/",
+      "https://github.com/omriwa"
+    ],
+    "keywords": "anti-drone jamming, GNSS jamming defense, counter-UAV, GPS guided drone protection, critical infrastructure defense, EPI system",
+    "areaServed": "Worldwide",
+    "makesOffer": {
+      "@type": "Offer",
+      "name": "EPI — Electronic Protection of Infrastructure",
+      "description": "Distributed GNSS jamming grid for critical infrastructure protection against GPS-guided drones and missiles"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an anti-drone GNSS jamming system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An anti-drone GNSS jamming system disrupts the GPS/GNSS navigation signals that precision drones and missiles depend on. Grid-Jam's EPI deploys multiple coordinated jammers in a geometric array, overwhelming a weapon's CRPA (anti-jam) antenna from more directions than it can nullify — converting a precision strike into a statistical miss."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Grid-Jam EPI defend against GPS-guided drones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EPI surrounds the protected site with a distributed grid of GNSS jammer units. When a drone or missile enters the denial zone, the grid attacks from more directions than the CRPA antenna can filter simultaneously, breaking GPS lock and causing the weapon to miss its target by tens to hundreds of meters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can GNSS jamming stop a Shahed-136 kamikaze drone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Grid-Jam EPI was evaluated and approved as effective against Shahed-136 class drones in Ukraine in 2022. The Shahed-136 uses GPS with a 4-element CRPA antenna. Grid-Jam's array geometry overwhelms the CRPA from more angles than it can defeat, denying navigation precision in the final approach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What critical infrastructure can EPI protect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EPI protects power plants, oil refineries, gas facilities, seaports, airports, military bases, government buildings, and water infrastructure. Deployments range from a single facility mini-grid to country-wide national protection grids covering all strategic assets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can GNSS jamming stop ballistic missiles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grid-Jam's Unit Type 4 — a vertical directional 300–500W jammer — covers a 50 km atmospheric re-entry corridor, jamming the GNSS terminal guidance phase of ballistic and hypersonic missiles. A grouped array of these units provides national-scale ballistic missile GPS denial."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can't a single powerful GPS jammer stop military drones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Military drones use CRPA (Controlled Reception Pattern Antennas) with 4+ elements that automatically null out jamming signals from up to 3 directions simultaneously. A single jammer is completely ineffective. Only Grid-Jam's coordinated distributed array attacks from enough directions to overwhelm the CRPA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can EPI be deployed to protect critical infrastructure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EPI can be deployed within days using vehicle-rooftop mounting, which simultaneously solves positioning, power supply, and security. A mini-grid protecting a single facility can be operational in 24–48 hours. A country-wide national grid can be deployed within weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is GPS jamming legal for infrastructure defense?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GNSS jamming equipment is classified under the Wassenaar Arrangement Munitions List (ML 11b). Export requires a defense export license from the originating country. Grid-Jam operates exclusively through approved government-to-government and licensed defense procurement channels."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Grid-Jam EPI — Anti-Drone GNSS Jamming Defense System",
+    "url": "https://grid-jam.com/",
+    "description": "Distributed GNSS jamming array that defeats GPS-guided drones, cruise missiles and ballistic missiles attacking critical infrastructure.",
+    "author": {
+      "@type": "Person",
+      "name": "Omri Wallach",
+      "jobTitle": "CEO",
+      "worksFor": {"@type":"Organization","name":"Apollo Cloud"},
+      "url": "https://www.linkedin.com/in/omri-wallach-19989a113/"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Apollo Cloud",
+      "url": "https://www.linkedin.com/company/apollo-s-cloud/"
+    },
+    "keywords": "anti-drone jamming, GNSS defense, counter-UAV, GPS guided drone protection, critical infrastructure defense, Shahed-136 countermeasure, ballistic missile GPS jamming"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* ── RESET ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:      #090c10;
-      --bg2:     #0e1219;
-      --bg3:     #131824;
-      --accent:  #c8a84b;
-      --green:   #4fb06d;
-      --red:     #c84b4b;
-      --text:    #d0d6e4;
-      --muted:   #6a738a;
-      --border:  rgba(200,168,75,0.16);
-      --fh:      'Barlow Condensed', sans-serif;
-      --fb:      'Barlow', sans-serif;
-      --max:     1200px;
-      --nav-h:   66px;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#090c10;--bg2:#0e1219;--bg3:#131824;
+      --accent:#c8a84b;--green:#4fb06d;--red:#c84b4b;
+      --text:#d0d6e4;--muted:#6a738a;--border:rgba(200,168,75,0.16);
+      --fh:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+      --max:1200px;--nav-h:66px;
     }
-    html { scroll-behavior: smooth; }
-    body { background:var(--bg); color:var(--text); font-family:var(--fb); font-size:16px; line-height:1.65; overflow-x:hidden; }
-    img { max-width:100%; display:block; }
-    a { color:var(--accent); text-decoration:none; }
-    a:hover { text-decoration:underline; }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;overflow-x:hidden}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 28px}
+    section{padding:88px 0}
+    section[id],div[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
+    section:nth-child(even){background:var(--bg2)}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+    .eyebrow::before{content:'';width:28px;height:2px;background:var(--accent);flex-shrink:0}
+    .section-title{font-family:var(--fh);font-size:clamp(26px,4vw,48px);font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:#fff;line-height:1.08;margin-bottom:16px}
+    .divider{width:56px;height:3px;background:var(--accent);margin-bottom:20px}
+    .lead{font-size:clamp(15px,2vw,17px);color:var(--muted);max-width:680px;margin-bottom:48px;line-height:1.75}
+    .btn{display:inline-block;font-family:var(--fh);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:14px 30px;cursor:pointer;transition:all .2s;border:2px solid transparent;min-height:44px}
+    .btn-primary{background:var(--accent);color:#090c10;border-color:var(--accent)}
+    .btn-primary:hover{background:transparent;color:var(--accent);text-decoration:none}
+    .btn-ghost{background:transparent;color:var(--text);border-color:rgba(200,168,75,0.35)}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+    @keyframes fadein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+    @keyframes scan{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes progress{from{width:0%}to{width:100%}}
 
-    /* ── LAYOUT ────────────────────────────────────────────── */
-    .container { max-width:var(--max); margin:0 auto; padding:0 28px; }
-    section { padding:88px 0; }
-    /* scroll-margin-top ensures sticky nav doesn't cover section headings */
-    section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
-    section:nth-child(even) { background:var(--bg2); }
+    /* NAV */
+    .topbar{position:sticky;top:0;z-index:900;background:rgba(9,12,16,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+    .logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--fh);font-size:22px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
+    .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:30px;height:30px;flex-shrink:0}
+    .logo-grid span{background:var(--accent);border-radius:1px}
+    .logo-grid span:nth-child(5){background:var(--green)}
+    nav{display:flex;align-items:center;gap:1px}
+    nav a{font-family:var(--fh);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 9px;transition:color .2s;white-space:nowrap;min-height:44px;display:flex;align-items:center}
+    nav a:hover,nav a.active{color:var(--accent);text-decoration:none}
+    .nav-cta{background:var(--accent);color:#090c10!important;padding:8px 14px;margin-left:6px}
+    .nav-cta:hover{background:transparent!important;color:var(--accent)!important;border:1px solid var(--accent)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all .3s}
+    .hamburger.is-open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.is-open span:nth-child(2){opacity:0}
+    .hamburger.is-open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mob-nav{display:none;flex-direction:column;background:var(--bg2);border-top:1px solid var(--border);padding:8px 28px 20px;max-height:calc(100vh - var(--nav-h));overflow-y:auto}
+    .mob-nav a{font-family:var(--fh);font-size:17px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.04);min-height:44px;display:flex;align-items:center}
+    .mob-nav a:last-child{border-bottom:none}
+    .mob-nav a:hover{color:var(--accent);text-decoration:none}
+    .mob-nav.open{display:flex}
 
-    /* ── UTILITIES ─────────────────────────────────────────── */
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:10px;
-      font-family:var(--fh); font-size:11px; font-weight:700;
-      letter-spacing:.22em; text-transform:uppercase; color:var(--accent);
-      margin-bottom:18px;
+    /* HERO */
+    #hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:0;overflow:hidden;background:var(--bg)}
+    .hero-grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(200,168,75,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.055) 1px,transparent 1px);background-size:52px 52px}
+    .hero-glow{position:absolute;top:-180px;right:-180px;width:750px;height:750px;background:radial-gradient(circle,rgba(200,168,75,.07) 0%,transparent 68%);pointer-events:none}
+    .hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:clamp(80px,12vh,130px) 0 clamp(60px,8vh,90px);animation:fadein .7s ease both;min-width:0}
+    .hero-content>*{min-width:0}
+    .hero-sup{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .hero-sup::before{content:'';width:28px;height:2px;background:var(--accent);flex-shrink:0}
+    .hero-h1{font-family:var(--fh);font-size:clamp(34px,5.5vw,72px);font-weight:800;text-transform:uppercase;line-height:1.0;color:#fff;margin-bottom:22px}
+    .hero-h1 .hl{color:var(--accent)}
+    .hero-sub{font-size:clamp(15px,1.8vw,17px);color:var(--muted);max-width:500px;margin-bottom:34px;line-height:1.75}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+    .stat{background:var(--bg);padding:16px 14px;min-width:0}
+    .stat-v{font-family:var(--fh);font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px}
+    .stat-l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);line-height:1.3}
+    .hero-vis{display:flex;align-items:center;justify-content:center}
+    .radar-wrap{position:relative;width:min(360px,90vw);aspect-ratio:1}
+    .radar-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+    .radar-lbl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+    .radar-lbl-main{font-family:var(--fh);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+    .radar-lbl-sub{font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:.08em}
+
+    /* SLIDER */
+    #slider-section{padding:0;background:var(--bg);position:relative;overflow:hidden}
+    .slider-wrap{position:relative;width:100%;height:540px;overflow:hidden}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:flex-end;background-size:cover;background-position:center;background-repeat:no-repeat}
+    .slide.active{opacity:1;z-index:2}
+    .slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,10,0.92) 0%,rgba(4,6,10,0.55) 50%,rgba(4,6,10,0.28) 100%)}
+    .slide-content{position:relative;z-index:3;width:100%;max-width:var(--max);margin:0 auto;padding:0 28px 52px}
+    .slide-tag{display:inline-block;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);background:rgba(200,75,75,0.15);border:1px solid rgba(200,75,75,0.3);padding:3px 12px;margin-bottom:14px}
+    .slide-tag.solution{color:var(--green);background:rgba(79,176,109,0.12);border-color:rgba(79,176,109,0.25)}
+    .slide-title{font-family:var(--fh);font-size:clamp(22px,4.5vw,52px);font-weight:800;text-transform:uppercase;line-height:1.05;color:#fff;margin-bottom:12px;max-width:820px}
+    .slide-sub{font-size:clamp(13px,1.8vw,16px);color:rgba(208,214,228,0.8);max-width:680px;line-height:1.65}
+    .slider-prev,.slider-next{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;background:rgba(9,12,16,0.7);border:1px solid var(--border);color:var(--accent);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(4px)}
+    .slider-prev:hover,.slider-next:hover{background:rgba(200,168,75,0.15)}
+    .slider-prev{left:20px}
+    .slider-next{right:20px}
+    .slider-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px}
+    .dot{width:28px;height:3px;background:rgba(255,255,255,0.25);cursor:pointer;transition:background .3s,width .3s}
+    .dot.active{background:var(--accent);width:40px}
+    .slider-progress{position:absolute;bottom:0;left:0;height:2px;background:var(--accent);z-index:10}
+    .slider-progress.running{animation:progress 6s linear}
+
+    /* ALERT */
+    .alert-strip{background:rgba(200,75,75,0.08);border-top:2px solid var(--red);border-bottom:1px solid rgba(200,75,75,0.18);padding:18px 0}
+    .alert-strip .container{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+    .alert-strip .icon{font-size:20px;flex-shrink:0;margin-top:1px}
+    .alert-strip p{font-family:var(--fh);font-size:clamp(13px,2vw,15px);font-weight:600;letter-spacing:.02em;color:#ddbcbc;line-height:1.5}
+    .alert-strip p strong{color:#fff}
+
+    /* THREATS */
+    .threat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px}
+    .tc{background:var(--bg3);padding:28px 24px;transition:background .2s;min-width:0}
+    .tc:hover{background:rgba(200,168,75,0.04)}
+    .tc-num{font-family:var(--fh);font-size:44px;font-weight:800;color:rgba(200,168,75,0.15);line-height:1;margin-bottom:8px}
+    .tc-name{font-family:var(--fh);font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:10px}
+    .tc-desc{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+    /* EPI */
+    .epi-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;min-width:0}
+    .epi-grid>*{min-width:0}
+    .check-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+    .check-list li{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:var(--muted);line-height:1.55}
+    .check-list li span.ck{color:var(--green);flex-shrink:0;margin-top:1px;font-weight:700}
+    .check-list li strong{color:var(--text)}
+    .infobox{background:var(--bg3);border:1px solid var(--border);padding:clamp(16px,3.5vw,32px)}
+    .infobox-hd{font-family:var(--fh);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:22px;display:flex;align-items:center;gap:8px}
+    .infobox-hd::before{content:'';width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+
+    /* HOW */
+    .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;min-width:0}
+    .how-grid>*{min-width:0}
+    .steps{list-style:none;display:flex;flex-direction:column}
+    .step{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.055);align-items:start;min-width:0}
+    .step>*{min-width:0}
+    .step:last-child{border-bottom:none}
+    .step-n{width:36px;height:36px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:15px;font-weight:800;color:var(--accent);flex-shrink:0}
+    .step-t{font-family:var(--fh);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:5px;line-height:1.2}
+    .step-b{font-size:13.5px;color:var(--muted);line-height:1.6}
+    .patent-link{margin-top:22px;font-size:13px;color:var(--muted);word-break:break-word}
+    .patent-link a{color:var(--accent)}
+
+    /* PRODUCTS */
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+    .product-card{background:var(--bg3);border:1px solid var(--border);padding:28px 26px;min-width:0;position:relative;overflow:hidden}
+    .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+    .product-type{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .product-name{font-family:var(--fh);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:18px;line-height:1.2}
+    .product-specs{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .product-specs li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.4}
+    .product-specs li::before{content:'—';color:var(--accent);flex-shrink:0;font-weight:700}
+    .product-specs li strong{color:var(--text);min-width:130px;flex-shrink:0}
+    .pbadge{display:inline-block;font-family:var(--fh);font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;margin-top:16px}
+    .pbadge.omni{color:var(--green);background:rgba(79,176,109,.1);border:1px solid rgba(79,176,109,.2)}
+    .pbadge.dir{color:var(--accent);background:rgba(200,168,75,.1);border:1px solid rgba(200,168,75,.2)}
+    .pbadge.hp{color:#e07a5f;background:rgba(224,122,95,.1);border:1px solid rgba(224,122,95,.2)}
+
+    /* IMPLEMENTATION */
+    .impl-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:52px}
+    .impl-block{min-width:0}
+    .impl-block-title{font-family:var(--fh);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .impl-block-title::before{content:'';width:20px;height:2px;background:var(--accent);flex-shrink:0}
+    .impl-list{list-style:none;display:flex;flex-direction:column}
+    .impl-item{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:start;min-width:0}
+    .impl-item:last-child{border-bottom:none}
+    .impl-num{font-family:var(--fh);font-size:18px;font-weight:800;color:rgba(200,168,75,.3);line-height:1;padding-top:2px}
+    .impl-text{font-size:13.5px;color:var(--muted);line-height:1.65}
+    .impl-text strong{color:var(--text);display:block;margin-bottom:3px;font-family:var(--fh);font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+
+    /* ADVANTAGES */
+    .adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px}
+    .adv{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--accent);padding:26px 24px;transition:background .2s;min-width:0}
+    .adv:hover{background:rgba(200,168,75,.03)}
+    .adv-icon{font-size:24px;margin-bottom:12px}
+    .adv-t{font-family:var(--fh);font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:8px}
+    .adv-b{font-size:13.5px;color:var(--muted);line-height:1.6}
+    .vs-wrap{overflow-x:auto;margin-top:48px;-webkit-overflow-scrolling:touch}
+    .vs{width:100%;border-collapse:collapse;min-width:560px}
+    .vs th{font-family:var(--fh);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:13px 16px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap}
+    .vs th:first-child{color:var(--muted)}
+    .vs th:nth-child(2){color:var(--accent)}
+    .vs th:nth-child(3),.vs th:nth-child(4){color:var(--muted)}
+    .vs td{padding:12px 16px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.04)}
+    .vs td:first-child{color:var(--text);font-weight:500}
+    .vs tr:hover td{background:rgba(255,255,255,.02)}
+    .ok{color:var(--green);font-weight:700;white-space:nowrap}
+    .no{color:var(--red);font-weight:700;white-space:nowrap}
+    .pa{color:var(--accent);font-weight:700;white-space:nowrap}
+
+    /* CASES */
+    .cases{display:flex;flex-direction:column;margin-top:48px}
+    .case{display:grid;grid-template-columns:90px 1fr;gap:0 16px;border-bottom:1px solid rgba(255,255,255,.05);padding:24px 0;align-items:start;min-width:0}
+    .case>*{min-width:0}
+    .case:last-child{border-bottom:none}
+    .case-yr{font-family:var(--fh);font-size:clamp(22px,4vw,34px);font-weight:800;color:var(--accent);opacity:.35;line-height:1.1;padding-top:4px}
+    .case-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,75,75,.12);padding:2px 8px;margin-bottom:8px}
+    .case-title{font-family:var(--fh);font-size:clamp(15px,2.5vw,17px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:7px;line-height:1.2}
+    .case-body{font-size:13.5px;color:var(--muted);line-height:1.6}
+    .swarm-note{background:rgba(200,75,75,.06);border:1px solid rgba(200,75,75,.15);padding:18px 22px;margin-top:32px}
+    .swarm-note p{font-size:13.5px;color:#ddbcbc;line-height:1.65}
+    .swarm-note strong{color:#fff}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;min-width:0}
+    .about-grid>*{min-width:0}
+    .about-text p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+    .about-text p:last-child{margin-bottom:0}
+    .about-text strong{color:var(--text)}
+    .timeline{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:72px 1fr;gap:0 16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:start;min-width:0}
+    .tl-item:last-child{border-bottom:none}
+    .tl-year{font-family:var(--fh);font-size:20px;font-weight:800;color:var(--accent);opacity:.5;line-height:1.1;padding-top:2px}
+    .tl-content strong{display:block;font-family:var(--fh);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:5px}
+    .tl-content p{font-size:13px;color:var(--muted);line-height:1.6}
+
+    /* MARKET STATS BAND */
+    .market-band{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 0}
+    .market-band .container{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+    .mstat{background:var(--bg3);padding:20px;text-align:center}
+    .mstat-v{font-family:var(--fh);font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--accent);line-height:1;margin-bottom:5px}
+    .mstat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;line-height:1.35}
+
+    /* FAQ */
+    .faq-wrap{max-width:800px;margin-top:44px}
+    .faq-item{border-bottom:1px solid rgba(255,255,255,.055)}
+    .faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--fh);font-size:clamp(13px,2vw,15px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:18px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;line-height:1.3}
+    .faq-q:hover{color:var(--accent)}
+    .faq-arrow{color:var(--accent);font-size:20px;flex-shrink:0;transition:transform .25s}
+    .faq-a{display:none;font-size:clamp(13px,2vw,14.5px);color:var(--muted);padding-bottom:18px;line-height:1.72}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-arrow{transform:rotate(45deg)}
+
+    /* CONTACT */
+    #contact{background:var(--bg3);border-top:1px solid var(--border)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;min-width:0}
+    .contact-grid>*{min-width:0}
+    .cf{display:flex;flex-direction:column;gap:14px}
+    .fg{display:flex;flex-direction:column;gap:5px}
+    .fl{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+    .fi,.fs,.fta{background:var(--bg);border:1px solid rgba(255,255,255,.09);color:var(--text);font-family:var(--fb);font-size:15px;padding:12px 15px;outline:none;transition:border-color .2s;width:100%;min-height:44px;border-radius:0}
+    .fi:focus,.fs:focus,.fta:focus{border-color:var(--accent)}
+    .fs{appearance:none;cursor:pointer}
+    .fta{min-height:110px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact-info{display:flex;flex-direction:column;gap:26px}
+    .ci-label{font-family:var(--fh);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:8px}
+    .ci-block p{font-size:13.5px;color:var(--muted);line-height:1.65}
+    .compliance{background:rgba(200,168,75,.045);border:1px solid var(--border);padding:16px 20px;margin-top:24px}
+    .compliance p{font-size:12.5px;color:var(--muted);line-height:1.65}
+    .compliance strong{color:var(--accent)}
+
+    /* FOOTER */
+    footer{background:#060810;border-top:1px solid rgba(255,255,255,.04);padding:44px 0 28px}
+    .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .footer-brand p{font-size:12.5px;color:var(--muted);margin-top:14px;max-width:270px;line-height:1.65}
+    .fcol-t{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .fcol a{display:block;font-size:12.5px;color:#404860;padding:4px 0;transition:color .2s;min-height:32px;line-height:32px}
+    .fcol a:hover{color:var(--accent);text-decoration:none}
+    .footer-bot{border-top:1px solid rgba(255,255,255,.04);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer-bot p{font-size:11.5px;color:#2e3448}
+    .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);padding:5px 12px}
+    .badge-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+    .social-links{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .social-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid rgba(255,255,255,.07);padding:5px 12px;transition:color .2s,border-color .2s}
+    .social-link:hover{color:var(--accent);border-color:var(--border);text-decoration:none}
+    .built-by{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#2e3448;margin-top:8px}
+    .built-by a{color:#404860}
+    .built-by a:hover{color:var(--accent)}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero-content{grid-template-columns:1fr;gap:48px}
+      .hero-vis{order:-1}
+      .radar-wrap{width:min(300px,80vw)}
+      .epi-grid,.how-grid,.about-grid{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+      nav a{font-size:10px;padding:8px 7px}
+      .slider-wrap{height:440px}
+      .market-band .container{grid-template-columns:1fr 1fr}
     }
-    .eyebrow::before { content:''; width:28px; height:2px; background:var(--accent); flex-shrink:0; }
-    .section-title {
-      font-family:var(--fh); font-size:clamp(26px,4vw,48px);
-      font-weight:800; text-transform:uppercase; letter-spacing:.03em;
-      color:#fff; line-height:1.08; margin-bottom:16px;
+    @media(max-width:900px){
+      .threat-grid{grid-template-columns:repeat(2,1fr)}
+      .products-grid{grid-template-columns:1fr}
     }
-    .divider { width:56px; height:3px; background:var(--accent); margin-bottom:20px; }
-    .lead { font-size:clamp(15px,2vw,17px); color:var(--muted); max-width:680px; margin-bottom:48px; line-height:1.75; }
-    .btn {
-      display:inline-block; font-family:var(--fh); font-weight:700;
-      font-size:13px; letter-spacing:.12em; text-transform:uppercase;
-      padding:14px 30px; cursor:pointer; transition:all .2s; border:2px solid transparent;
-      min-height:44px; /* accessible touch target */
+    @media(max-width:768px){
+      :root{--nav-h:60px}
+      section{padding:60px 0}
+      .container{padding:0 20px}
+      nav{display:none}
+      .hamburger{display:flex}
+      .adv-grid,.impl-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr;gap:44px}
+      .hero-stats{grid-template-columns:1fr 1fr}
+      .footer-inner{grid-template-columns:1fr 1fr;gap:24px}
+      .footer-bot{flex-direction:column;align-items:flex-start}
+      .slider-wrap{height:380px}
+      .slide-title{font-size:clamp(18px,5vw,30px)}
+      .slider-prev,.slider-next{width:36px;height:36px;font-size:16px}
     }
-    .btn-primary { background:var(--accent); color:#090c10; border-color:var(--accent); }
-    .btn-primary:hover { background:transparent; color:var(--accent); text-decoration:none; }
-    .btn-ghost { background:transparent; color:var(--text); border-color:rgba(200,168,75,0.35); }
-    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); text-decoration:none; }
-
-    @keyframes fadein { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:.45} }
-    @keyframes scan   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-    /* ── NAV ───────────────────────────────────────────────── */
-    .topbar {
-      position:sticky; top:0; z-index:900;
-      background:rgba(9,12,16,0.96); backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--border);
+    @media(max-width:600px){
+      .threat-grid{grid-template-columns:1fr}
+      .case,.tl-item{grid-template-columns:64px 1fr}
+      .slider-wrap{height:320px}
+      .market-band .container{grid-template-columns:1fr 1fr}
     }
-    .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:var(--nav-h); }
-    .logo { display:flex; align-items:center; gap:10px; color:#fff; font-family:var(--fh); font-size:22px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; flex-shrink:0; }
-    .logo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; width:30px; height:30px; flex-shrink:0; }
-    .logo-grid span { background:var(--accent); border-radius:1px; }
-    .logo-grid span:nth-child(5) { background:var(--green); }
-    nav { display:flex; align-items:center; gap:2px; }
-    nav a { font-family:var(--fh); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:8px 10px; transition:color .2s; white-space:nowrap; min-height:44px; display:flex; align-items:center; }
-    nav a:hover, nav a.active { color:var(--accent); text-decoration:none; }
-    .nav-cta { background:var(--accent); color:#090c10 !important; padding:8px 16px; margin-left:8px; border-radius:0; }
-    .nav-cta:hover { background:transparent !important; color:var(--accent) !important; border:1px solid var(--accent); }
-    /* hamburger — hidden on desktop */
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; min-height:44px; min-width:44px; align-items:center; justify-content:center; }
-    .hamburger span { display:block; width:22px; height:2px; background:var(--text); transition:all .3s; }
-    .hamburger.is-open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-    .hamburger.is-open span:nth-child(2) { opacity:0; }
-    .hamburger.is-open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-    /* mobile nav drawer */
-    .mob-nav {
-      display:none; flex-direction:column;
-      background:var(--bg2); border-top:1px solid var(--border);
-      padding:8px 28px 20px;
-      max-height:calc(100vh - var(--nav-h));
-      overflow-y:auto;
+    @media(max-width:480px){
+      .container{padding:0 16px}
+      .hero-btns{flex-direction:column}
+      .hero-btns .btn{text-align:center;width:100%}
+      .hero-stats{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr;gap:24px}
+      .case,.tl-item{grid-template-columns:1fr;gap:4px}
+      .case-yr,.tl-year{font-size:20px;opacity:.28}
+      .slider-wrap{height:280px}
+      .slider-prev,.slider-next{display:none}
+      .market-band .container{grid-template-columns:1fr 1fr}
     }
-    .mob-nav a {
-      font-family:var(--fh); font-size:17px; font-weight:600;
-      letter-spacing:.07em; text-transform:uppercase; color:var(--muted);
-      padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.04);
-      min-height:44px; display:flex; align-items:center;
-    }
-    .mob-nav a:last-child { border-bottom:none; }
-    .mob-nav a:hover { color:var(--accent); text-decoration:none; }
-    .mob-nav.open { display:flex; }
-
-    /* ── HERO ──────────────────────────────────────────────── */
-    #hero {
-      position:relative; min-height:100svh; display:flex; align-items:center;
-      padding:0; overflow:hidden; background:var(--bg);
-    }
-    .hero-grid-bg {
-      position:absolute; inset:0; pointer-events:none;
-      background-image:
-        linear-gradient(rgba(200,168,75,0.055) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(200,168,75,0.055) 1px,transparent 1px);
-      background-size:52px 52px;
-    }
-    .hero-glow { position:absolute; top:-180px; right:-180px; width:750px; height:750px; background:radial-gradient(circle,rgba(200,168,75,0.07) 0%,transparent 68%); pointer-events:none; }
-    .hero-content {
-      position:relative; z-index:2;
-      display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
-      padding:clamp(80px,12vh,130px) 0 clamp(60px,8vh,90px);
-      animation:fadein .7s ease both;
-      min-width:0; /* prevent grid blowout */
-    }
-    .hero-content > * { min-width:0; }
-    .hero-sup { font-family:var(--fh); font-size:11px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .hero-sup::before { content:''; width:28px; height:2px; background:var(--accent); flex-shrink:0; }
-    .hero-h1 { font-family:var(--fh); font-size:clamp(36px,5.5vw,74px); font-weight:800; text-transform:uppercase; line-height:1.0; color:#fff; margin-bottom:22px; }
-    .hero-h1 .hl { color:var(--accent); }
-    .hero-sub { font-size:clamp(15px,1.8vw,17px); color:var(--muted); max-width:500px; margin-bottom:34px; line-height:1.75; }
-    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:48px; }
-    .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
-    .stat { background:var(--bg); padding:16px 14px; min-width:0; }
-    .stat-v { font-family:var(--fh); font-size:clamp(22px,3vw,30px); font-weight:800; color:var(--accent); line-height:1; margin-bottom:4px; }
-    .stat-l { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); line-height:1.3; }
-
-    /* radar */
-    .hero-vis { display:flex; align-items:center; justify-content:center; }
-    .radar-wrap { position:relative; width:min(360px,90vw); aspect-ratio:1; }
-    .radar-wrap svg { position:absolute; inset:0; width:100%; height:100%; }
-    .radar-lbl { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
-    .radar-lbl-main { font-family:var(--fh); font-size:13px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--green); }
-    .radar-lbl-sub  { font-size:10px; color:var(--muted); margin-top:3px; letter-spacing:.08em; }
-
-    /* ── ALERT STRIP ───────────────────────────────────────── */
-    .alert-strip { background:rgba(200,75,75,0.08); border-top:2px solid var(--red); border-bottom:1px solid rgba(200,75,75,0.18); padding:18px 0; }
-    .alert-strip .container { display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap; }
-    .alert-strip .icon { font-size:20px; flex-shrink:0; margin-top:1px; }
-    .alert-strip p { font-family:var(--fh); font-size:clamp(13px,2vw,15px); font-weight:600; letter-spacing:.02em; color:#ddbcbc; line-height:1.5; }
-    .alert-strip p strong { color:#fff; }
-
-    /* ── THREATS ───────────────────────────────────────────── */
-    .threat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:52px; }
-    .tc { background:var(--bg3); padding:28px 24px; transition:background .2s; min-width:0; }
-    .tc:hover { background:rgba(200,168,75,0.04); }
-    .tc-num { font-family:var(--fh); font-size:44px; font-weight:800; color:rgba(200,168,75,0.15); line-height:1; margin-bottom:8px; }
-    .tc-name { font-family:var(--fh); font-size:17px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:10px; }
-    .tc-desc { font-size:13.5px; color:var(--muted); line-height:1.6; }
-
-    /* ── WHAT IS EPI ───────────────────────────────────────── */
-    .epi-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; min-width:0; }
-    .epi-grid > * { min-width:0; }
-    .check-list { list-style:none; display:flex; flex-direction:column; gap:12px; margin-top:8px; }
-    .check-list li { display:flex; align-items:flex-start; gap:11px; font-size:14px; color:var(--muted); line-height:1.55; }
-    .check-list li span.ck { color:var(--green); flex-shrink:0; margin-top:1px; font-weight:700; }
-    .check-list li strong { color:var(--text); }
-    .infobox { background:var(--bg3); border:1px solid var(--border); padding:clamp(18px,4vw,36px); }
-    .infobox-hd { font-family:var(--fh); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin-bottom:24px; display:flex; align-items:center; gap:8px; }
-    .infobox-hd::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; flex-shrink:0; }
-
-    /* ── HOW IT WORKS ──────────────────────────────────────── */
-    .how-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; min-width:0; }
-    .how-grid > * { min-width:0; }
-    .steps { list-style:none; display:flex; flex-direction:column; }
-    .step { display:grid; grid-template-columns:46px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.055); align-items:start; min-width:0; }
-    .step > * { min-width:0; }
-    .step:last-child { border-bottom:none; }
-    .step-n { width:36px; height:36px; background:var(--bg3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:var(--fh); font-size:15px; font-weight:800; color:var(--accent); flex-shrink:0; }
-    .step-t { font-family:var(--fh); font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:5px; line-height:1.2; }
-    .step-b { font-size:13.5px; color:var(--muted); line-height:1.6; }
-    .patent-link { margin-top:22px; font-size:13px; color:var(--muted); word-break:break-word; }
-    .patent-link a { color:var(--accent); }
-
-    /* ── ADVANTAGES ────────────────────────────────────────── */
-    .adv-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:52px; }
-    .adv { background:var(--bg3); border:1px solid var(--border); border-left:3px solid var(--accent); padding:26px 24px; transition:border-color .2s, background .2s; min-width:0; }
-    .adv:hover { background:rgba(200,168,75,0.03); border-color:var(--accent); }
-    .adv-icon { font-size:24px; margin-bottom:12px; }
-    .adv-t { font-family:var(--fh); font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:8px; }
-    .adv-b { font-size:13.5px; color:var(--muted); line-height:1.6; }
-
-    /* ── VS TABLE ──────────────────────────────────────────── */
-    .vs-wrap { overflow-x:auto; margin-top:48px; -webkit-overflow-scrolling:touch; }
-    .vs { width:100%; border-collapse:collapse; min-width:560px; }
-    .vs th { font-family:var(--fh); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; padding:13px 16px; text-align:left; border-bottom:2px solid var(--border); white-space:nowrap; }
-    .vs th:first-child { color:var(--muted); }
-    .vs th:nth-child(2) { color:var(--accent); }
-    .vs th:nth-child(3), .vs th:nth-child(4) { color:var(--muted); }
-    .vs td { padding:12px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid rgba(255,255,255,0.04); }
-    .vs td:first-child { color:var(--text); font-weight:500; }
-    .vs tr:hover td { background:rgba(255,255,255,0.02); }
-    .ok { color:var(--green); font-weight:700; white-space:nowrap; }
-    .no { color:var(--red);   font-weight:700; white-space:nowrap; }
-    .pa { color:var(--accent);font-weight:700; white-space:nowrap; }
-
-    /* ── CASE STUDIES ──────────────────────────────────────── */
-    .cases { display:flex; flex-direction:column; margin-top:48px; }
-    .case { display:grid; grid-template-columns:90px 1fr; gap:0 16px; border-bottom:1px solid rgba(255,255,255,0.05); padding:24px 0; align-items:start; min-width:0; }
-    .case > * { min-width:0; }
-    .case:last-child { border-bottom:none; }
-    .case-yr { font-family:var(--fh); font-size:clamp(24px,4vw,34px); font-weight:800; color:var(--accent); opacity:.35; line-height:1.1; padding-top:4px; }
-    .case-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); background:rgba(200,75,75,0.12); padding:2px 8px; margin-bottom:8px; }
-    .case-title { font-family:var(--fh); font-size:clamp(15px,2.5vw,17px); font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#fff; margin-bottom:7px; line-height:1.2; }
-    .case-body { font-size:13.5px; color:var(--muted); line-height:1.6; }
-
-    /* ── FAQ ───────────────────────────────────────────────── */
-    .faq-wrap { max-width:800px; margin-top:44px; }
-    .faq-item { border-bottom:1px solid rgba(255,255,255,0.055); }
-    .faq-q {
-      width:100%; background:none; border:none; color:var(--text);
-      font-family:var(--fh); font-size:clamp(13px,2vw,15px); font-weight:700;
-      text-transform:uppercase; letter-spacing:.04em; text-align:left;
-      padding:18px 0; cursor:pointer; display:flex; align-items:center;
-      justify-content:space-between; gap:12px; min-height:44px; line-height:1.3;
-    }
-    .faq-q:hover { color:var(--accent); }
-    .faq-arrow { color:var(--accent); font-size:20px; flex-shrink:0; transition:transform .25s; }
-    .faq-a { display:none; font-size:clamp(13px,2vw,14.5px); color:var(--muted); padding-bottom:18px; line-height:1.72; }
-    .faq-item.open .faq-a { display:block; }
-    .faq-item.open .faq-arrow { transform:rotate(45deg); }
-
-    /* ── CONTACT ───────────────────────────────────────────── */
-    #contact { background:var(--bg3); border-top:1px solid var(--border); }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; min-width:0; }
-    .contact-grid > * { min-width:0; }
-    .cf { display:flex; flex-direction:column; gap:14px; }
-    .fg { display:flex; flex-direction:column; gap:5px; }
-    .fl { font-family:var(--fh); font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
-    .fi, .fs, .fta {
-      background:var(--bg); border:1px solid rgba(255,255,255,0.09); color:var(--text);
-      font-family:var(--fb); font-size:15px; padding:12px 15px;
-      outline:none; transition:border-color .2s; width:100%;
-      min-height:44px; border-radius:0;
-    }
-    .fi:focus, .fs:focus, .fta:focus { border-color:var(--accent); }
-    .fs { appearance:none; cursor:pointer; }
-    .fta { min-height:110px; resize:vertical; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .contact-info { display:flex; flex-direction:column; gap:26px; }
-    .ci-label { font-family:var(--fh); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--accent); margin-bottom:8px; }
-    .ci-block p { font-size:13.5px; color:var(--muted); line-height:1.65; }
-    .compliance { background:rgba(200,168,75,0.045); border:1px solid var(--border); padding:16px 20px; margin-top:24px; }
-    .compliance p { font-size:12.5px; color:var(--muted); line-height:1.65; }
-    .compliance strong { color:var(--accent); }
-
-    /* ── FOOTER ────────────────────────────────────────────── */
-    footer { background:#060810; border-top:1px solid rgba(255,255,255,0.04); padding:44px 0 28px; }
-    .footer-inner { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
-    .footer-brand p { font-size:12.5px; color:var(--muted); margin-top:14px; max-width:270px; line-height:1.65; }
-    .fcol-t { font-family:var(--fh); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
-    .fcol a { display:block; font-size:12.5px; color:#404860; padding:4px 0; transition:color .2s; min-height:32px; line-height:32px; }
-    .fcol a:hover { color:var(--accent); text-decoration:none; }
-    .footer-bot { border-top:1px solid rgba(255,255,255,0.04); padding-top:22px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-    .footer-bot p { font-size:11.5px; color:#2e3448; }
-    .badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--fh); font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); border:1px solid var(--border); padding:5px 12px; }
-    .badge-dot { width:5px; height:5px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE — mobile-first cascade
-       Breakpoints: 1200 | 1024 | 900 | 768 | 600 | 480 | 375
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-    /* ── 1024px: tablet landscape ── */
-    @media(max-width:1024px) {
-      .hero-content  { grid-template-columns:1fr; gap:48px; }
-      .hero-vis      { order:-1; } /* radar above text on tablet */
-      .radar-wrap    { width:min(300px,80vw); }
-      .epi-grid, .how-grid { grid-template-columns:1fr; }
-      .footer-inner  { grid-template-columns:1fr 1fr; gap:32px; }
-    }
-
-    /* ── 900px: small tablet ── */
-    @media(max-width:900px) {
-      .threat-grid { grid-template-columns:repeat(2,1fr); }
-    }
-
-    /* ── 768px: mobile landscape / large phone ── */
-    @media(max-width:768px) {
-      :root { --nav-h: 60px; }
-      section { padding:60px 0; }
-      .container { padding:0 20px; }
-      nav { display:none; }
-      .hamburger { display:flex; }
-      .adv-grid  { grid-template-columns:1fr; }
-      .contact-grid { grid-template-columns:1fr; gap:44px; }
-      .hero-stats { grid-template-columns:1fr 1fr; }
-      .footer-inner { grid-template-columns:1fr 1fr; gap:24px; }
-      .footer-bot   { flex-direction:column; align-items:flex-start; }
-      /* table stays scrollable — already has min-width:560px */
-    }
-
-    /* ── 600px: small phone landscape ── */
-    @media(max-width:600px) {
-      .threat-grid { grid-template-columns:1fr; }
-      .case { grid-template-columns:72px 1fr; }
-    }
-
-    /* ── 480px: standard phone portrait ── */
-    @media(max-width:480px) {
-      .container   { padding:0 16px; }
-      .hero-btns   { flex-direction:column; }
-      .hero-btns .btn { text-align:center; width:100%; }
-      .hero-stats  { grid-template-columns:1fr; }
-      .form-row    { grid-template-columns:1fr; }
-      .infobox     { padding:16px; }
-      .footer-inner { grid-template-columns:1fr; gap:24px; }
-      .footer-bot  { flex-direction:column; align-items:flex-start; }
-      .section-title { font-size:clamp(24px,7vw,36px); }
-      /* case studies: stack year above content */
-      .case { grid-template-columns:1fr; gap:4px; }
-      .case-yr { font-size:22px; opacity:.28; }
-    }
-
-    /* ── 375px: iPhone SE / small phones ── */
-    @media(max-width:375px) {
-      .container { padding:0 14px; }
-      .hero-h1   { font-size:34px; }
-      .logo      { font-size:19px; }
-      .logo-grid { width:26px; height:26px; }
-      .tc, .adv  { padding:22px 18px; }
-      .step      { grid-template-columns:40px 1fr; gap:12px; }
+    @media(max-width:375px){
+      .container{padding:0 14px}
+      .hero-h1{font-size:32px}
+      .logo{font-size:19px}
+      .logo-grid{width:26px;height:26px}
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────────────────────── -->
+<!-- ══ NAV ══ -->
 <header class="topbar">
   <div class="container">
     <div class="topbar-inner">
-      <a href="#hero" class="logo">
-        <div class="logo-grid">
-          <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
-        </div>
+      <a href="#hero" class="logo" aria-label="Grid-Jam — Anti-Drone GNSS Jamming Defense">
+        <div class="logo-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         GRID-JAM
       </a>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="#threats">Threats</a>
-        <a href="#epi">What Is EPI</a>
+        <a href="#epi">EPI System</a>
         <a href="#how">How It Works</a>
-        <a href="#advantages">Advantages</a>
+        <a href="#products">Products</a>
+        <a href="#implementation">Implementation</a>
         <a href="#cases">Case Studies</a>
+        <a href="#about">About</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact" class="nav-cta">Request Briefing</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
       <button class="hamburger" id="hbg" aria-label="Open navigation" aria-expanded="false" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -368,86 +510,69 @@
     </div>
   </div>
   <nav class="mob-nav" id="mobnav" aria-label="Mobile navigation">
-    <a href="#threats"    onclick="toggleMenu()">Threats</a>
-    <a href="#epi"        onclick="toggleMenu()">What Is EPI?</a>
-    <a href="#how"        onclick="toggleMenu()">How It Works</a>
-    <a href="#advantages" onclick="toggleMenu()">Advantages</a>
-    <a href="#cases"      onclick="toggleMenu()">Case Studies</a>
-    <a href="#faq"        onclick="toggleMenu()">FAQ</a>
-    <a href="#contact"    onclick="toggleMenu()">Request Briefing</a>
+    <a href="#threats" onclick="toggleMenu()">Threats</a>
+    <a href="#epi" onclick="toggleMenu()">EPI System</a>
+    <a href="#how" onclick="toggleMenu()">How It Works</a>
+    <a href="#products" onclick="toggleMenu()">Products</a>
+    <a href="#implementation" onclick="toggleMenu()">Implementation</a>
+    <a href="#cases" onclick="toggleMenu()">Case Studies</a>
+    <a href="#about" onclick="toggleMenu()">About Us</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </nav>
 </header>
 
-<!-- ── HERO ────────────────────────────────────────────────── -->
+<!-- ① HERO — Primary H1 with top keyword -->
 <section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-content">
-      <!-- Text -->
       <div>
-        <div class="hero-sup">Defense Technology &nbsp;·&nbsp; Patent Pending</div>
-        <h1 class="hero-h1">
-          Protect Critical<br/>
-          Infrastructure<br/>
-          From <span class="hl">Drone &amp; Missile</span><br/>
-          Precision Attacks
-        </h1>
-        <p class="hero-sub">
-          Grid-Jam's <strong>EPI System</strong> surrounds strategic assets with a distributed grid of GNSS jammers — forcing precision-guided munitions to miss their target. A surgical strike becomes a statistical miss.
-        </p>
+        <div class="hero-sup">Counter-UAV Technology &nbsp;·&nbsp; Patent Pending &nbsp;·&nbsp; Ukraine Approved &amp; Tested</div>
+        <h1 class="hero-h1">Anti-Drone &amp; Missile Defense:<br/><span class="hl">GNSS Jamming Grid</span><br/>for Critical Infrastructure</h1>
+        <p class="hero-sub">Grid-Jam's <strong>EPI System</strong> — a distributed GNSS jamming array surrounding strategic assets — defeats GPS-guided drones, cruise missiles, and ballistic missiles. A precision strike becomes a statistical miss.</p>
         <div class="hero-btns">
-          <a href="#how"     class="btn btn-primary">How It Works</a>
-          <a href="#contact" class="btn btn-ghost">Request Briefing</a>
+          <a href="#how" class="btn btn-primary">See How It Works</a>
+          <a href="#contact" class="btn btn-ghost">Request Defense Briefing</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-v">~5 km</div><div class="stat-l">Denial Zone Radius</div></div>
-          <div class="stat"><div class="stat-v">50 km</div><div class="stat-l">Ballistic Coverage</div></div>
+        <div class="hero-stats" aria-label="Key performance metrics">
+          <div class="stat"><div class="stat-v">~5 km</div><div class="stat-l">Anti-Drone Denial Zone</div></div>
+          <div class="stat"><div class="stat-v">50 km</div><div class="stat-l">Ballistic Missile Coverage</div></div>
           <div class="stat"><div class="stat-v">4+</div><div class="stat-l">CRPA Elements Defeated</div></div>
         </div>
       </div>
-      <!-- Radar -->
       <div class="hero-vis">
-        <div class="radar-wrap">
-          <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="rg" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#4fb06d" stop-opacity="0.12"/>
-                <stop offset="100%" stop-color="#4fb06d" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
+        <div class="radar-wrap" aria-label="Animated EPI GNSS denial zone radar diagram">
+          <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EPI system active — GNSS denial zone radar showing jammer nodes surrounding a protected asset">
             <circle cx="180" cy="180" r="160" fill="none" stroke="rgba(200,168,75,0.10)" stroke-width="1"/>
             <circle cx="180" cy="180" r="120" fill="none" stroke="rgba(200,168,75,0.14)" stroke-width="1"/>
-            <circle cx="180" cy="180" r="80"  fill="none" stroke="rgba(200,168,75,0.19)" stroke-width="1"/>
-            <circle cx="180" cy="180" r="40"  fill="none" stroke="rgba(200,168,75,0.26)" stroke-width="1"/>
+            <circle cx="180" cy="180" r="80" fill="none" stroke="rgba(200,168,75,0.19)" stroke-width="1"/>
+            <circle cx="180" cy="180" r="40" fill="none" stroke="rgba(200,168,75,0.26)" stroke-width="1"/>
             <line x1="180" y1="20" x2="180" y2="340" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
-            <line x1="20"  y1="180" x2="340" y2="180" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
-            <line x1="67"  y1="67"  x2="293" y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
-            <line x1="293" y1="67"  x2="67"  y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
+            <line x1="20" y1="180" x2="340" y2="180" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
+            <line x1="67" y1="67" x2="293" y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
+            <line x1="293" y1="67" x2="67" y2="293" stroke="rgba(200,168,75,0.04)" stroke-width="1"/>
             <g style="transform-origin:180px 180px;animation:scan 4s linear infinite">
               <path d="M180,180 L180,22" stroke="rgba(79,176,109,0.55)" stroke-width="1.5"/>
               <path d="M180,180 L180,22" stroke="rgba(79,176,109,0.18)" stroke-width="20"/>
             </g>
-            <circle cx="180" cy="24"  r="6" fill="#c8a84b"/>
+            <circle cx="180" cy="24" r="6" fill="#c8a84b"/>
             <circle cx="318" cy="102" r="6" fill="#c8a84b"/>
             <circle cx="318" cy="258" r="6" fill="#c8a84b"/>
             <circle cx="180" cy="336" r="6" fill="#c8a84b"/>
-            <circle cx="42"  cy="258" r="6" fill="#c8a84b"/>
-            <circle cx="42"  cy="102" r="6" fill="#c8a84b"/>
-            <circle cx="258" cy="58"  r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="42" cy="258" r="6" fill="#c8a84b"/>
+            <circle cx="42" cy="102" r="6" fill="#c8a84b"/>
+            <circle cx="258" cy="58" r="5" fill="#c8a84b" opacity="0.6"/>
             <circle cx="304" cy="180" r="5" fill="#c8a84b" opacity="0.6"/>
             <circle cx="258" cy="302" r="5" fill="#c8a84b" opacity="0.6"/>
             <circle cx="102" cy="302" r="5" fill="#c8a84b" opacity="0.6"/>
-            <circle cx="56"  cy="180" r="5" fill="#c8a84b" opacity="0.6"/>
-            <circle cx="102" cy="58"  r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="56" cy="180" r="5" fill="#c8a84b" opacity="0.6"/>
+            <circle cx="102" cy="58" r="5" fill="#c8a84b" opacity="0.6"/>
             <rect x="165" y="165" width="30" height="30" fill="rgba(79,176,109,0.18)" stroke="#4fb06d" stroke-width="1.5"/>
             <rect x="172" y="172" width="16" height="16" fill="rgba(79,176,109,0.5)"/>
-            <circle cx="272" cy="74" r="4" fill="#c84b4b" opacity="0.85">
-              <animate attributeName="opacity" values="0.85;0.2;0.85" dur="1.7s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="110" cy="280" r="3" fill="#c84b4b" opacity="0.6">
-              <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.3s" repeatCount="indefinite"/>
-            </circle>
+            <circle cx="272" cy="74" r="4" fill="#c84b4b" opacity="0.85"><animate attributeName="opacity" values="0.85;0.2;0.85" dur="1.7s" repeatCount="indefinite"/></circle>
+            <circle cx="110" cy="280" r="3" fill="#c84b4b" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.3s" repeatCount="indefinite"/></circle>
           </svg>
           <div class="radar-lbl">
             <div class="radar-lbl-main">EPI ACTIVE</div>
@@ -459,123 +584,162 @@
   </div>
 </section>
 
-<!-- ── ALERT STRIP ──────────────────────────────────────────── -->
-<div class="alert-strip">
-  <div class="container">
-    <span class="icon">⚠</span>
-    <p>
-      <strong>Strategic Reality:</strong>
-      Drone &amp; missile attacks cost a fraction of hard-kill defenses.
-      Without effective GNSS jamming, attackers with unlimited low-cost GPS-guided munitions hold a decisive asymmetric advantage.
-    </p>
+<!-- ② IMAGE SLIDER — The Drone Threat Story (2019–2026) -->
+<div id="slider-section" aria-label="Slideshow: global drone and missile threat timeline">
+  <div class="slider-wrap" id="slider">
+    <div class="slide active" style="background-color:#08101a;background-image:url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Active Threat — 2026</div>
+        <div class="slide-title">Drones &amp; Missiles: The New Face of War</div>
+        <div class="slide-sub">GPS-guided munitions are now the dominant offensive weapon worldwide. The counter-UAV market reached $8.5 billion in 2026 — growing to $28B by 2032. The question is no longer if your infrastructure will be targeted, but when.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#14090a;background-image:url('https://images.unsplash.com/photo-1590424693420-75cb7a50e7c8?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">2019 — Saudi Arabia</div>
+        <div class="slide-title">Houthi Drones Strike ARAMCO — $5 Billion in Damage</div>
+        <div class="slide-sub">Iranian-supplied GPS-guided drones struck Saudi oil facilities with surgical precision. 5% of global oil supply disrupted overnight. Dozens of tanks hit at identical angles — achievable only through automatic GNSS navigation. This attack launched Grid-Jam.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#0a0e14;background-image:url('https://images.unsplash.com/photo-1540479859555-17af45c78602?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">2020 — Azerbaijan–Armenia</div>
+        <div class="slide-title">GPS Drones Defeat an Entire Air Defense Network in 44 Days</div>
+        <div class="slide-sub">Harop and Bayraktar TB2 GPS-guided drones systematically destroyed Armenia's entire radar network and anti-air infrastructure. Without counter-UAV GNSS-denial, even the best conventional air defense becomes obsolete within weeks.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#0c0c12;background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">2022–Present — Russia–Ukraine</div>
+        <div class="slide-title">5,000 Shahed-136 Drones Per Month. Ukraine Runs Out of Interceptors.</div>
+        <div class="slide-sub">Russia deploys swarms targeting power plants and energy infrastructure. Ukraine depleted its anti-air stockpiles. Grid-Jam EPI was evaluated and approved in 2022 — but a full national deployment came too late. The lesson: anti-drone jamming must be deployed proactively.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#080c14;background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">The Core Technical Problem</div>
+        <div class="slide-title">CRPA Antennas Make GPS-Guided Drones Unjammable by Conventional Means</div>
+        <div class="slide-sub">Modern military drones carry 4-element CRPA anti-jam antennas that defeat up to 3 conventional jammers simultaneously. No single jammer — regardless of power — can stop a Shahed-136. Only a coordinated distributed GNSS jamming grid can overcome CRPA.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#10080a;background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">2023–Present — Israel</div>
+        <div class="slide-title">Even Iron Dome Cannot Stop Low-Flying GPS-Guided Drones</div>
+        <div class="slide-sub">Hezbollah drones penetrated Israel's multi-layer air defense, striking military bases. Iran's ballistic missiles hit an oil refinery and a hospital. The U.S. DoD has now allocated $3.1 billion to counter-UAS capabilities in FY2026 — a 43% single-year increase.</div>
+      </div>
+    </div>
+    <div class="slide" style="background-color:#080e10;background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=80')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag solution">The Solution — EPI Anti-Drone Jamming Grid</div>
+        <div class="slide-title">Turn Every GPS-Guided Precision Weapon Into a Statistical Miss</div>
+        <div class="slide-sub">Without effective GNSS jamming, wars are won by attackers with unlimited low-cost GPS-guided drones. Grid-Jam EPI's distributed jammer array denies precision to every incoming threat simultaneously — power plants, airports, seaports, and military bases — at zero per-engagement cost.</div>
+      </div>
+    </div>
+    <button class="slider-prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#8592;</button>
+    <button class="slider-next" onclick="moveSlide(1)" aria-label="Next slide">&#8594;</button>
+    <div class="slider-dots" id="dots" role="tablist" aria-label="Slide navigation"></div>
+    <div class="slider-progress" id="progress" aria-hidden="true"></div>
   </div>
 </div>
 
-<!-- ── THREATS ──────────────────────────────────────────────── -->
+<!-- ALERT STRIP -->
+<div class="alert-strip" role="alert">
+  <div class="container">
+    <span class="icon" aria-hidden="true">⚠</span>
+    <p><strong>Strategic Warning 2026:</strong> The DoD allocated $3.1B to counter-UAV in FY2026 (+43%). Without effective GNSS jamming, wars are won by attackers with unlimited low-cost GPS-guided drones and missiles. Every unprotected critical infrastructure asset is a target.</p>
+  </div>
+</div>
+
+<!-- MARKET STATS BAND -->
+<div class="market-band" aria-label="Counter-drone market statistics">
+  <div class="container">
+    <div class="mstat"><div class="mstat-v">$8.5B</div><div class="mstat-l">Counter-UAV market size 2026</div></div>
+    <div class="mstat"><div class="mstat-v">$28B</div><div class="mstat-l">Projected market by 2032 (21.9% CAGR)</div></div>
+    <div class="mstat"><div class="mstat-v">$3.1B</div><div class="mstat-l">US DoD C-UAS budget FY2026</div></div>
+    <div class="mstat"><div class="mstat-v">21%</div><div class="mstat-l">RF jammer market share — #1 segment</div></div>
+  </div>
+</div>
+
+<!-- ③ THREATS — H2 with keyword "GPS-guided drone threats" -->
 <section id="threats">
   <div class="container">
-    <div class="eyebrow">Threat Landscape</div>
-    <h2 class="section-title">Precision Threats to<br/>Critical Infrastructure</h2>
+    <div class="eyebrow">Threat Landscape 2026</div>
+    <h2 class="section-title">GPS-Guided Drone &amp; Missile<br/>Threats to Critical Infrastructure</h2>
     <div class="divider"></div>
-    <p class="lead">
-      Adversaries now deploy GPS-guided munitions at industrial scale — making traditional hard-kill interception unsustainable in cost and inventory. These are the six primary threat vectors EPI is engineered to defeat.
-    </p>
+    <p class="lead">Autonomous, long-range GNSS-guided munitions — kamikaze drones, smart glide bombs, cruise missiles, and ballistic missiles — carry warheads of tens to hundreds of kilograms of TNT and can now strike energy facilities, seaports, airports, military installations, and government buildings with meter-level precision. The C-UAS market is growing at 21.9% annually because the threat is accelerating faster than traditional defenses can respond.</p>
     <div class="threat-grid">
-      <div class="tc">
-        <div class="tc-num">01</div>
-        <div class="tc-name">Kamikaze Drones</div>
-        <div class="tc-desc">Loitering munitions such as the Shahed-136 use GPS navigation with 4-element CRPA antennas to strike targets within meters — flying low and slow, beneath conventional air-defense radar coverage.</div>
-      </div>
-      <div class="tc">
-        <div class="tc-num">02</div>
-        <div class="tc-name">Cruise Missiles</div>
-        <div class="tc-desc">Long-range cruise missiles combine inertial navigation with GNSS terminal guidance, enabling pinpoint strikes on energy facilities, seaports, and command centers. Swarm launches exhaust interceptor stockpiles.</div>
-      </div>
-      <div class="tc">
-        <div class="tc-num">03</div>
-        <div class="tc-name">Ballistic &amp; Hypersonic</div>
-        <div class="tc-desc">GNSS-guided maneuvering warheads on ballistic missiles and hypersonic glide vehicles represent the most advanced precision tier. EPI's high-power vertical arrays cover the final 50 km of terminal trajectory.</div>
-      </div>
-      <div class="tc">
-        <div class="tc-num">04</div>
-        <div class="tc-name">Smart Glide Bombs</div>
-        <div class="tc-desc">GPS/INS-guided wing kits convert conventional bombs into stand-off precision weapons, deployable from safe distances with warheads ranging from tens to hundreds of kilograms of TNT.</div>
-      </div>
-      <div class="tc">
-        <div class="tc-num">05</div>
-        <div class="tc-name">Swarm Attacks</div>
-        <div class="tc-desc">Coordinated launches of hundreds of drones and missiles simultaneously saturate C2 systems and deplete interceptor inventories — as demonstrated repeatedly in the Russia–Ukraine conflict since 2022.</div>
-      </div>
-      <div class="tc">
-        <div class="tc-num">06</div>
-        <div class="tc-name">CRPA-Protected Guidance</div>
-        <div class="tc-desc">Controlled Reception Pattern Antennas (CRPA) allow guided weapons to reject signals from up to 3 simultaneous jammers. Standard jamming systems fail against them. Grid-Jam's multi-node array is built to defeat CRPA protection.</div>
-      </div>
+      <div class="tc"><div class="tc-num">01</div><div class="tc-name">Kamikaze Drones (Shahed-136)</div><div class="tc-desc">Loitering munitions use GPS with 4-element CRPA anti-jam antennas — striking within meters while flying low enough to avoid radar. Russia now produces 5,000+ units per month. The Shahed-136 is the defining counter-UAV challenge of 2026.</div></div>
+      <div class="tc"><div class="tc-num">02</div><div class="tc-name">Cruise Missiles</div><div class="tc-desc">Long-range cruise missiles combine inertial navigation with GNSS terminal guidance, enabling pinpoint strikes on energy facilities from stand-off distances. Swarm launches exhaust interceptor stockpiles faster than replenishment — a cost asymmetry no kinetic defense can sustain.</div></div>
+      <div class="tc"><div class="tc-num">03</div><div class="tc-name">Ballistic &amp; Hypersonic Missiles</div><div class="tc-desc">GNSS-guided maneuvering warheads on ballistic and hypersonic glide vehicles. Grid-Jam's vertical high-power directional arrays cover the entire 50–70 km atmospheric re-entry phase — the only GNSS jamming system with proven ballistic missile coverage.</div></div>
+      <div class="tc"><div class="tc-num">04</div><div class="tc-name">Smart Glide Bombs</div><div class="tc-desc">GPS/INS-guided wing kits convert conventional bombs into stand-off precision weapons, deployable from safe distances. Used extensively by Russia against Ukrainian energy infrastructure — power plants, substations, and water treatment facilities.</div></div>
+      <div class="tc"><div class="tc-num">05</div><div class="tc-name">Drone Swarm Attacks</div><div class="tc-desc">Hundreds of GPS-guided drones simultaneously overwhelm C2 systems. Even at 80%+ interception rates, the remaining strikes cause catastrophic infrastructure damage. Anti-drone jamming arrays deny GPS precision to the entire swarm simultaneously — at zero marginal cost per threat.</div></div>
+      <div class="tc"><div class="tc-num">06</div><div class="tc-name">CRPA Anti-Jam Guidance</div><div class="tc-desc">4-element CRPA antennas defeat 3 conventional GPS jammers simultaneously — rendering all standard anti-drone jamming systems ineffective. Grid-Jam's array geometry attacks from more directions than CRPA can nullify. This is the core differentiator that makes EPI uniquely effective.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ── WHAT IS EPI ───────────────────────────────────────────── -->
+<!-- ④ WHAT IS EPI — H2 with keyword "anti-drone GNSS jamming system" -->
 <section id="epi">
   <div class="container">
     <div class="eyebrow">Solution Overview</div>
-    <h2 class="section-title">What Is EPI?<br/>Electronic Protection of Infrastructure</h2>
+    <h2 class="section-title">What Is EPI? The Anti-Drone<br/>GNSS Jamming Defense System</h2>
     <div class="divider"></div>
     <div class="epi-grid">
       <div>
-        <p style="font-size:clamp(14px,2vw,16px);color:var(--text);margin-bottom:20px;line-height:1.8">
-          <strong style="color:#fff">EPI</strong> is a geographically distributed array of RF jamming units that work together as a synchronized grid. Think of it as an <strong style="color:var(--accent)">electronic minefield</strong> — invisible, continuously active, covering all approach vectors around a protected asset.
-        </p>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.8">
-          When a GPS-guided weapon enters the EPI zone, it loses precise positioning. A strike that would have landed within 2–5 meters of a target is deflected by tens to hundreds of meters — turning a surgical blow into a statistical miss.
-        </p>
+        <p style="font-size:clamp(14px,2vw,16px);color:var(--text);margin-bottom:20px;line-height:1.8"><strong style="color:#fff">Electronic Protection of Infrastructure (EPI)</strong> deploys a geographically distributed array of GNSS jammer units that work together as a synchronized counter-UAV grid. It creates a <strong style="color:var(--accent)">"dense electronic minefield"</strong> around critical assets, converting GPS-guided precision weapons into statistical misses.</p>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.8">When a GPS-guided drone or missile enters the EPI zone, a strike that would have landed within 2–5 meters of a critical target is deflected by tens to hundreds of meters. Unlike interceptor missiles, EPI defends against unlimited threats simultaneously at zero per-engagement cost — solving the cost asymmetry problem that is bankrupting conventional air defenses worldwide.</p>
         <ul class="check-list">
-          <li><span class="ck">✓</span><span><strong>Last Line of Defense</strong> — operates independently or integrated with existing national air-defense systems</span></li>
-          <li><span class="ck">✓</span><span><strong>Non-Kinetic &amp; Passive</strong> — no interceptor missiles, no airspace deconfliction, no collateral detonation risk</span></li>
-          <li><span class="ck">✓</span><span><strong>Scalable</strong> — from a single facility to city-wide or country-wide grid deployment</span></li>
-          <li><span class="ck">✓</span><span><strong>Evaluated &amp; Approved</strong> — tested effective against Shahed-136 class GNSS-guided platforms</span></li>
-          <li><span class="ck">✓</span><span><strong>Integrates With Air-Defense Warnings</strong> — activates automatically on alert or manually on demand</span></li>
-          <li><span class="ck">✓</span><span><strong>Rapid Deployment</strong> — installation operational within days; jammer units mobile-mountable on vehicles</span></li>
-          <li><span class="ck">✓</span><span><strong>Patent Pending</strong> — proprietary array topology defeats 4-element CRPA guidance systems</span></li>
+          <li><span class="ck">✓</span><span><strong>Last Line of Defense</strong> — independently or alongside any anti-aircraft / anti-missile defense system</span></li>
+          <li><span class="ck">✓</span><span><strong>Defeats CRPA Anti-Jam Antennas</strong> — the only system proven to overcome Shahed-136 class guidance</span></li>
+          <li><span class="ck">✓</span><span><strong>Zero Per-Engagement Cost</strong> — unlimited threats neutralized; no interceptor missiles consumed</span></li>
+          <li><span class="ck">✓</span><span><strong>Ukraine Tested &amp; Approved</strong> — evaluated against real Shahed-136 attacks in 2022</span></li>
+          <li><span class="ck">✓</span><span><strong>Scalable: Single Facility to National Grid</strong> — from one power plant to country-wide coverage in weeks</span></li>
+          <li><span class="ck">✓</span><span><strong>Rapid Deployment</strong> — vehicle-mounted units operational in 24–48 hours</span></li>
+          <li><span class="ck">✓</span><span><strong>Air Defense Integration</strong> — automatic activation on national warning system alerts</span></li>
+          <li><span class="ck">✓</span><span><strong>Patent Pending</strong> — proprietary array topology defeats 4-element CRPA guidance</span></li>
         </ul>
       </div>
       <div>
         <div class="infobox">
-          <div class="infobox-hd">EPI Denial Zone — Concept Diagram</div>
-          <svg viewBox="0 0 400 340" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+          <div class="infobox-hd">EPI Anti-Drone GNSS Denial Zone — Concept Diagram</div>
+          <svg viewBox="0 0 400 340" style="width:100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EPI denial zone diagram showing 6 GNSS jammer units surrounding a protected power plant, with an incoming threat being deflected">
             <ellipse cx="200" cy="185" rx="178" ry="138" fill="rgba(200,168,75,0.04)" stroke="rgba(200,168,75,0.18)" stroke-width="1" stroke-dasharray="6,4"/>
-            <ellipse cx="200" cy="185" rx="92"  ry="72"  fill="rgba(79,176,109,0.06)"  stroke="rgba(79,176,109,0.28)"  stroke-width="1"/>
+            <ellipse cx="200" cy="185" rx="92" ry="72" fill="rgba(79,176,109,0.06)" stroke="rgba(79,176,109,0.28)" stroke-width="1"/>
             <g fill="#c8a84b" opacity="0.9">
-              <rect x="192" y="40"  width="16" height="16" rx="2"/>
+              <rect x="192" y="40" width="16" height="16" rx="2"/>
               <rect x="350" y="104" width="16" height="16" rx="2"/>
               <rect x="354" y="248" width="16" height="16" rx="2"/>
               <rect x="192" y="300" width="16" height="16" rx="2"/>
-              <rect x="30"  y="248" width="16" height="16" rx="2"/>
-              <rect x="32"  y="104" width="16" height="16" rx="2"/>
+              <rect x="30" y="248" width="16" height="16" rx="2"/>
+              <rect x="32" y="104" width="16" height="16" rx="2"/>
             </g>
             <g stroke="rgba(200,168,75,0.12)" stroke-width="1" fill="none">
-              <line x1="200" y1="56"  x2="200" y2="113"/>
+              <line x1="200" y1="56" x2="200" y2="113"/>
               <line x1="358" y1="112" x2="284" y2="145"/>
               <line x1="362" y1="256" x2="284" y2="225"/>
               <line x1="200" y1="300" x2="200" y2="257"/>
-              <line x1="38"  y1="256" x2="118" y2="225"/>
-              <line x1="40"  y1="112" x2="118" y2="145"/>
+              <line x1="38" y1="256" x2="118" y2="225"/>
+              <line x1="40" y1="112" x2="118" y2="145"/>
             </g>
             <rect x="180" y="165" width="40" height="40" fill="rgba(79,176,109,0.14)" stroke="#4fb06d" stroke-width="1.5"/>
             <rect x="188" y="173" width="24" height="24" fill="rgba(79,176,109,0.4)"/>
             <text x="200" y="222" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="#4fb06d" font-weight="700" letter-spacing="1">PROTECTED ASSET</text>
-            <text x="200" y="34"  text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="#c8a84b" font-weight="700" letter-spacing="1">JAMMER UNIT</text>
+            <text x="200" y="34" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="#c8a84b" font-weight="700" letter-spacing="1">GNSS JAMMER UNIT</text>
             <text x="200" y="240" text-anchor="middle" font-family="Barlow Condensed" font-size="8" fill="rgba(79,176,109,0.55)">POWER PLANT / OIL REFINERY / MILITARY BASE</text>
-            <defs>
-              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
-              </marker>
-            </defs>
+            <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/></marker></defs>
             <path d="M340 50 L255 108" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
-            <text x="348" y="46" font-family="Barlow Condensed" font-size="9" fill="#c84b4b" font-weight="700">THREAT</text>
+            <text x="348" y="46" font-family="Barlow Condensed" font-size="9" fill="#c84b4b" font-weight="700">GPS DRONE</text>
             <path d="M255 108 L224 155" stroke="#c84b4b" stroke-width="1" stroke-dasharray="3,3"/>
             <circle cx="220" cy="162" r="5" fill="none" stroke="#c84b4b" stroke-width="1" opacity="0.65"/>
-            <text x="232" y="160" font-family="Barlow Condensed" font-size="8" fill="#c84b4b">DEFLECTED</text>
+            <text x="232" y="160" font-family="Barlow Condensed" font-size="8" fill="#c84b4b">DEFLECTED ±100m</text>
           </svg>
         </div>
       </div>
@@ -583,87 +747,47 @@
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
+<!-- ⑤ HOW IT WORKS — H2 with keyword "how GNSS jamming stops drones" -->
 <section id="how">
   <div class="container">
     <div class="eyebrow">Technical Overview</div>
-    <h2 class="section-title">How Grid-Jam Works</h2>
+    <h2 class="section-title">How Anti-Drone GNSS Jamming<br/>Stops GPS-Guided Weapons</h2>
     <div class="divider"></div>
-    <p class="lead">A plain-language explanation of the technology — from the threat to the solution.</p>
+    <p class="lead">A plain-language explanation of why conventional jammers fail against CRPA-equipped military drones, and how Grid-Jam's distributed array solves the problem.</p>
     <div class="how-grid">
       <ul class="steps">
-        <li class="step">
-          <div class="step-n">1</div>
-          <div>
-            <div class="step-t">GPS is the Weapon's Brain</div>
-            <div class="step-b">Modern drones and missiles use GPS (a type of GNSS) to know exactly where they are and navigate to their target with meter-level precision. Disrupt that GPS signal and the weapon loses its ability to hit a specific building, tank, or facility.</div>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-n">2</div>
-          <div>
-            <div class="step-t">The Problem: CRPA Antennas Resist Simple Jamming</div>
-            <div class="step-b">Military-grade drones and missiles carry CRPA (Controlled Reception Pattern Antennas) with 4 or more elements. These smart antennas identify and cancel out jamming signals from up to 3 directions simultaneously — rendering single or triple jammer deployments ineffective against modern guided munitions.</div>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-n">3</div>
-          <div>
-            <div class="step-t">The Solution: A Grid That Overwhelms CRPA</div>
-            <div class="step-b">Grid-Jam deploys many jammer units arranged in a geometric array surrounding the protected site. Because jammers attack from more directions than the CRPA can nullify simultaneously, the weapon's guidance system is overwhelmed and loses lock on GPS satellites.</div>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-n">4</div>
-          <div>
-            <div class="step-t">From Precision to Statistics</div>
-            <div class="step-b">Once inside the EPI zone, the weapon's position error grows from meters to tens or hundreds of meters. A strike that would have destroyed an oil pipeline or power transformer now misses entirely — the infrastructure survives.</div>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-n">5</div>
-          <div>
-            <div class="step-t">Coverage for All Threat Types</div>
-            <div class="step-b">Omnidirectional low-altitude jammers cover drones and cruise missiles for the last 5+ km of approach. High-power vertical long-range directional arrays cover ballistic missile trajectories over ~50 km — including hypersonic glide vehicles during atmospheric re-entry.</div>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-n">6</div>
-          <div>
-            <div class="step-t">Integrated Into Your Defense Ecosystem</div>
-            <div class="step-b">EPI can be switched on/off manually or triggered automatically by integration with national air-defense warning systems. It adds a zero-interceptor-cost defensive layer alongside existing radar or Iron Dome-class systems, or as a standalone last line of defense.</div>
-          </div>
-        </li>
+        <li class="step"><div class="step-n">1</div><div><div class="step-t">GPS Is the Weapon's Brain</div><div class="step-b">Modern drones and missiles use all four GNSS constellations (GPS, GLONASS, Galileo, BeiDou) across six frequency bands (1.1–1.6 GHz) to navigate with meter-level precision. Disrupting GNSS navigation forces the weapon into "dead reckoning" — it misses its target by tens to hundreds of meters.</div></div></li>
+        <li class="step"><div class="step-n">2</div><div><div class="step-t">Why Single Jammers Fail: CRPA Defeats Them</div><div class="step-b">Military anti-drone countermeasures are undermined by CRPA — Controlled Reception Pattern Antennas. A 4-element CRPA automatically nullifies jamming signals from up to 3 directions simultaneously. This makes every conventional single-unit or triple-jammer anti-drone system completely ineffective against the Shahed-136 and equivalent platforms.</div></div></li>
+        <li class="step"><div class="step-n">3</div><div><div class="step-t">Grid-Jam's Solution: Overwhelm CRPA from All Directions</div><div class="step-b">EPI places GNSS jammer units in a geometric array surrounding the protected site. The distributed grid attacks from more simultaneous directions than the CRPA can nullify — overwhelming the anti-jam filter and breaking GPS lock entirely, across all six frequency bands.</div></div></li>
+        <li class="step"><div class="step-n">4</div><div><div class="step-t">Last 5 km Anti-Drone Zone</div><div class="step-b">EPI's omnidirectional jammer grid — including defeat of 4+ element CRPA — provides continuous GPS denial for at least the last 5 km of drone or cruise missile approach. The weapon flies its final leg without accurate navigation, missing its target by statistically unpredictable distances.</div></div></li>
+        <li class="step"><div class="step-n">5</div><div><div class="step-t">50 km Ballistic &amp; Hypersonic Missile Defense Corridor</div><div class="step-b">Grid-Jam's grouped array of vertical high-power directional jammers covers the full 50 km atmospheric re-entry phase of ballistic and hypersonic missiles — the only commercially available GNSS jamming solution with documented ballistic missile coverage.</div></div></li>
+        <li class="step"><div class="step-n">6</div><div><div class="step-t">Integrated Counter-UAS Air Defense Layer</div><div class="step-b">EPI integrates with national air-defense warning systems for automatic activation, or is manually controlled locally or country-wide. Operates standalone or alongside existing radar and interceptor systems — adding a non-kinetic defense layer with zero per-engagement cost.</div></div></li>
       </ul>
       <div>
         <div class="infobox" style="margin-bottom:20px">
-          <div class="infobox-hd">Drone / Cruise Missile Coverage</div>
-          <svg viewBox="0 0 380 260" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+          <div class="infobox-hd">Anti-Drone Coverage — Drone &amp; Cruise Missile</div>
+          <svg viewBox="0 0 380 260" style="width:100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing drone approaching from 5km away, entering GNSS denial zone, and missing the protected target by 100 meters">
             <line x1="20" y1="220" x2="360" y2="220" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
             <ellipse cx="190" cy="220" rx="155" ry="90" fill="rgba(200,168,75,0.04)" stroke="rgba(200,168,75,0.2)" stroke-width="1" stroke-dasharray="5,4"/>
-            <rect x="26"  y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
-            <rect x="90"  y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="26" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
+            <rect x="90" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
             <rect x="182" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
             <rect x="274" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
             <rect x="340" y="212" width="12" height="12" fill="#c8a84b" rx="1"/>
             <rect x="174" y="196" width="24" height="24" fill="rgba(79,176,109,0.15)" stroke="#4fb06d" stroke-width="1.2"/>
             <rect x="180" y="202" width="12" height="12" fill="rgba(79,176,109,0.4)"/>
-            <defs>
-              <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
-              </marker>
-            </defs>
+            <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/></marker></defs>
             <path d="M30,60 Q100,40 150,100 Q170,140 180,190" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr2)"/>
             <text x="28" y="55" font-family="Barlow Condensed" font-size="9" fill="#c84b4b" font-weight="700">DRONE / CRUISE MISSILE</text>
             <circle cx="180" cy="192" r="12" fill="none" stroke="#c84b4b" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
             <text x="196" y="190" font-family="Barlow Condensed" font-size="8" fill="#c84b4b">±100m MISS</text>
             <line x1="35" y1="230" x2="344" y2="230" stroke="rgba(200,168,75,0.25)" stroke-width="1"/>
-            <text x="190" y="244" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.6)" letter-spacing="1">~ 5 KM GNSS DENIAL ZONE</text>
+            <text x="190" y="244" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.6)" letter-spacing="1">~5 KM ANTI-DRONE GNSS DENIAL ZONE</text>
           </svg>
         </div>
         <div class="infobox">
-          <div class="infobox-hd">Ballistic Missile Coverage</div>
-          <svg viewBox="0 0 380 220" style="width:100%" xmlns="http://www.w3.org/2000/svg">
+          <div class="infobox-hd">Ballistic Missile GPS Jamming Coverage</div>
+          <svg viewBox="0 0 380 220" style="width:100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing vertical high-power jammer array covering 50km ballistic missile re-entry corridor">
             <line x1="20" y1="200" x2="360" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
             <rect x="40" y="20" width="300" height="180" fill="rgba(200,168,75,0.03)" stroke="rgba(200,168,75,0.15)" stroke-width="1" stroke-dasharray="6,4"/>
             <g fill="#c8a84b">
@@ -673,327 +797,460 @@
               <polygon points="260,200 268,180 276,200"/>
               <polygon points="328,200 336,180 344,200"/>
             </g>
-            <defs>
-              <marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/>
-              </marker>
-            </defs>
+            <defs><marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c84b4b"/></marker></defs>
             <path d="M370,10 L190,190" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr3)"/>
-            <text x="348" y="10" font-family="Barlow Condensed" font-size="8" fill="#c84b4b" font-weight="700" text-anchor="end">BALLISTIC / HYPERSONIC</text>
-            <text x="40"  y="14" font-family="Barlow Condensed" font-size="8" fill="rgba(200,168,75,0.6)" letter-spacing="1">VERTICAL HIGH-POWER JAMMING CORRIDOR</text>
-            <text x="190" y="215" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.55)" letter-spacing="1">~ 50 KM COVERAGE</text>
+            <text x="348" y="10" font-family="Barlow Condensed" font-size="8" fill="#c84b4b" font-weight="700" text-anchor="end">BALLISTIC / HYPERSONIC MISSILE</text>
+            <text x="40" y="14" font-family="Barlow Condensed" font-size="8" fill="rgba(200,168,75,0.6)" letter-spacing="1">VERTICAL HIGH-POWER GNSS JAMMING CORRIDOR</text>
+            <text x="190" y="215" text-anchor="middle" font-family="Barlow Condensed" font-size="9" fill="rgba(200,168,75,0.55)" letter-spacing="1">~50 KM BALLISTIC MISSILE DEFENSE COVERAGE</text>
           </svg>
         </div>
-        <div class="patent-link">
-          Patent application: <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">patents.justia.com/patent/20230273324</a>
-        </div>
+        <div class="patent-link">Patent application: <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">patents.justia.com/patent/20230273324</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── ADVANTAGES ────────────────────────────────────────────── -->
-<section id="advantages">
+<!-- ⑥ PRODUCTS — H2 with keyword "GNSS jammer units" -->
+<section id="products">
   <div class="container">
-    <div class="eyebrow">Why EPI</div>
-    <h2 class="section-title">Strategic &amp; Operational<br/>Advantages</h2>
+    <div class="eyebrow">Hardware</div>
+    <h2 class="section-title">GNSS Jammer Units —<br/>Anti-Drone Product Line</h2>
     <div class="divider"></div>
-    <p class="lead">EPI solves the cost and scalability problem that traditional hard-kill systems cannot. Here is why defense planners and infrastructure operators choose Grid-Jam.</p>
-    <div class="adv-grid">
-      <div class="adv">
-        <div class="adv-icon">🛡</div>
-        <div class="adv-t">Asymmetric Cost Advantage</div>
-        <div class="adv-b">A single interceptor missile costs $50,000–$3M+. A low-cost GPS-guided drone costs $500–$20,000. EPI neutralizes this imbalance — one jammer node defends against unlimited incoming threats at zero per-engagement cost.</div>
+    <p class="lead">Four jammer unit configurations cover every counter-UAV deployment scenario — from tactical single-asset drone protection to national-scale ballistic missile GPS denial. All units cover six frequency bands across all GNSS constellations (GPS, GLONASS, Galileo, BeiDou) in the 1.1–1.6 GHz range, ensuring full-spectrum coverage against any GPS-guided weapon.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-type">Unit Type 1 — Anti-Drone Jammer</div>
+        <div class="product-name">Omnidirectional<br/>25W GNSS Jammer</div>
+        <ul class="product-specs">
+          <li><strong>Frequency Coverage</strong> Six bands, 1.1–1.6 GHz (all GNSS)</li>
+          <li><strong>Power Output</strong> 25 watts</li>
+          <li><strong>Anti-Drone Range</strong> Min. 2.5 km (Line of Sight)</li>
+          <li><strong>Activation</strong> Manual or remote ON/OFF</li>
+          <li><strong>Jamming ON Time</strong> Adjustable 5–30 min</li>
+          <li><strong>Size</strong> 20×30×40 cm (6 omni antennas + UHF RX)</li>
+          <li><strong>Weight</strong> ~5 kg</li>
+          <li><strong>Power Supply</strong> 12–28V DC</li>
+          <li><strong>Enclosure</strong> Weather-resistant, outdoor-rated</li>
+        </ul>
+        <span class="pbadge omni">Omnidirectional Coverage</span>
       </div>
-      <div class="adv">
-        <div class="adv-icon">⚡</div>
-        <div class="adv-t">Rapid Deployment</div>
-        <div class="adv-b">EPI units are pre-planned and stored until needed. Full deployment across a protected site is achievable in days. Units can be vehicle-mounted for rapid repositioning, providing flexible coverage without permanent infrastructure.</div>
+      <div class="product-card">
+        <div class="product-type">Unit Type 2 — Anti-Drone Jammer</div>
+        <div class="product-name">Horizontal Directional<br/>25W GNSS Jammer</div>
+        <ul class="product-specs">
+          <li><strong>Frequency Coverage</strong> Six bands, 1.1–1.6 GHz (all GNSS)</li>
+          <li><strong>Power Output</strong> 25 watts</li>
+          <li><strong>Anti-Drone Range</strong> Min. 5 km (Line of Sight)</li>
+          <li><strong>Activation</strong> Manual or remote ON/OFF</li>
+          <li><strong>Jamming ON Time</strong> Adjustable 5–30 min</li>
+          <li><strong>Size</strong> 20×30×40 cm (6 directional antennas + UHF RX)</li>
+          <li><strong>Weight</strong> ~6 kg</li>
+          <li><strong>Power Supply</strong> 12–28V DC</li>
+          <li><strong>Enclosure</strong> Weather-resistant, outdoor-rated</li>
+        </ul>
+        <span class="pbadge dir">Horizontal Directional</span>
       </div>
-      <div class="adv">
-        <div class="adv-icon">🌐</div>
-        <div class="adv-t">National-Scale Coverage</div>
-        <div class="adv-b">EPI scales from protecting a single refinery to covering an entire country's critical infrastructure grid — power plants, airports, seaports, command centers, and military installations — within a reasonable budget and timeline.</div>
+      <div class="product-card">
+        <div class="product-type">Unit Type 3 — High-Power Anti-Drone Jammer</div>
+        <div class="product-name">Omnidirectional<br/>300–500W GNSS Jammer</div>
+        <ul class="product-specs">
+          <li><strong>Frequency Coverage</strong> Six bands, 1.1–1.6 GHz (all GNSS)</li>
+          <li><strong>Power Output</strong> 300–500 watts</li>
+          <li><strong>Anti-Drone Range</strong> Min. 10 km (Line of Sight)</li>
+          <li><strong>Activation</strong> Manual or remote ON/OFF</li>
+          <li><strong>Jamming ON Time</strong> Adjustable 5–30 min</li>
+          <li><strong>Size</strong> 20×30×40 cm (plus 6 omni antennas)</li>
+          <li><strong>Weight</strong> ~7 kg</li>
+          <li><strong>Power Supply</strong> 28V DC</li>
+          <li><strong>Enclosure</strong> Weather-resistant, outdoor-rated</li>
+        </ul>
+        <span class="pbadge omni">High Power Omni</span>
+        <span class="pbadge hp" style="margin-left:6px">10× Node Reduction</span>
       </div>
-      <div class="adv">
-        <div class="adv-icon">🔗</div>
-        <div class="adv-t">Seamless Integration</div>
-        <div class="adv-b">EPI integrates with existing national air-defense warning systems. Automatic activation on radar alert or manual activation on threat intelligence reduces operator burden and ensures zero-latency response.</div>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">🎯</div>
-        <div class="adv-t">Defeats CRPA — the Hard Problem</div>
-        <div class="adv-b">Unlike conventional single-jammer solutions, Grid-Jam's coordinated array geometry overwhelms 4-element CRPA antennas used in Shahed-136 and equivalent platforms. This is the core technological differentiator that makes EPI effective where others fail.</div>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">📋</div>
-        <div class="adv-t">Export-Controlled &amp; Compliant</div>
-        <div class="adv-b">EPI systems are listed under Wassenaar Munitions List item ML 11b — ensuring regulated, government-to-government transfer processes with full end-use accountability. Grid-Jam works within established defense export frameworks.</div>
+      <div class="product-card">
+        <div class="product-type">Unit Type 4 — Ballistic Missile Defense Jammer</div>
+        <div class="product-name">Vertical Directional<br/>300–500W GNSS Jammer</div>
+        <ul class="product-specs">
+          <li><strong>Frequency Coverage</strong> Six bands, 1.1–1.6 GHz (all GNSS)</li>
+          <li><strong>Power Output</strong> 300–500 watts</li>
+          <li><strong>Missile Defense Range</strong> Approx. 50 km (vertical corridor)</li>
+          <li><strong>Activation</strong> Remote ON/OFF</li>
+          <li><strong>Jamming ON Time</strong> Adjustable 5–30 min</li>
+          <li><strong>Size</strong> 20×30×40 cm (6 directional Yagi antennas)</li>
+          <li><strong>Weight</strong> ~8 kg</li>
+          <li><strong>Power Supply</strong> 28V DC</li>
+          <li><strong>Enclosure</strong> Weather-resistant, outdoor-rated</li>
+        </ul>
+        <span class="pbadge dir">Vertical Directional</span>
+        <span class="pbadge hp" style="margin-left:6px">Ballistic / Hypersonic</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <h3 style="font-family:var(--fh);font-size:clamp(18px,3vw,22px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-top:60px;margin-bottom:8px">
-      EPI vs. Traditional Defense Layers
-    </h3>
+<!-- ⑦ IMPLEMENTATION — H2 with keyword "counter-drone deployment" -->
+<section id="implementation">
+  <div class="container">
+    <div class="eyebrow">Counter-Drone Deployment</div>
+    <h2 class="section-title">Anti-Drone GNSS Jamming<br/>Implementation Options</h2>
+    <div class="divider"></div>
+    <p class="lead">Grid-Jam supports four counter-UAV grid types and four installation methods — from a 24-hour rapid pilot trial to a permanent national anti-drone protection grid. Full consultation and deployment planning available for all scenarios.</p>
+    <div class="impl-grid">
+      <div class="impl-block">
+        <div class="impl-block-title">Grid / Array Types</div>
+        <ul class="impl-list">
+          <li class="impl-item"><div class="impl-num">01</div><div class="impl-text"><strong>Mini Grid — Single Asset Protection</strong>Anti-drone GNSS jamming grid around a single critical asset: power plant, oil refinery, airbase, airport terminal. Focused coverage, rapid setup.</div></li>
+          <li class="impl-item"><div class="impl-num">02</div><div class="impl-text"><strong>Regional Counter-UAV Grid</strong>Covering an industrial zone, city district, or region with multiple strategic assets requiring GPS denial protection simultaneously.</div></li>
+          <li class="impl-item"><div class="impl-num">03</div><div class="impl-text"><strong>Country-Wide GNSS Defense Grid</strong>National-scale anti-drone and anti-missile GPS jamming covering all critical infrastructure — power, ports, airports, government buildings, military installations. Deployable in weeks.</div></li>
+          <li class="impl-item"><div class="impl-num">04</div><div class="impl-text"><strong>Pilot Trial Grid</strong>Micro or mini grid for real-world counter-UAV performance evaluation before committing to full deployment. Validates array geometry and CRPA defeat effectiveness.</div></li>
+        </ul>
+      </div>
+      <div class="impl-block">
+        <div class="impl-block-title">Installation Methods</div>
+        <ul class="impl-list">
+          <li class="impl-item"><div class="impl-num">A</div><div class="impl-text"><strong>Mobile — Vehicle Rooftop</strong>For rapid counter-drone deployment. Operational in hours. Simultaneously solves positioning, power, and anti-theft — preferred for emergency response and evaluation grids.</div></li>
+          <li class="impl-item"><div class="impl-num">B</div><div class="impl-text"><strong>Fixed — Rooftop Mounting</strong>Permanent anti-drone protection for a fixed asset. Practical, low-maintenance, cost-effective for power plants, oil refineries, and military bases.</div></li>
+          <li class="impl-item"><div class="impl-num">C</div><div class="impl-text"><strong>Semi-Fixed — Telescopic Tripods</strong>For deployments that may relocate. Battery + solar charging enables fully off-grid counter-UAV operations — ideal for mobile military bases.</div></li>
+          <li class="impl-item"><div class="impl-num">D</div><div class="impl-text"><strong>Centralized Hardened Shacks</strong>Armored enclosures housing 4–5 high-power GNSS jammers. Reduces total node count, simplifies deployment and maintenance for permanent national grids.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ ADVANTAGES — H2 with keyword "EPI vs interceptors" -->
+<section id="advantages">
+  <div class="container">
+    <div class="eyebrow">Why Grid-Jam EPI</div>
+    <h2 class="section-title">Why Anti-Drone GNSS Jamming<br/>Outperforms Kinetic Defenses</h2>
+    <div class="divider"></div>
+    <p class="lead">EPI solves the cost asymmetry and scalability problems that are making conventional kinetic defenses unsustainable. One interceptor missile costs $50,000–$3M+. A drone costs a few hundred dollars. EPI eliminates this imbalance entirely.</p>
+    <div class="adv-grid">
+      <div class="adv"><div class="adv-icon">🛡</div><div class="adv-t">Asymmetric Cost Advantage</div><div class="adv-b">Interceptor missiles cost $50,000–$3M+ each. EPI neutralizes every GPS-guided drone and missile in its denial zone simultaneously — at zero per-engagement cost. The cost equation is permanently flipped.</div></div>
+      <div class="adv"><div class="adv-icon">⚡</div><div class="adv-t">Rapid Counter-Drone Deployment</div><div class="adv-b">Pre-planned in peacetime, deployable in 24–48 hours. Vehicle-mounted units solve positioning, power, and anti-theft simultaneously — no permanent infrastructure required for the most urgent deployments.</div></div>
+      <div class="adv"><div class="adv-icon">🌐</div><div class="adv-t">National-Scale GPS Denial</div><div class="adv-b">Scales from a single power plant to country-wide national anti-drone and anti-missile protection — all critical infrastructure covered within a reasonable budget, achievable in weeks rather than years.</div></div>
+      <div class="adv"><div class="adv-icon">🔗</div><div class="adv-t">Seamless Air Defense Integration</div><div class="adv-b">Integrates with national air-defense warning systems for automatic GPS denial activation on radar alert, or manually on local intelligence. Country-wide and sector-specific activation both supported.</div></div>
+      <div class="adv"><div class="adv-icon">🎯</div><div class="adv-t">Defeats CRPA — The Unsolvable Problem</div><div class="adv-b">Grid-Jam's coordinated array geometry overwhelms 4-element CRPA antennas — the core anti-jam technology in Shahed-136, Geran-2, and equivalent GPS-guided munitions. This is the one counter-UAV capability no single jammer can provide.</div></div>
+      <div class="adv"><div class="adv-icon">📋</div><div class="adv-t">Export-Controlled &amp; Fully Compliant</div><div class="adv-b">Classified under Wassenaar Arrangement ML 11b. Grid-Jam operates exclusively through approved government-to-government and licensed defense procurement channels worldwide.</div></div>
+    </div>
+    <h3 style="font-family:var(--fh);font-size:clamp(18px,3vw,22px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-top:60px;margin-bottom:8px">EPI vs. Traditional Air Defense Layers</h3>
     <div class="vs-wrap">
-      <table class="vs">
-        <thead>
-          <tr>
-            <th>Capability</th>
-            <th>EPI (Grid-Jam)</th>
-            <th>Interceptor Missiles</th>
-            <th>Radar / EW Detection</th>
-          </tr>
-        </thead>
+      <table class="vs" aria-label="Comparison of EPI anti-drone jamming vs interceptor missiles vs radar detection">
+        <thead><tr><th>Capability</th><th>EPI (Grid-Jam GNSS Jamming)</th><th>Interceptor Missiles</th><th>Radar / EW Detection</th></tr></thead>
         <tbody>
-          <tr><td>Defeats CRPA-equipped drones</td><td class="ok">✓ Yes</td><td class="pa">~ Limited</td><td class="no">✗ No</td></tr>
-          <tr><td>Per-engagement cost</td><td class="ok">✓ Near zero</td><td class="no">✗ $50K–$3M+</td><td class="ok">✓ Near zero</td></tr>
-          <tr><td>Covers swarm attacks</td><td class="ok">✓ Yes</td><td class="no">✗ Stock-limited</td><td class="pa">~ Alert only</td></tr>
-          <tr><td>Effective vs. low-altitude threats</td><td class="ok">✓ Yes</td><td class="no">✗ Radar shadow</td><td class="no">✗ Limited</td></tr>
-          <tr><td>Effective vs. ballistic missiles</td><td class="ok">✓ 50 km corridor</td><td class="ok">✓ Yes</td><td class="ok">✓ Detection</td></tr>
-          <tr><td>Non-kinetic / no collateral risk</td><td class="ok">✓ Yes</td><td class="no">✗ Debris risk</td><td class="ok">✓ Yes</td></tr>
-          <tr><td>Deployment timeline</td><td class="ok">✓ Days</td><td class="no">✗ Months–years</td><td class="pa">~ Weeks</td></tr>
-          <tr><td>Scalable to national coverage</td><td class="ok">✓ Yes</td><td class="no">✗ Cost-prohibitive</td><td class="pa">~ Partial</td></tr>
+          <tr><td>Defeats CRPA-equipped GPS drones</td><td class="ok">✓ Yes</td><td class="pa">~ Limited</td><td class="no">✗ No</td></tr>
+          <tr><td>Per-engagement cost</td><td class="ok">✓ Zero</td><td class="no">✗ $50K–$3M+</td><td class="ok">✓ Zero</td></tr>
+          <tr><td>Stops drone swarm attacks</td><td class="ok">✓ Yes — entire swarm</td><td class="no">✗ Stock-limited</td><td class="pa">~ Alert only</td></tr>
+          <tr><td>Low-altitude drone defense</td><td class="ok">✓ Yes</td><td class="no">✗ Radar shadow</td><td class="no">✗ Limited</td></tr>
+          <tr><td>Ballistic missile defense</td><td class="ok">✓ 50 km corridor</td><td class="ok">✓ Yes</td><td class="ok">✓ Detection</td></tr>
+          <tr><td>Non-kinetic / no debris risk</td><td class="ok">✓ Yes</td><td class="no">✗ Debris risk</td><td class="ok">✓ Yes</td></tr>
+          <tr><td>Deployment timeline</td><td class="ok">✓ 24–48 hours</td><td class="no">✗ Months–years</td><td class="pa">~ Weeks</td></tr>
+          <tr><td>National-scale coverage</td><td class="ok">✓ Yes — in weeks</td><td class="no">✗ Cost-prohibitive</td><td class="pa">~ Partial</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ── CASE STUDIES ──────────────────────────────────────────── -->
+<!-- ⑨ CASE STUDIES — H2 with keyword "drone attack case studies" -->
 <section id="cases">
   <div class="container">
     <div class="eyebrow">Historical Evidence</div>
-    <h2 class="section-title">Drone &amp; Missile Attack<br/>Case Studies</h2>
+    <h2 class="section-title">GPS-Guided Drone &amp; Missile Attack<br/>Case Studies (2019–2026)</h2>
     <div class="divider"></div>
-    <p class="lead">Every major conflict since 2019 has validated the threat. These are the real-world events that shaped Grid-Jam's mission and demonstrate the urgency of GNSS-denial defense.</p>
+    <p class="lead">GPS-guided drones and missiles have already devastated critical infrastructure across four continents. Every one of these attacks succeeded because the target had no counter-UAV GNSS jamming protection.</p>
     <div class="cases">
       <div class="case">
         <div class="case-yr">2019</div>
         <div>
-          <div class="case-tag">Energy Infrastructure</div>
-          <div class="case-title">Houthi Drone Strike on Saudi ARAMCO</div>
-          <div class="case-body">Iranian-supplied drones and cruise missiles struck Saudi Arabia's Abqaiq and Khurais oil processing facilities, temporarily cutting 5% of global oil supply and causing estimated damages exceeding $5 billion USD. The attack demonstrated that GNSS-guided drones could precisely target the soft spots of hardened industrial infrastructure at scale.</div>
+          <div class="case-tag">Energy Infrastructure — Oil Refinery</div>
+          <div class="case-title">Houthi GPS Drones Strike Saudi ARAMCO — $5B in Infrastructure Damage</div>
+          <div class="case-body">Iranian-supplied GPS-guided drones struck Saudi Arabia's Abqaiq and Khurais oil facilities with surgical precision. Dozens of oil tanks hit at identical angles — achievable only through automatic GNSS navigation. 5% of global oil supply disrupted overnight. Damages exceeded $5 billion USD. This attack directly led to Grid-Jam's founding and the development of the EPI anti-drone GNSS jamming system.</div>
         </div>
       </div>
       <div class="case">
         <div class="case-yr">2020</div>
         <div>
-          <div class="case-tag">Military Infrastructure</div>
-          <div class="case-title">Azerbaijan–Armenia: Israeli Drones Defeat Air Defense</div>
-          <div class="case-body">Azerbaijan deployed Harop and Bayraktar TB2 drones guided by GPS to systematically destroy Armenia's entire radar network and anti-air infrastructure. The conflict proved that relatively low-cost precision drones could eliminate conventional air-defense systems — rendering expensive ground-based radar networks obsolete without GNSS-denial capability.</div>
+          <div class="case-tag">Military Air Defense Infrastructure</div>
+          <div class="case-title">Azerbaijan–Armenia: GPS-Guided Drones Defeat Entire Air Defense in 44 Days</div>
+          <div class="case-body">Azerbaijan deployed Harop loitering munitions and Bayraktar TB2 GPS-guided drones to systematically destroy Armenia's entire radar network and anti-air infrastructure. The war was effectively won by counter-UAV GPS precision. Without GNSS-denial capability, even the best conventional ground-based air defense collapses within weeks against sustained GPS drone campaigns.</div>
         </div>
       </div>
       <div class="case">
         <div class="case-yr">2022–</div>
         <div>
-          <div class="case-tag">Energy &amp; National Infrastructure</div>
-          <div class="case-title">Russia–Ukraine: Industrial-Scale Drone and Missile Campaign</div>
-          <div class="case-body">Russia deployed the Iranian Shahed-136 (later produced domestically as Geran-2) in swarms of hundreds per attack, targeting Ukrainian power plants, substations, water treatment facilities, and railway infrastructure. Ukraine lost the majority of its energy infrastructure to these attacks. Interceptor systems proved insufficient to intercept low, slow-flying drones at scale, and interceptor stockpiles were rapidly depleted.</div>
+          <div class="case-tag">National Energy Infrastructure</div>
+          <div class="case-title">Russia–Ukraine: 5,000 GPS Drones Per Month — Ukraine's Energy Grid Destroyed</div>
+          <div class="case-body">Russia deployed Shahed-136 kamikaze drones in swarms targeting power plants, substations, and water infrastructure — scaling to 5,000 units per month. Ukraine depleted its anti-air stockpiles. Grid-Jam delivered an evaluation GNSS jamming grid in 2022 and received approval as effective against Shahed-136 attacks — but a full national anti-drone deployment was never ordered in time. Ukraine became fully dependent on imported electricity.</div>
         </div>
       </div>
       <div class="case">
         <div class="case-yr">2023–</div>
         <div>
-          <div class="case-tag">Military &amp; Civilian Targets</div>
-          <div class="case-title">Hezbollah Drones Penetrate Israeli Air Defense</div>
-          <div class="case-body">Hezbollah drones flew low-altitude profiles that evaded Iron Dome detection, striking military installations and civilian targets including a documented hit near the Israeli Prime Minister's residence. Israel's oil refinery and a major hospital were struck by precise Iranian ballistic missiles. The conflict demonstrated that even the world's most advanced multi-layer air-defense architecture has exploitable gaps against GPS-guided low-altitude munitions.</div>
+          <div class="case-tag">Military &amp; Civilian Critical Infrastructure</div>
+          <div class="case-title">Iran &amp; Hezbollah Strike Through Israel's Multi-Layer Air Defense</div>
+          <div class="case-body">Hezbollah GPS-guided drones flew low-altitude profiles, evading Iron Dome entirely, striking military bases. Iran's ballistic missiles hit Israel's oil refinery and a major hospital with GPS precision. This proved that even the world's most advanced multi-layer air defense — Iron Dome, David's Sling, Arrow — cannot stop GPS-guided low-altitude drones or GPS-terminal-guided ballistic missiles at scale without GNSS jamming.</div>
+        </div>
+      </div>
+    </div>
+    <div class="swarm-note">
+      <p><strong>The Swarm Problem in 2026:</strong> The U.S. DoD's JIATF-401 task force — established in 2025 and funded with $3.1B in FY2026 — exists specifically because kinetic defenses cannot handle GPS drone swarms. Even at 80%+ interception rates, damage from remaining strikes is catastrophic and unsustainable. Grid-Jam EPI denies GPS precision to the entire swarm simultaneously — at zero per-engagement cost. This is why RF jamming holds the #1 market share in the counter-drone industry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ ABOUT US — H2 with E-E-A-T signals -->
+<section id="about">
+  <div class="container">
+    <div class="eyebrow">About Grid-Jam</div>
+    <h2 class="section-title">Founded by Alon Wallach —<br/>Electronic Warfare Veteran</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>Grid-Jam was established in 2019</strong> by <strong><a href="https://www.linkedin.com/in/alon-wallach-6625b310/" target="_blank" rel="noopener" style="color:var(--accent)">Alon Wallach</a></strong> — an Electronic Warfare veteran — immediately following the Houthi drone strike on Saudi ARAMCO. The surgical accuracy of dozens of oil tanks struck at identical angles was unambiguous: only automatic GNSS guidance could achieve this. A distributed GNSS jamming array was the logical EW countermeasure.</p>
+        <p>When Russia invaded Ukraine in 2022 and began deploying Shahed-136 drones against power infrastructure, Grid-Jam engineers recognized the threat pattern immediately. <strong>Ukraine ordered an evaluation grid, delivered within 2 months, evaluated against real Shahed-136 attacks, and approved as operationally effective.</strong> The national deployment decision came too late — a warning for every government without anti-drone GNSS jamming protection today.</p>
+        <p>Since 2022, Grid-Jam has expanded its product line — including 300–500W high-power jammers reducing required node count by 10×, and vertical directional arrays providing 50 km ballistic missile GPS denial corridor. The EPI system now addresses every GPS-guided threat category: kamikaze drones, cruise missiles, smart glide bombs, and ballistic/hypersonic missiles.</p>
+        <p>Grid-Jam provides a unique defense-oriented solution that quickly, effectively, and economically solves the dominant warfare threat of 2026. Expanding into the European market in collaboration with <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>, Bulgaria. Website designed by <a href="https://www.linkedin.com/in/omri-wallach-19989a113/" target="_blank" rel="noopener">Omri Wallach</a>, CEO of Apollo Cloud.</p>
+      </div>
+      <div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-year">2019</div><div class="tl-content"><strong>Company Founded</strong><p>Founded by Alon Wallach and EW veterans following the Houthi GPS drone strike on Saudi ARAMCO. Development of the distributed GNSS jamming array concept begins.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2022</div><div class="tl-content"><strong>First Combat-Zone Deployment — Ukraine</strong><p>Evaluation grid delivered in 2 months. Tested against live Shahed-136 drone attacks. Approved as operationally effective by Ukrainian defense authorities.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2023</div><div class="tl-content"><strong>System Expansion</strong><p>High-power 300–500W units reduce required node count 10×. Vertical directional arrays achieve 50–70 km ballistic and hypersonic missile GPS denial corridor.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2026</div><div class="tl-content"><strong>Global Deployment Ready</strong><p>Full four-unit product line: 25W to 500W. National-scale counter-UAV grids deployable within days. Active government briefings worldwide.</p></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FAQ ───────────────────────────────────────────────────── -->
+<!-- ⑪ FAQ — Structured data + H2 with keyword "anti-drone jamming FAQ" -->
 <section id="faq">
   <div class="container">
     <div class="eyebrow">Frequently Asked Questions</div>
-    <h2 class="section-title">Operational &amp; Technical<br/>Questions Answered</h2>
+    <h2 class="section-title">Anti-Drone GNSS Jamming —<br/>Technical &amp; Operational FAQ</h2>
     <div class="divider"></div>
     <div class="faq-wrap">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Does EPI intercept or shoot down threats?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">No. EPI is non-kinetic. It does not intercept or physically destroy threats. Instead, it continuously jams GNSS signals over wide areas around strategic infrastructure, causing guided munitions to lose their final-approach precision. The weapon still travels to the general area but misses the critical target by tens to hundreds of meters — effectively neutralizing the threat without any interceptor cost or collateral debris risk.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is an anti-drone GNSS jamming system and how does it differ from conventional jamming?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">A conventional GPS jammer is a single unit that transmits noise on GNSS frequencies. The problem: military drones carry CRPA (Controlled Reception Pattern Antennas) with 4+ elements that automatically null out signals from up to 3 jammers simultaneously. Grid-Jam EPI is a coordinated distributed array — a grid of jammer units surrounding the target from more directions than CRPA can defeat — overwhelmingthe anti-jam filter entirely. This is the fundamental difference between a jammer and the Grid-Jam anti-drone GNSS jamming system.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Why not just use a single high-power GPS jammer?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">Because modern military drones and missiles are equipped with CRPA (Controlled Reception Pattern Antennas) with 4 or more elements. A 4-element CRPA can automatically identify and filter out jamming signals arriving from up to 3 different directions simultaneously. Grid-Jam's distributed array places jammers in more directions than the CRPA can handle at once — overwhelming its filtering capacity and achieving effective denial that a single powerful jammer cannot.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can Grid-Jam EPI stop a Shahed-136 kamikaze drone?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">Yes. Grid-Jam EPI was evaluated against live Shahed-136 attacks in Ukraine in 2022 and received official approval as effective. The Shahed-136 uses GPS with a 4-element CRPA anti-jam antenna — the same antenna that defeats every conventional single jammer. EPI's distributed array overwhelms the CRPA from enough simultaneous directions to break GPS lock and deflect the strike from the target.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do you know when and where to activate EPI?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">Every country operates an air-defense early warning system. EPI integrates directly with these national warning networks for automatic activation upon radar or sensor alert. EPI can also be activated manually at specific sites on local threat intelligence, imminent attack indicators, or upon first confirmed explosions nearby. Country-wide and sector-specific activation are both supported.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Why not just use a single high-power GPS jammer for drone defense?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">Because military drones and missiles use CRPA antennas. A 4-element CRPA defeats 3 jammers simultaneously regardless of their power output. A 25W jammer, a 500W jammer, a 50,000W jammer — all fail against CRPA. Only Grid-Jam's geometric array attacks from more directions than CRPA can nullify, achieving what no individual anti-drone jammer can. Power is irrelevant; geometry is decisive.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How quickly can EPI be deployed across a country?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">Deployment is pre-planned in peacetime — jammer unit positions are engineered and surveyed in advance, with equipment stored until needed. Actual field deployment across a critical site can be completed in days. For the most flexible and rapid option, units can be mounted on standard low-cost vehicles, which simultaneously solves positioning, power, and anti-theft concerns. Full national deployment is achievable within weeks.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How quickly can anti-drone GNSS jamming protection be deployed?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">Vehicle-mounted units can be deployed within 24–48 hours — a vehicle rooftop installation simultaneously solves positioning, power supply, and anti-theft. A mini-grid protecting a single power plant or military base can be operational in 48 hours. A full country-wide national anti-drone protection grid can be deployed within weeks. Ukraine's evaluation grid was delivered and operational within 2 months of the initial order.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can EPI protect civilians and entire cities?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">EPI is specifically engineered to protect discrete critical infrastructure assets — power plants, oil facilities, military bases, airports, seaports, and government buildings — not general urban areas. Protecting entire cities from every incoming round is beyond the scope of any single system, including conventional air defense. EPI excels as a high-value asset protection layer that significantly reduces the probability of successful precision strikes on nationally critical sites.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can EPI protect against ballistic missiles, not just drones?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">Yes. Grid-Jam's Unit Type 4 — a 300–500W vertical directional jammer with Yagi antennas — covers a 50 km atmospheric re-entry corridor, jamming the GNSS terminal guidance phase of ballistic and hypersonic missiles. A grouped array of Type 4 units provides national-scale ballistic missile GPS denial — the only commercially available GNSS jamming solution with this capability.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Does EPI disrupt civilian GPS in the area?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">Because EPI is intended for wartime activation, civilian GNSS disruption in the protected zone is an accepted operational trade-off during active threat periods. Systems are designed to be activated only when needed and deactivated immediately after. Integration with national air-defense warning systems allows precise timing of activation to minimize unnecessary disruption during peacetime.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What critical infrastructure can be protected by anti-drone GNSS jamming?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">EPI is engineered for high-value critical infrastructure: power plants and electricity grids, oil refineries and gas facilities, seaports and maritime terminals, military airbases, civilian airports, water treatment infrastructure, government buildings, and military command centers. Deployments scale from a mini-grid protecting a single asset to a country-wide national GPS denial grid.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What regulatory framework covers EPI export?<span class="faq-arrow">+</span></button>
-        <div class="faq-a">GNSS jamming equipment is classified under the Wassenaar Arrangement Munitions List, item ML 11b: "Satellite navigation system jamming equipment and specially designed components." Export requires a defense export license from the exporting country. Grid-Jam operates fully within this framework, supplying EPI systems through government-to-government channels and approved defense export pathways.</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Why didn't Ukraine fully deploy Grid-Jam despite approving it?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">Ukraine received and approved the Grid-Jam evaluation grid in 2022 as effective against Shahed-136 attacks. They declined a full national grid deployment at that time, believing their existing anti-air forces were adequate. By 2023, when Russia scaled to 5,000 drones per month and Ukraine's interceptor stockpiles were depleted, it was too late to implement a national anti-drone grid. This is the defining lesson: counter-UAV GNSS jamming protection must be deployed proactively, not reactively.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What regulatory and export framework covers the Grid-Jam EPI system?<span class="faq-arrow" aria-hidden="true">+</span></button>
+        <div class="faq-a" role="region">GNSS jamming equipment is classified under the Wassenaar Arrangement Munitions List, item ML 11b: "Satellite navigation system jamming equipment and specially designed components." Export requires a defense export license from the exporting country. Grid-Jam operates fully within this framework — exclusively through approved government-to-government channels and licensed defense export procurement pathways.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ───────────────────────────────────────────────── -->
+<!-- ⑫ CONTACT — H2 with keyword "anti-drone system inquiry" -->
 <section id="contact">
   <div class="container">
-    <div class="eyebrow">Get In Touch</div>
-    <h2 class="section-title">Request a Briefing or<br/>Deployment Consultation</h2>
+    <div class="eyebrow">Request a Briefing</div>
+    <h2 class="section-title">Contact the EPI Anti-Drone<br/>Defense Network</h2>
     <div class="divider"></div>
+    <p class="lead" style="margin-bottom:36px">For counter-UAV deployment inquiries, government defense briefings, or critical infrastructure protection consultations — power plants, oil facilities, seaports, airports, and military bases worldwide.</p>
     <div class="contact-grid">
       <div>
-        <form class="cf" onsubmit="handleForm(event)">
+        <form class="cf" onsubmit="handleForm(event)" aria-label="Anti-drone defense inquiry form">
           <div class="form-row">
-            <div class="fg">
-              <label class="fl">First Name</label>
-              <input type="text" class="fi" placeholder="First name" required/>
-            </div>
-            <div class="fg">
-              <label class="fl">Last Name</label>
-              <input type="text" class="fi" placeholder="Last name" required/>
-            </div>
+            <div class="fg"><label class="fl" for="fname">First Name</label><input type="text" id="fname" class="fi" placeholder="First name" required autocomplete="given-name"/></div>
+            <div class="fg"><label class="fl" for="lname">Last Name</label><input type="text" id="lname" class="fi" placeholder="Last name" required autocomplete="family-name"/></div>
           </div>
+          <div class="fg"><label class="fl" for="org">Organization</label><input type="text" id="org" class="fi" placeholder="Ministry / Military Command / Agency / Company" required/></div>
+          <div class="fg"><label class="fl" for="email">Official Email</label><input type="email" id="email" class="fi" placeholder="name@organization.gov" required autocomplete="email"/></div>
           <div class="fg">
-            <label class="fl">Organization</label>
-            <input type="text" class="fi" placeholder="Ministry / Agency / Company" required/>
-          </div>
-          <div class="fg">
-            <label class="fl">Official Email</label>
-            <input type="email" class="fi" placeholder="name@organization.gov" required/>
-          </div>
-          <div class="fg">
-            <label class="fl">Inquiry Type</label>
-            <select class="fs">
+            <label class="fl" for="subject">Inquiry Type</label>
+            <select id="subject" class="fs">
               <option value="">Select inquiry type</option>
               <option>Government / National Defense Briefing</option>
+              <option>Counter-UAV Power Plant Protection</option>
+              <option>Counter-UAV Airport / Seaport Protection</option>
+              <option>Military Base Anti-Drone Defense</option>
+              <option>National-Scale GNSS Denial Grid</option>
+              <option>Ballistic Missile GPS Defense</option>
               <option>Defense Industry Partnership</option>
-              <option>Critical Infrastructure Protection</option>
-              <option>System Evaluation / Demonstration</option>
+              <option>System Evaluation / Live Demonstration</option>
               <option>Export / Licensing Inquiry</option>
               <option>Technical Consultation</option>
             </select>
           </div>
-          <div class="fg">
-            <label class="fl">Message</label>
-            <textarea class="fta" placeholder="Describe your infrastructure protection requirements or inquiry..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Inquiry</button>
-          <p id="form-msg" style="font-size:13px;color:var(--green);display:none;margin-top:6px">✓ Message sent. We will respond to your official contact within 2 business days.</p>
+          <div class="fg"><label class="fl" for="msg">Message</label><textarea id="msg" class="fta" placeholder="Describe your critical infrastructure protection requirements, threat environment, or inquiry..."></textarea></div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Defense Inquiry</button>
+          <p id="form-msg" style="font-size:13px;color:var(--green);display:none;margin-top:6px" role="status">✓ Inquiry received. We will respond to your official contact within 2 business days.</p>
         </form>
       </div>
       <div class="contact-info">
-        <div class="ci-block">
-          <div class="ci-label">About Grid-Jam</div>
-          <p>Founded in 2019 in direct response to the Houthi drone strikes on Saudi oil infrastructure, Grid-Jam was established by Electronic Warfare veterans with one objective: deny GNSS precision to attacking munitions over protected areas.</p>
-        </div>
-        <div class="ci-block">
-          <div class="ci-label">Operational Status</div>
-          <p>EPI systems have been evaluated and approved as effective against GNSS-guided drone platforms including the Shahed-136 class. Grid-Jam provides scalable solutions from single-facility to national-grid deployments.</p>
-        </div>
-        <div class="ci-block">
-          <div class="ci-label">Technology Partner</div>
-          <p>In collaboration with <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>, Bulgaria.</p>
-        </div>
-        <div class="compliance">
-          <p><strong>Export Compliance Notice:</strong> Grid-Jam EPI systems are classified under the Wassenaar Munitions List (ML 11b). All transactions are subject to defense export licensing by the exporting country. Grid-Jam operates exclusively through approved government and defense industry procurement channels.</p>
-        </div>
+        <div class="ci-block"><div class="ci-label">About Grid-Jam EPI</div><p>Founded in 2019 by Electronic Warfare veterans following the Houthi GPS drone strikes on Saudi ARAMCO. Grid-Jam develops the world's only distributed GNSS jamming array proven effective against CRPA-equipped military drones, including the Shahed-136.</p></div>
+        <div class="ci-block"><div class="ci-label">Operational Status</div><p>Grid-Jam EPI has been evaluated, field-tested, and approved as operationally effective against GPS-guided drone attacks including the Shahed-136 platform. Full deployment consultation available for power plants, airports, seaports, military bases, and national-scale grids.</p></div>
+        <div class="ci-block"><div class="ci-label">European Market Partner &amp; Website</div><p>Grid-Jam is expanding into Europe in collaboration with <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>, Bulgaria. This website was designed and developed by <a href="https://www.linkedin.com/in/omri-wallach-19989a113/" target="_blank" rel="noopener">Omri Wallach</a>, CEO of <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>.</p></div>
+        <div class="compliance"><p><strong>Export Compliance:</strong> Grid-Jam EPI systems are classified under the Wassenaar Arrangement Munitions List (ML 11b). All transactions subject to defense export licensing requirements. Grid-Jam operates exclusively through approved government and defense industry procurement channels.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">
-          <div class="logo-grid">
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
+        <div class="logo" aria-label="Grid-Jam">
+          <div class="logo-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
           GRID-JAM
         </div>
-        <p>Electronic Protection of Infrastructure — a distributed GNSS jamming solution that defeats precision drone and missile attacks on critical national assets.</p>
+        <p>Electronic Protection of Infrastructure — distributed GNSS jamming that defeats GPS-guided drones, cruise missiles &amp; ballistic missiles. Ukraine tested &amp; approved. Patent pending.</p>
+        <div class="social-links" aria-label="Social and professional links">
+          <a href="https://www.linkedin.com/in/alon-wallach-6625b310/" target="_blank" rel="noopener" class="social-link" aria-label="Alon Wallach on LinkedIn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Alon Wallach
+          </a>
+          <a href="https://github.com/omriwa" target="_blank" rel="noopener" class="social-link" aria-label="omriwa on GitHub">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener" class="social-link" aria-label="Apollo Cloud on LinkedIn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Apollo Cloud
+          </a>
+        </div>
       </div>
       <div class="fcol">
-        <div class="fcol-t">Solution</div>
+        <div class="fcol-t">Company</div>
+        <a href="#about">About Grid-Jam</a>
+        <a href="#contact">Contact &amp; Briefings</a>
+        <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">Patent Application</a>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">EPI System</div>
         <a href="#epi">What Is EPI?</a>
-        <a href="#how">How It Works</a>
-        <a href="#advantages">Advantages</a>
+        <a href="#how">How GNSS Jamming Works</a>
+        <a href="#products">Jammer Products</a>
+        <a href="#implementation">Deployment Options</a>
       </div>
       <div class="fcol">
         <div class="fcol-t">Intelligence</div>
-        <a href="#threats">Threat Landscape</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="fcol">
-        <div class="fcol-t">Engagement</div>
-        <a href="#contact">Request Briefing</a>
-        <a href="https://patents.justia.com/patent/20230273324" target="_blank" rel="noopener">Patent Application</a>
-        <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud Partner</a>
+        <a href="#threats">Drone Threat Index</a>
+        <a href="#cases">Attack Case Studies</a>
+        <a href="#advantages">EPI vs Interceptors</a>
+        <a href="#faq">Anti-Drone FAQ</a>
       </div>
     </div>
     <div class="footer-bot">
-      <p>© 2026 Grid-Jam. All rights reserved. GNSS jamming equipment is export-controlled under Wassenaar ML 11b.</p>
-      <div class="badge"><span class="badge-dot"></span> EPI SYSTEM ACTIVE</div>
+      <div>
+        <p>© 2026 Grid-Jam. All rights reserved. Export-controlled under Wassenaar Arrangement ML 11b.</p>
+        <div class="built-by" aria-label="Website credits">
+          Owned by <a href="https://www.linkedin.com/in/alon-wallach-6625b310/" target="_blank" rel="noopener">Alon Wallach</a> &nbsp;·&nbsp; Designed by <a href="https://www.linkedin.com/in/omri-wallach-19989a113/" target="_blank" rel="noopener">Omri Wallach</a>, CEO of <a href="https://www.linkedin.com/company/apollo-s-cloud/about/" target="_blank" rel="noopener">Apollo Cloud</a>
+        </div>
+      </div>
+      <div class="badge" aria-label="EPI system status: active"><span class="badge-dot" aria-hidden="true"></span> EPI SYSTEM ACTIVE</div>
     </div>
   </div>
 </footer>
 
 <script>
-  function toggleMenu() {
-    const nav = document.getElementById('mobnav');
-    const btn = document.getElementById('hbg');
-    const isOpen = nav.classList.toggle('open');
-    btn.classList.toggle('is-open', isOpen);
-    btn.setAttribute('aria-expanded', isOpen);
+/* ── NAV ── */
+function toggleMenu(){
+  const nav=document.getElementById('mobnav'),btn=document.getElementById('hbg');
+  const o=nav.classList.toggle('open');
+  btn.classList.toggle('is-open',o);
+  btn.setAttribute('aria-expanded',o);
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mobnav'),btn=document.getElementById('hbg');
+  if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');btn.classList.remove('is-open');btn.setAttribute('aria-expanded',false);
   }
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
-  function handleForm(e) {
-    e.preventDefault();
-    document.getElementById('form-msg').style.display = 'block';
-    e.target.reset();
-  }
-  // Close mobile nav on outside click
-  document.addEventListener('click', e => {
-    const nav = document.getElementById('mobnav');
-    const btn = document.getElementById('hbg');
-    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-      btn.classList.remove('is-open');
-      btn.setAttribute('aria-expanded', false);
-    }
+});
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id;});
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+/* ── SLIDER ── */
+const slides=document.querySelectorAll('.slide');
+const dotsEl=document.getElementById('dots');
+const progressEl=document.getElementById('progress');
+let cur=0,timer=null;
+const INTERVAL=6000;
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.setAttribute('role','tab');
+  d.setAttribute('aria-label','Slide '+(i+1));
+  d.setAttribute('aria-selected',i===0?'true':'false');
+  d.onclick=()=>goTo(i);
+  dotsEl.appendChild(d);
+});
+function goTo(n){
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  dotsEl.children[cur].setAttribute('aria-selected','false');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  dotsEl.children[cur].setAttribute('aria-selected','true');
+  resetProgress();
+}
+function moveSlide(dir){goTo(cur+dir);}
+function resetProgress(){
+  progressEl.classList.remove('running');
+  progressEl.style.animation='none';
+  void progressEl.offsetWidth;
+  progressEl.classList.add('running');
+  clearTimeout(timer);
+  timer=setTimeout(()=>goTo(cur+1),INTERVAL);
+}
+let tx=0;
+const sliderEl=document.getElementById('slider');
+sliderEl.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;},{passive:true});
+sliderEl.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>40)moveSlide(dx<0?1:-1);
+},{passive:true});
+resetProgress();
+
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded','false');
   });
-  // Active nav highlight on scroll
-  const allSections = document.querySelectorAll('section[id]');
-  const navLinks    = document.querySelectorAll('nav a');
-  const onScroll = () => {
-    let current = '';
-    allSections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 90) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
+  if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+}
+
+/* ── FORM ── */
+function handleForm(e){
+  e.preventDefault();
+  document.getElementById('form-msg').style.display='block';
+  e.target.reset();
+}
 </script>
 </body>
 </html>
