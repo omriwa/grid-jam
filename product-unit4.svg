@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <filter id="gl4"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="beam4" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7b5ea7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7b5ea7" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#090c10"/>
+  <!-- vertical beam going upward (50km corridor) -->
+  <path d="M150,186 L200,0 L250,186 Z" fill="url(#beam4)" opacity="0.6"/>
+  <path d="M165,186 L200,20 L235,186 Z" fill="rgba(123,94,167,0.15)" opacity="0.8"/>
+  <!-- altitude markers -->
+  <line x1="62" y1="186" x2="338" y2="186" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <line x1="100" y1="100" x2="165" y2="100" stroke="#7b5ea7" stroke-width="0.4" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="96" y="103" text-anchor="end" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" opacity="0.7">50 KM</text>
+  <line x1="104" y1="143" x2="168" y2="143" stroke="#7b5ea7" stroke-width="0.4" stroke-dasharray="3,3" opacity="0.4"/>
+  <text x="100" y="146" text-anchor="end" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" opacity="0.6">25 KM</text>
+  <!-- ballistic missile trajectory -->
+  <path d="M330,10 Q280,60 230,130 L218,175" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,4" fill="none" opacity="0.8"/>
+  <polygon points="218,182 213,170 223,170" fill="#c84b4b" opacity="0.7"/>
+  <text x="338" y="14" text-anchor="start" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#c84b4b" font-weight="700">BALLISTIC</text>
+  <!-- X mark (deflected) -->
+  <line x1="213" y1="170" x2="222" y2="179" stroke="#4fb06d" stroke-width="2"/>
+  <line x1="222" y1="170" x2="213" y2="179" stroke="#4fb06d" stroke-width="2"/>
+  <!-- unit body -->
+  <rect x="168" y="154" width="64" height="44" rx="5" fill="#131824" stroke="#7b5ea7" stroke-width="2"/>
+  <rect x="176" y="162" width="48" height="28" rx="3" fill="#0e1219" stroke="#7b5ea7" stroke-width="0.5" opacity="0.4"/>
+  <!-- 6 vertical Yagi antennas pointing up -->
+  <line x1="183" y1="154" x2="183" y2="108" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <!-- yagi crossbars -->
+  <line x1="175" y1="118" x2="191" y2="118" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="177" y1="126" x2="189" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <line x1="179" y1="134" x2="187" y2="134" stroke="#7b5ea7" stroke-width="1" opacity="0.5"/>
+  <circle cx="183" cy="105" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="192" y1="154" x2="192" y2="102" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="184" y1="112" x2="200" y2="112" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="186" y1="120" x2="198" y2="120" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <line x1="188" y1="130" x2="196" y2="130" stroke="#7b5ea7" stroke-width="1" opacity="0.5"/>
+  <circle cx="192" cy="99" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="200" y1="154" x2="200" y2="96" stroke="#7b5ea7" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="191" y1="106" x2="209" y2="106" stroke="#7b5ea7" stroke-width="1.8" opacity="0.9"/>
+  <line x1="193" y1="116" x2="207" y2="116" stroke="#7b5ea7" stroke-width="1.4" opacity="0.7"/>
+  <line x1="195" y1="126" x2="205" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="200" cy="92" r="5" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="208" y1="154" x2="208" y2="102" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="200" y1="112" x2="216" y2="112" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="202" y1="120" x2="214" y2="120" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="208" cy="99" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="217" y1="154" x2="217" y2="108" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="209" y1="118" x2="225" y2="118" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="211" y1="126" x2="223" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="217" cy="105" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <!-- status -->
+  <circle cx="182" cy="172" r="3" fill="#7b5ea7"><animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+  <text x="191" y="173" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" font-weight="700">ACTIVE</text>
+  <!-- badges -->
+  <rect x="8" y="8" width="78" height="16" rx="2" fill="rgba(123,94,167,0.15)" stroke="#7b5ea7" stroke-width="0.5"/>
+  <text x="47" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#7b5ea7" letter-spacing="1">VERTICAL YAGI</text>
+  <rect x="314" y="8" width="78" height="16" rx="2" fill="rgba(200,75,75,0.12)" stroke="#c84b4b" stroke-width="0.5"/>
+  <text x="353" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#c84b4b" letter-spacing="1">BALLISTIC DEFENSE</text>
+  <!-- labels -->
+  <text x="200" y="248" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2">UNIT TYPE 4</text>
+  <text x="200" y="263" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#7b5ea7" letter-spacing="1">300–500W VERTICAL · 50 KM BALLISTIC DEFENSE</text>
+  <text x="200" y="277" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">6-BAND 1.1–1.6 GHz · GPS · GLONASS · GALILEO · BEIDOU</text>
+  <text x="200" y="291" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">28V DC · ~8 kg · YAGI ANTENNAS · HYPERSONIC CAPABLE</text>
+</svg>

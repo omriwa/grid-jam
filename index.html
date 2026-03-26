@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,6 +425,10 @@
     .built-by a{color:#404860}
     .built-by a:hover{color:var(--accent)}
 
+
+    /* PRODUCT IMAGES */
+    .product-img{margin:16px 0;border:1px solid var(--border);background:var(--bg);overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .product-img svg{width:100%;height:auto;display:block}
     /* RESPONSIVE */
     @media(max-width:1024px){
       .hero-content{grid-template-columns:1fr;gap:48px}
@@ -584,70 +587,163 @@
   </div>
 </section>
 
-<!-- ② IMAGE SLIDER — The Drone Threat Story (2019–2026) -->
 <div id="slider-section" aria-label="Slideshow: global drone and missile threat timeline">
   <div class="slider-wrap" id="slider">
-    <div class="slide active" style="background-color:#08101a;background-image:url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 1: Drones & Missiles — The New Face of War -->
+    <div class="slide active" style="background:#080c12;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide12.2.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Active Threat — 2026</div>
-        <div class="slide-title">Drones &amp; Missiles: The New Face of War</div>
-        <div class="slide-sub">GPS-guided munitions are now the dominant offensive weapon worldwide. The counter-UAV market reached $8.5 billion in 2026 — growing to $28B by 2032. The question is no longer if your infrastructure will be targeted, but when.</div>
+        <div class="slide-title">Drones &amp; Missiles:<br/>The New Face of War</div>
+        <div class="slide-sub">GPS-guided munitions are now the world's dominant offensive weapon. Every major conflict since 2019 has been won or shaped by GNSS-guided drone and missile attacks on critical infrastructure. The question is no longer <em>if</em> — it's <em>when</em>.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#14090a;background-image:url('https://images.unsplash.com/photo-1590424693420-75cb7a50e7c8?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 2: ARAMCO 2019 -->
+    <div class="slide" style="background:#100808;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide13.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">2019 — Saudi Arabia</div>
-        <div class="slide-title">Houthi Drones Strike ARAMCO — $5 Billion in Damage</div>
-        <div class="slide-sub">Iranian-supplied GPS-guided drones struck Saudi oil facilities with surgical precision. 5% of global oil supply disrupted overnight. Dozens of tanks hit at identical angles — achievable only through automatic GNSS navigation. This attack launched Grid-Jam.</div>
+        <div class="slide-title">Houthi GPS Drones Strike ARAMCO:<br/>$5 Billion Destroyed Overnight</div>
+        <div class="slide-sub">Iranian-supplied drones struck the Abqaiq and Khurais oil facilities with surgical GPS precision — 5% of global oil supply wiped out in a single attack. Dozens of tanks hit at identical angles: only automatic GNSS navigation makes this possible. This attack created Grid-Jam.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#0a0e14;background-image:url('https://images.unsplash.com/photo-1540479859555-17af45c78602?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 3: Azerbaijan–Armenia -->
+    <div class="slide" style="background:#0a0e14;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide14.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
-        <div class="slide-tag">2020 — Azerbaijan–Armenia</div>
-        <div class="slide-title">GPS Drones Defeat an Entire Air Defense Network in 44 Days</div>
-        <div class="slide-sub">Harop and Bayraktar TB2 GPS-guided drones systematically destroyed Armenia's entire radar network and anti-air infrastructure. Without counter-UAV GNSS-denial, even the best conventional air defense becomes obsolete within weeks.</div>
+        <div class="slide-tag">2020 — Azerbaijan vs Armenia</div>
+        <div class="slide-title">GPS Drones Defeat an Entire<br/>Air Defense Network in 44 Days</div>
+        <div class="slide-sub">Harop loitering munitions and Bayraktar TB2 GPS drones systematically destroyed Armenia's entire radar network and anti-air infrastructure. The war was decided not by conventional forces — but by GNSS-guided precision. Without GNSS denial, no air defense survives.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#0c0c12;background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 4: GPS nav — the weapon's brain -->
+    <div class="slide" style="background:#080c10;background-image:url('https://grid-jam.com/wp-content/uploads/2026/01/grid-square-diagram.png');background-size:contain;background-position:center;background-repeat:no-repeat">
+      <div class="slide-overlay" style="background:linear-gradient(to top,rgba(4,6,10,0.95) 0%,rgba(4,6,10,0.7) 50%,rgba(4,6,10,0.5) 100%)"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Technical Core</div>
+        <div class="slide-title">GPS Is the Weapon's Brain —<br/>The EPI Grid Shuts It Down</div>
+        <div class="slide-sub">Every GPS-guided drone, cruise missile, and ballistic warhead relies on GNSS navigation for its final approach. The EPI grid surrounds protected assets with a coordinated GNSS jamming array — turning precision strikes into statistical misses across a 5–50 km zone.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Russia–Ukraine overview -->
+    <div class="slide" style="background:#0c0a08;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide1.png');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">2022–Present — Russia–Ukraine</div>
-        <div class="slide-title">5,000 Shahed-136 Drones Per Month. Ukraine Runs Out of Interceptors.</div>
-        <div class="slide-sub">Russia deploys swarms targeting power plants and energy infrastructure. Ukraine depleted its anti-air stockpiles. Grid-Jam EPI was evaluated and approved in 2022 — but a full national deployment came too late. The lesson: anti-drone jamming must be deployed proactively.</div>
+        <div class="slide-title">Russia Deploys Drones &amp; Missiles<br/>to Destroy Ukraine's Energy Grid</div>
+        <div class="slide-sub">Russia shifted from conventional warfare to a deliberate drone-and-missile campaign targeting power plants, substations, and water infrastructure. The strategy: destroy Ukraine's energy grid entirely using cheap GPS-guided Shahed-136 drones at scale — 5,000 per month.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#080c14;background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 6: Shahed-136 CRPA -->
+    <div class="slide" style="background:#10080c;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide2.1-1.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
-        <div class="slide-tag">The Core Technical Problem</div>
-        <div class="slide-title">CRPA Antennas Make GPS-Guided Drones Unjammable by Conventional Means</div>
-        <div class="slide-sub">Modern military drones carry 4-element CRPA anti-jam antennas that defeat up to 3 conventional jammers simultaneously. No single jammer — regardless of power — can stop a Shahed-136. Only a coordinated distributed GNSS jamming grid can overcome CRPA.</div>
+        <div class="slide-tag">Why Conventional Jamming Fails</div>
+        <div class="slide-title">Shahed-136 Carries CRPA:<br/>It Defeats 3 Jammers Simultaneously</div>
+        <div class="slide-sub">The Shahed-136 uses GPS combined with a 4-element CRPA anti-jam antenna — automatically nullifying up to 3 jammers from different directions at once. No single jammer, however powerful, can stop it. Russia later built its own version: the Geran-2.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#10080a;background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 7: Drone swarms scale-up -->
+    <div class="slide" style="background:#080c10;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide2.2.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
-        <div class="slide-tag">2023–Present — Israel</div>
-        <div class="slide-title">Even Iron Dome Cannot Stop Low-Flying GPS-Guided Drones</div>
-        <div class="slide-sub">Hezbollah drones penetrated Israel's multi-layer air defense, striking military bases. Iran's ballistic missiles hit an oil refinery and a hospital. The U.S. DoD has now allocated $3.1 billion to counter-UAS capabilities in FY2026 — a 43% single-year increase.</div>
+        <div class="slide-tag">Swarm Warfare — Scale Problem</div>
+        <div class="slide-title">Russia Widens to Hundreds of Drones<br/>Per Attack — Interceptors Run Out</div>
+        <div class="slide-sub">Drone swarms of 100–300 per wave overwhelm interceptor stockpiles faster than they can be replenished. Even at 80% intercept rates, the remaining strikes cause catastrophic damage. Anti-drone jamming denies GPS precision to every drone in the swarm — simultaneously — at zero per-engagement cost.</div>
       </div>
     </div>
-    <div class="slide" style="background-color:#080e10;background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=80')">
+
+    <!-- SLIDE 8: Drone vs radar infographic -->
+    <div class="slide" style="background:#0a0810;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide3.jpg');background-size:cover;background-position:center">
       <div class="slide-overlay"></div>
       <div class="slide-content">
-        <div class="slide-tag solution">The Solution — EPI Anti-Drone Jamming Grid</div>
-        <div class="slide-title">Turn Every GPS-Guided Precision Weapon Into a Statistical Miss</div>
-        <div class="slide-sub">Without effective GNSS jamming, wars are won by attackers with unlimited low-cost GPS-guided drones. Grid-Jam EPI's distributed jammer array denies precision to every incoming threat simultaneously — power plants, airports, seaports, and military bases — at zero per-engagement cost.</div>
+        <div class="slide-tag">Why Iron Dome Cannot Stop Drones</div>
+        <div class="slide-title">Low-Flying GPS Drones Evade Radar —<br/>Hard-Kill Systems Are Blind</div>
+        <div class="slide-sub">Radar-guided interceptor systems like Iron Dome have a minimum engagement altitude. GPS-guided drones fly below the radar floor — invisible to the system until they hit. GNSS jamming doesn't need to see the drone: it denies GPS to everything within the protection zone.</div>
       </div>
     </div>
+
+    <!-- SLIDE 9: Shahed precision GPS -->
+    <div class="slide" style="background:#100c08;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide4.1.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Precision Threat — Guided Munitions</div>
+        <div class="slide-title">Iranian Shahed-136: GPS-Guided Precision<br/>at $20,000 Per Unit</div>
+        <div class="slide-sub">The Shahed-136 costs roughly $20,000 — a fraction of the $200,000–$3M+ per interceptor missile needed to stop it. At 5,000 units per month, the cost asymmetry is insurmountable using kinetic defense alone. The only economically viable answer is GNSS denial.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: GPS guided smart bombs -->
+    <div class="slide" style="background:#080c0a;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide4.2.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Guided Munitions — All Categories</div>
+        <div class="slide-title">Smart Bombs, Rockets &amp; Cruise Missiles —<br/>All Guided by the Same GPS Signal</div>
+        <div class="slide-sub">Smart glide bombs, GLSDB ground-launched munitions, and cruise missiles all share a common vulnerability: GNSS terminal guidance. One EPI deployment neutralizes all GPS-guided threat categories — drones, cruise missiles, smart bombs, and ballistic missiles — within the protected zone.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Ukraine energy losses -->
+    <div class="slide" style="background:#0c0808;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide4.3-600x600.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Case Study — Infrastructure Collapse</div>
+        <div class="slide-title">Ukraine Loses Its Energy Grid:<br/>An Electricity Exporter Becomes an Importer</div>
+        <div class="slide-sub">Russia's drone-and-missile campaign destroyed the majority of Ukraine's power generation capacity. Hospitals lost power. Water treatment failed. Heating collapsed in winter. Grid-Jam delivered an approved evaluation grid in 2022 — but a national deployment was ordered too late. The lesson for every government: deploy proactively.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: Numbers / scale -->
+    <div class="slide" style="background:#080c10;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide4.4.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Scale of the Drone Threat — 2026</div>
+        <div class="slide-title">Recent Numbers: Thousands of GPS-Guided<br/>Munitions Used Per Month</div>
+        <div class="slide-sub">Russia, Iran, Houthi forces, and Hezbollah have collectively launched tens of thousands of GPS-guided drones and missiles at critical infrastructure since 2022. The U.S. DoD allocated $3.1 billion to counter-UAV capabilities in FY2026 — a 43% single-year increase — because the scale of the threat has become existential.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: Hezbollah / Israel -->
+    <div class="slide" style="background:#100810;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide5.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">2023–2024 — Israel vs Iran &amp; Hezbollah</div>
+        <div class="slide-title">Hezbollah Drones Penetrate Iron Dome —<br/>Iran Hits Oil Refinery &amp; Hospital</div>
+        <div class="slide-sub">GPS-guided drones struck Israeli military bases. Iran's ballistic missiles hit an oil refinery and a major hospital with GPS precision — proving that even the world's most advanced multi-layer air defense cannot stop GPS-guided threats without a dedicated GNSS denial layer. EPI is that layer.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: Cost lesson / conclusion -->
+    <div class="slide" style="background:#080e12;background-image:url('https://grid-jam.com/wp-content/uploads/2025/11/slide8-1.jpg');background-size:cover;background-position:center">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Strategic Lesson — Cost Asymmetry</div>
+        <div class="slide-title">Drone &amp; Missile Attacks Cost a Fraction<br/>of Hard-Kill Defenses</div>
+        <div class="slide-sub">A Shahed-136 costs ~$20,000 to produce. A Patriot interceptor costs $3–4 million. At production rates of 5,000 drones/month, no nation can sustain kinetic-only defense. The economics are permanently broken — unless you deny GPS precision entirely. That is exactly what EPI does.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: EPI Solution -->
+    <div class="slide" style="background:#080e10;background-image:url('https://grid-jam.com/wp-content/uploads/2026/01/grid-square-diagram.png');background-size:contain;background-position:center;background-repeat:no-repeat">
+      <div class="slide-overlay" style="background:linear-gradient(to top,rgba(4,6,10,0.96) 0%,rgba(4,6,10,0.72) 50%,rgba(4,6,10,0.52) 100%)"></div>
+      <div class="slide-content">
+        <div class="slide-tag solution">The Solution — Grid-Jam EPI</div>
+        <div class="slide-title">Turn Every GPS-Guided Weapon<br/>Into a Statistical Miss</div>
+        <div class="slide-sub">Without effective GNSS jamming, wars are won by attackers with unlimited low-cost GPS-guided munitions. Grid-Jam EPI deploys a coordinated distributed jammer array that overwhelms CRPA antennas — protecting power plants, airports, seaports, and military bases at zero per-engagement cost.</div>
+      </div>
+    </div>
+
     <button class="slider-prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#8592;</button>
     <button class="slider-next" onclick="moveSlide(1)" aria-label="Next slide">&#8594;</button>
     <div class="slider-dots" id="dots" role="tablist" aria-label="Slide navigation"></div>
     <div class="slider-progress" id="progress" aria-hidden="true"></div>
-  </div>
 </div>
 
 <!-- ALERT STRIP -->
@@ -834,6 +930,54 @@
         </ul>
         <span class="pbadge omni">Omnidirectional Coverage</span>
       </div>
+        <div class="product-img" aria-label="Unit Type 1 diagram" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <filter id="gl"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="400" height="300" fill="#090c10"/>
+  <!-- concentric rings -->
+  <circle cx="200" cy="148" r="130" fill="none" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="5,8" opacity="0.15"/>
+  <circle cx="200" cy="148" r="95"  fill="none" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.22"/>
+  <circle cx="200" cy="148" r="60"  fill="none" stroke="#c8a84b" stroke-width="1"   stroke-dasharray="3,5" opacity="0.32"/>
+  <circle cx="200" cy="148" r="30"  fill="rgba(200,168,75,0.07)" stroke="#c8a84b" stroke-width="1" opacity="0.55"/>
+  <!-- unit box -->
+  <rect x="164" y="116" width="72" height="64" rx="5" fill="#131824" stroke="#c8a84b" stroke-width="1.5"/>
+  <rect x="172" y="124" width="56" height="48" rx="3" fill="#0e1219" stroke="#c8a84b" stroke-width="0.4" opacity="0.5"/>
+  <!-- grid lines on body -->
+  <line x1="172" y1="140" x2="228" y2="140" stroke="#c8a84b" stroke-width="0.3" opacity="0.3"/>
+  <line x1="172" y1="156" x2="228" y2="156" stroke="#c8a84b" stroke-width="0.3" opacity="0.3"/>
+  <line x1="193" y1="124" x2="193" y2="172" stroke="#c8a84b" stroke-width="0.3" opacity="0.3"/>
+  <line x1="207" y1="124" x2="207" y2="172" stroke="#c8a84b" stroke-width="0.3" opacity="0.3"/>
+  <!-- 6 omni antennas -->
+  <line x1="200" y1="116" x2="200" y2="77"  stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="200" cy="74" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="232" y1="128" x2="262" y2="98"  stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="265" cy="95" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="234" y1="163" x2="264" y2="190" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="267" cy="193" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="200" y1="180" x2="200" y2="218" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="200" cy="221" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="166" y1="163" x2="136" y2="190" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="133" cy="193" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="168" y1="128" x2="138" y2="98"  stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="135" cy="95" r="4.5" fill="#c8a84b" filter="url(#gl)"/>
+  <!-- status LED -->
+  <circle cx="184" cy="136" r="3" fill="#4fb06d"><animate attributeName="opacity" values="1;0.2;1" dur="1.8s" repeatCount="indefinite"/></circle>
+  <text x="193" y="137" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#4fb06d" font-weight="700">ON</text>
+  <!-- badge top-left -->
+  <rect x="8" y="8" width="72" height="16" rx="2" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="0.5"/>
+  <text x="44" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#c8a84b" letter-spacing="1">OMNIDIRECTIONAL</text>
+  <!-- badge top-right -->
+  <rect x="320" y="8" width="72" height="16" rx="2" fill="rgba(79,176,109,0.1)" stroke="#4fb06d" stroke-width="0.5"/>
+  <text x="356" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#4fb06d" letter-spacing="1">360° COVERAGE</text>
+  <!-- labels -->
+  <text x="200" y="248" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2">UNIT TYPE 1</text>
+  <text x="200" y="263" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#c8a84b" letter-spacing="1">25W OMNI · 2.5 KM ANTI-DRONE RANGE</text>
+  <text x="200" y="277" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">6-BAND 1.1–1.6 GHz · GPS · GLONASS · GALILEO · BEIDOU</text>
+  <text x="200" y="291" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">12–28V DC · ~5 kg · WEATHER-RESISTANT</text>
+</svg>
+        </div>
       <div class="product-card">
         <div class="product-type">Unit Type 2 — Anti-Drone Jammer</div>
         <div class="product-name">Horizontal Directional<br/>25W GNSS Jammer</div>
@@ -850,6 +994,56 @@
         </ul>
         <span class="pbadge dir">Horizontal Directional</span>
       </div>
+        <div class="product-img" aria-label="Unit Type 2 diagram" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <filter id="gl"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="400" height="300" fill="#090c10"/>
+  <!-- directional beam arc (horizontal sector) -->
+  <path d="M200,148 L72,60 A155,155 0 0,1 328,60 Z" fill="rgba(200,168,75,0.05)" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.5"/>
+  <path d="M200,148 L100,80 A120,120 0 0,1 300,80 Z" fill="rgba(200,168,75,0.07)" stroke="#c8a84b" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.6"/>
+  <path d="M200,148 L130,100 A90,90 0 0,1 270,100 Z" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="1" opacity="0.7"/>
+  <!-- back coverage smaller -->
+  <path d="M200,148 L170,210 A40,40 0 0,0 230,210 Z" fill="rgba(200,168,75,0.03)" stroke="#c8a84b" stroke-width="0.4" stroke-dasharray="2,4" opacity="0.3"/>
+  <!-- unit box -->
+  <rect x="162" y="116" width="76" height="64" rx="5" fill="#131824" stroke="#c8a84b" stroke-width="1.5"/>
+  <rect x="170" y="124" width="60" height="48" rx="3" fill="#0e1219" stroke="#c8a84b" stroke-width="0.4" opacity="0.5"/>
+  <!-- directional arrow -->
+  <line x1="200" y1="116" x2="200" y2="94" stroke="#c8a84b" stroke-width="1" stroke-dasharray="2,2" opacity="0.4"/>
+  <polygon points="200,88 196,96 204,96" fill="#c8a84b" opacity="0.6"/>
+  <!-- 6 directional antennas fanning upward -->
+  <line x1="180" y1="118" x2="130" y2="52" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="127" cy="49" r="4" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="190" y1="116" x2="162" y2="62" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="160" cy="58" r="4" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="200" y1="116" x2="200" y2="74" stroke="#c8a84b" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="200" cy="70" r="5" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="210" y1="116" x2="238" y2="62" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="240" cy="58" r="4" fill="#c8a84b" filter="url(#gl)"/>
+  <line x1="220" y1="118" x2="270" y2="52" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="273" cy="49" r="4" fill="#c8a84b" filter="url(#gl)"/>
+  <!-- UHF RX side -->
+  <line x1="238" y1="148" x2="265" y2="148" stroke="#c8a84b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <circle cx="268" cy="148" r="3" fill="#c8a84b" opacity="0.5"/>
+  <!-- status LED -->
+  <circle cx="180" cy="136" r="3" fill="#4fb06d"><animate attributeName="opacity" values="1;0.2;1" dur="1.8s" repeatCount="indefinite"/></circle>
+  <text x="189" y="137" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#4fb06d" font-weight="700">ON</text>
+  <!-- range label -->
+  <text x="200" y="46" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#c8a84b" opacity="0.7" letter-spacing="1">5 KM DIRECTIONAL RANGE</text>
+  <!-- badge top-left -->
+  <rect x="8" y="8" width="68" height="16" rx="2" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="0.5"/>
+  <text x="42" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#c8a84b" letter-spacing="1">DIRECTIONAL</text>
+  <!-- badge top-right -->
+  <rect x="312" y="8" width="80" height="16" rx="2" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="0.5"/>
+  <text x="352" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#c8a84b" letter-spacing="1">HORIZONTAL BEAM</text>
+  <!-- labels -->
+  <text x="200" y="248" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2">UNIT TYPE 2</text>
+  <text x="200" y="263" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#c8a84b" letter-spacing="1">25W DIRECTIONAL · 5 KM ANTI-DRONE RANGE</text>
+  <text x="200" y="277" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">6-BAND 1.1–1.6 GHz · GPS · GLONASS · GALILEO · BEIDOU</text>
+  <text x="200" y="291" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">12–28V DC · ~6 kg · WEATHER-RESISTANT</text>
+</svg>
+        </div>
       <div class="product-card">
         <div class="product-type">Unit Type 3 — High-Power Anti-Drone Jammer</div>
         <div class="product-name">Omnidirectional<br/>300–500W GNSS Jammer</div>
@@ -867,6 +1061,62 @@
         <span class="pbadge omni">High Power Omni</span>
         <span class="pbadge hp" style="margin-left:6px">10× Node Reduction</span>
       </div>
+        <div class="product-img" aria-label="Unit Type 3 diagram" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <filter id="gl3"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="pulse3" cx="50%" cy="49%" r="50%">
+      <stop offset="0%" stop-color="#e07a5f" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#e07a5f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#090c10"/>
+  <!-- high-power pulsing aura -->
+  <circle cx="200" cy="148" r="145" fill="url(#pulse3)" opacity="0.7"><animate attributeName="r" values="130;150;130" dur="3s" repeatCount="indefinite"/></circle>
+  <!-- large range rings -->
+  <circle cx="200" cy="148" r="140" fill="none" stroke="#e07a5f" stroke-width="0.4" stroke-dasharray="6,10" opacity="0.12"/>
+  <circle cx="200" cy="148" r="108" fill="none" stroke="#e07a5f" stroke-width="0.5" stroke-dasharray="5,8" opacity="0.18"/>
+  <circle cx="200" cy="148" r="76"  fill="none" stroke="#e07a5f" stroke-width="0.8" stroke-dasharray="4,6" opacity="0.28"/>
+  <circle cx="200" cy="148" r="44"  fill="none" stroke="#c8a84b" stroke-width="1"   opacity="0.45"/>
+  <circle cx="200" cy="148" r="22"  fill="rgba(224,122,95,0.1)" stroke="#e07a5f" stroke-width="1.5" opacity="0.7"/>
+  <!-- unit body — larger/heavier than unit 1 -->
+  <rect x="158" y="110" width="84" height="76" rx="6" fill="#131824" stroke="#e07a5f" stroke-width="2"/>
+  <rect x="166" y="118" width="68" height="60" rx="3" fill="#0e1219" stroke="#e07a5f" stroke-width="0.5" opacity="0.4"/>
+  <!-- power module indicator -->
+  <rect x="170" y="128" width="30" height="12" rx="2" fill="rgba(224,122,95,0.15)" stroke="#e07a5f" stroke-width="0.8"/>
+  <text x="185" y="137" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#e07a5f" font-weight="700">500W</text>
+  <!-- 6 high-power omni antennas (thicker) -->
+  <line x1="200" y1="110" x2="200" y2="64"  stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="200" cy="60" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <line x1="237" y1="122" x2="272" y2="87"  stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="276" cy="83" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <line x1="238" y1="165" x2="272" y2="197" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="275" cy="200" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <line x1="200" y1="186" x2="200" y2="232" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="200" cy="236" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <line x1="162" y1="165" x2="128" y2="197" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="125" cy="200" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <line x1="163" y1="122" x2="128" y2="87"  stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="124" cy="83" r="5.5" fill="#e07a5f" filter="url(#gl3)"/>
+  <!-- status LEDs -->
+  <circle cx="214" cy="136" r="3" fill="#4fb06d"><animate attributeName="opacity" values="1;0.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+  <circle cx="221" cy="136" r="3" fill="#e07a5f"><animate attributeName="opacity" values="1;0.4;1" dur="2.2s" repeatCount="indefinite"/></circle>
+  <!-- 10x node badge -->
+  <rect x="308" y="200" width="84" height="34" rx="3" fill="rgba(224,122,95,0.12)" stroke="#e07a5f" stroke-width="1"/>
+  <text x="350" y="213" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="800" fill="#e07a5f">10× FEWER</text>
+  <text x="350" y="226" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#e07a5f" opacity="0.7">NODES NEEDED</text>
+  <!-- badges -->
+  <rect x="8" y="8" width="58" height="16" rx="2" fill="rgba(224,122,95,0.12)" stroke="#e07a5f" stroke-width="0.5"/>
+  <text x="37" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#e07a5f" letter-spacing="1">HIGH POWER</text>
+  <rect x="316" y="8" width="76" height="16" rx="2" fill="rgba(79,176,109,0.1)" stroke="#4fb06d" stroke-width="0.5"/>
+  <text x="354" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#4fb06d" letter-spacing="1">10 KM RADIUS</text>
+  <!-- labels -->
+  <text x="200" y="248" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2">UNIT TYPE 3</text>
+  <text x="200" y="263" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#e07a5f" letter-spacing="1">300–500W OMNI · 10 KM ANTI-DRONE RANGE</text>
+  <text x="200" y="277" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">6-BAND 1.1–1.6 GHz · GPS · GLONASS · GALILEO · BEIDOU</text>
+  <text x="200" y="291" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">28V DC · ~7 kg · WEATHER-RESISTANT · 10× NODE REDUCTION</text>
+</svg>
+        </div>
       <div class="product-card">
         <div class="product-type">Unit Type 4 — Ballistic Missile Defense Jammer</div>
         <div class="product-name">Vertical Directional<br/>300–500W GNSS Jammer</div>
@@ -884,6 +1134,75 @@
         <span class="pbadge dir">Vertical Directional</span>
         <span class="pbadge hp" style="margin-left:6px">Ballistic / Hypersonic</span>
       </div>
+        <div class="product-img" aria-label="Unit Type 4 diagram" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <filter id="gl4"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="beam4" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7b5ea7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7b5ea7" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#090c10"/>
+  <!-- vertical beam going upward (50km corridor) -->
+  <path d="M150,186 L200,0 L250,186 Z" fill="url(#beam4)" opacity="0.6"/>
+  <path d="M165,186 L200,20 L235,186 Z" fill="rgba(123,94,167,0.15)" opacity="0.8"/>
+  <!-- altitude markers -->
+  <line x1="62" y1="186" x2="338" y2="186" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <line x1="100" y1="100" x2="165" y2="100" stroke="#7b5ea7" stroke-width="0.4" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="96" y="103" text-anchor="end" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" opacity="0.7">50 KM</text>
+  <line x1="104" y1="143" x2="168" y2="143" stroke="#7b5ea7" stroke-width="0.4" stroke-dasharray="3,3" opacity="0.4"/>
+  <text x="100" y="146" text-anchor="end" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" opacity="0.6">25 KM</text>
+  <!-- ballistic missile trajectory -->
+  <path d="M330,10 Q280,60 230,130 L218,175" stroke="#c84b4b" stroke-width="1.5" stroke-dasharray="5,4" fill="none" opacity="0.8"/>
+  <polygon points="218,182 213,170 223,170" fill="#c84b4b" opacity="0.7"/>
+  <text x="338" y="14" text-anchor="start" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#c84b4b" font-weight="700">BALLISTIC</text>
+  <!-- X mark (deflected) -->
+  <line x1="213" y1="170" x2="222" y2="179" stroke="#4fb06d" stroke-width="2"/>
+  <line x1="222" y1="170" x2="213" y2="179" stroke="#4fb06d" stroke-width="2"/>
+  <!-- unit body -->
+  <rect x="168" y="154" width="64" height="44" rx="5" fill="#131824" stroke="#7b5ea7" stroke-width="2"/>
+  <rect x="176" y="162" width="48" height="28" rx="3" fill="#0e1219" stroke="#7b5ea7" stroke-width="0.5" opacity="0.4"/>
+  <!-- 6 vertical Yagi antennas pointing up -->
+  <line x1="183" y1="154" x2="183" y2="108" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <!-- yagi crossbars -->
+  <line x1="175" y1="118" x2="191" y2="118" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="177" y1="126" x2="189" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <line x1="179" y1="134" x2="187" y2="134" stroke="#7b5ea7" stroke-width="1" opacity="0.5"/>
+  <circle cx="183" cy="105" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="192" y1="154" x2="192" y2="102" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="184" y1="112" x2="200" y2="112" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="186" y1="120" x2="198" y2="120" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <line x1="188" y1="130" x2="196" y2="130" stroke="#7b5ea7" stroke-width="1" opacity="0.5"/>
+  <circle cx="192" cy="99" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="200" y1="154" x2="200" y2="96" stroke="#7b5ea7" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="191" y1="106" x2="209" y2="106" stroke="#7b5ea7" stroke-width="1.8" opacity="0.9"/>
+  <line x1="193" y1="116" x2="207" y2="116" stroke="#7b5ea7" stroke-width="1.4" opacity="0.7"/>
+  <line x1="195" y1="126" x2="205" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="200" cy="92" r="5" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="208" y1="154" x2="208" y2="102" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="200" y1="112" x2="216" y2="112" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="202" y1="120" x2="214" y2="120" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="208" cy="99" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <line x1="217" y1="154" x2="217" y2="108" stroke="#7b5ea7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="209" y1="118" x2="225" y2="118" stroke="#7b5ea7" stroke-width="1.5" opacity="0.8"/>
+  <line x1="211" y1="126" x2="223" y2="126" stroke="#7b5ea7" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="217" cy="105" r="4" fill="#7b5ea7" filter="url(#gl4)"/>
+  <!-- status -->
+  <circle cx="182" cy="172" r="3" fill="#7b5ea7"><animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+  <text x="191" y="173" font-family="Barlow Condensed,sans-serif" font-size="8" fill="#7b5ea7" font-weight="700">ACTIVE</text>
+  <!-- badges -->
+  <rect x="8" y="8" width="78" height="16" rx="2" fill="rgba(123,94,167,0.15)" stroke="#7b5ea7" stroke-width="0.5"/>
+  <text x="47" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#7b5ea7" letter-spacing="1">VERTICAL YAGI</text>
+  <rect x="314" y="8" width="78" height="16" rx="2" fill="rgba(200,75,75,0.12)" stroke="#c84b4b" stroke-width="0.5"/>
+  <text x="353" y="19" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#c84b4b" letter-spacing="1">BALLISTIC DEFENSE</text>
+  <!-- labels -->
+  <text x="200" y="248" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2">UNIT TYPE 4</text>
+  <text x="200" y="263" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#7b5ea7" letter-spacing="1">300–500W VERTICAL · 50 KM BALLISTIC DEFENSE</text>
+  <text x="200" y="277" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">6-BAND 1.1–1.6 GHz · GPS · GLONASS · GALILEO · BEIDOU</text>
+  <text x="200" y="291" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="#6a738a" letter-spacing="1">28V DC · ~8 kg · YAGI ANTENNAS · HYPERSONIC CAPABLE</text>
+</svg>
+        </div>
     </div>
   </div>
 </section>
