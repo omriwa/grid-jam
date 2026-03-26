@@ -175,7 +175,7 @@
     a:hover{text-decoration:underline}
     .container{max-width:var(--max);margin:0 auto;padding:0 28px}
     section{padding:88px 0}
-    section[id],div[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
+    section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
     section:nth-child(even){background:var(--bg2)}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
     .eyebrow::before{content:'';width:28px;height:2px;background:var(--accent);flex-shrink:0}
@@ -239,7 +239,7 @@
     .radar-lbl-sub{font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:.08em}
 
     /* SLIDER */
-    #slider-section{padding:0;background:var(--bg);position:relative;overflow:hidden}
+    #slider-section{padding:0;background:var(--bg);position:relative}
     .slider-wrap{position:relative;width:100%;height:540px;overflow:hidden}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:flex-end;background-size:cover;background-position:center;background-repeat:no-repeat}
     .slide.active{opacity:1;z-index:2}
@@ -748,6 +748,7 @@
     <button class="slider-next" onclick="moveSlide(1)" aria-label="Next slide">&#8594;</button>
     <div class="slider-dots" id="dots" role="tablist" aria-label="Slide navigation"></div>
     <div class="slider-progress" id="progress" aria-hidden="true"></div>
+</div>
 </div>
 
 <!-- ALERT STRIP -->
